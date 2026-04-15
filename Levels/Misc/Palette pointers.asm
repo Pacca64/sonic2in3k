@@ -36,7 +36,7 @@
 		dc.l Pal_AIZFire
 		dc.w Normal_palette_line_2&$FFFF
 		dc.w bytesToLcnt($60)
-		dc.l Pal_HCZ1
+		dc.l Pal_HCZ1						;$C
 		dc.w Normal_palette_line_2&$FFFF
 		dc.w bytesToLcnt($60)
 		dc.l Pal_HCZ2
@@ -186,15 +186,20 @@
 		dc.l Pal_SOZ2_Extra
 		dc.w Normal_palette_line_2&$FFFF
 		dc.w bytesToLcnt($60)
-		dc.l Pal_LRZBoss
+		dc.l Pal_LRZBoss					;$3E
 		dc.w Normal_palette_line_2&$FFFF
 		dc.w bytesToLcnt($60)
-		dc.l Pal_HPZIntro
+		dc.l Pal_HPZIntro					;$3F		
 		dc.w Normal_palette_line_2&$FFFF
 		dc.w bytesToLcnt($60)
-		dc.l Pal_DEZBoss
+		dc.l Pal_DEZBoss					;$40
 		dc.w Normal_palette_line_2&$FFFF
 		dc.w bytesToLcnt($60)
-		dc.l Pal_DEZBoss
+		dc.l Pal_DEZBoss					;$41
+		dc.w Normal_palette_line_2&$FFFF
+		dc.w bytesToLcnt($60)
+
+		;new entries
+		dc.l Pal_EHZ						;$42
 		dc.w Normal_palette_line_2&$FFFF
 		dc.w bytesToLcnt($60)

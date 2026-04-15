@@ -274,6 +274,9 @@ hidden_palace_special_stage_hub_zone	=	$17
 
 FirstNewZoneID	=	$18	;the first zone ID added after the vanilla S3K zones. Needed to help with competition/bonus level jank.
 
+emerald_hill_zone	=	$18
+
+; ---------------------------------------------------------------------------
 ;Zone and Act IDs
 angel_island_zone_act_1 =	(angel_island_zone<<8)|$00
 angel_island_zone_act_2 =	(angel_island_zone<<8)|$01
@@ -304,6 +307,8 @@ doomsday_zone_act_2 =	(doomsday_zone<<8)|$01
 cutscene_zone_act_1 =	(cutscene_zone<<8)|$00
 cutscene_zone_act_2 =	(cutscene_zone<<8)|$01
 
+emerald_hill_zone_act_1 =	(emerald_hill_zone<<8)|$00
+emerald_hill_zone_act_2 =	(emerald_hill_zone<<8)|$01
 
 
 
