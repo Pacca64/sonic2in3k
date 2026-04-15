@@ -244,6 +244,70 @@ VDP_control_port =		$C00004
 PSG_input =			$C00011
 ; ---------------------------------------------------------------------------
 
+;Zone IDs
+angel_island_zone		=	0
+hydrocity_zone			=	1
+marble_garden_zone		=	2
+carnival_night_zone		=	3
+flying_battery_zone		=	4
+icecap_zone				=	5
+launch_base_zone		=	6
+mushroom_hill_zone		=	7
+sandopolis_zone			=	8
+lava_reef_zone			=	9
+sky_sanctuary_zone		=	$A
+death_egg_zone			=	$B
+doomsday_zone			=	$C
+cutscene_zone			=	$D	;only used in cutscenes, has no real name.
+azure_lake_zone			=	$E	;code references this a lot as the first competition stage. fix that!
+balloon_park_zone		=	$F
+desert_palace_zone		=	$10
+chrome_gadget_zone		=	$11
+endless_mine_zone		=	$12
+gumball_zone			=	$13
+pachinko_zone			=	$14
+slots_zone				=	$15
+lava_reef_boss_zone		=	$16
+hidden_palace_zone		=	$16
+death_egg_finalboss_zone	=	$17
+hidden_palace_special_stage_hub_zone	=	$17
+
+FirstNewZoneID	=	$18	;the first zone ID added after the vanilla S3K zones. Needed to help with competition/bonus level jank.
+
+;Zone and Act IDs
+angel_island_zone_act_1 =	(angel_island_zone<<8)|$00
+angel_island_zone_act_2 =	(angel_island_zone<<8)|$01
+hydrocity_zone_act_1 =	(hydrocity_zone<<8)|$00
+hydrocity_zone_act_2 =	(hydrocity_zone<<8)|$01
+marble_garden_zone_act_1 =	(marble_garden_zone<<8)|$00
+marble_garden_zone_act_2 =	(marble_garden_zone<<8)|$01
+carnival_night_zone_act_1 =	(carnival_night_zone<<8)|$00
+carnival_night_zone_act_2 =	(carnival_night_zone<<8)|$01
+flying_battery_zone_act_1 =	(flying_battery_zone<<8)|$00
+flying_battery_zone_act_2 =	(flying_battery_zone<<8)|$01
+icecap_zone_act_1 =	(icecap_zone<<8)|$00
+icecap_zone_act_2 =	(icecap_zone<<8)|$01
+launch_base_zone_act_1 =	(launch_base_zone<<8)|$00
+launch_base_zone_act_2 =	(launch_base_zone<<8)|$01
+mushroom_hill_zone_act_1 =	(mushroom_hill_zone<<8)|$00
+mushroom_hill_zone_act_2 =	(mushroom_hill_zone<<8)|$01
+sandopolis_zone_act_1 =	(sandopolis_zone<<8)|$00
+sandopolis_zone_act_2 =	(sandopolis_zone<<8)|$01
+lava_reef_zone_act_1 =	(lava_reef_zone<<8)|$00
+lava_reef_zone_act_2 =	(lava_reef_zone<<8)|$01
+sky_sanctuary_zone_act_1 =	(sky_sanctuary_zone<<8)|$00
+sky_sanctuary_zone_act_2 =	(sky_sanctuary_zone<<8)|$01
+death_egg_zone_act_1 =	(death_egg_zone<<8)|$00
+death_egg_zone_act_2 =	(death_egg_zone<<8)|$01
+doomsday_zone_act_1 =	(doomsday_zone<<8)|$00
+doomsday_zone_act_2 =	(doomsday_zone<<8)|$01
+cutscene_zone_act_1 =	(cutscene_zone<<8)|$00
+cutscene_zone_act_2 =	(cutscene_zone<<8)|$01
+
+
+
+
+; ---------------------------------------------------------------------------
 ; RAM addresses
 
 ; SRAM addresses
