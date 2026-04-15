@@ -306,6 +306,8 @@ doomsday_zone_act_1 =	(doomsday_zone<<8)|$00
 doomsday_zone_act_2 =	(doomsday_zone<<8)|$01
 cutscene_zone_act_1 =	(cutscene_zone<<8)|$00
 cutscene_zone_act_2 =	(cutscene_zone<<8)|$01
+azure_lake_zone_act_1 =	(azure_lake_zone<<8)|$00
+azure_lake_zone_act_2 =	(azure_lake_zone<<8)|$01	;typically unused.
 
 emerald_hill_zone_act_1 =	(emerald_hill_zone<<8)|$00
 emerald_hill_zone_act_2 =	(emerald_hill_zone<<8)|$01
