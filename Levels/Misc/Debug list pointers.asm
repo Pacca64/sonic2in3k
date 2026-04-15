@@ -46,3 +46,5 @@
 		dc.w Debug_HPZ-DebugOffs
 		dc.w Debug_Gumball_Special-DebugOffs
 		dc.w Debug_Gumball_Special-DebugOffs
+
+		dc.w Debug_EHZ-DebugOffs
