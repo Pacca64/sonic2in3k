@@ -1,0 +1,27 @@
+{
+    "Flex": 2,
+    "name": "",
+    "node": "b16599dd-9179-4250-8fab-213fcf61e2e9",
+    "objects": [
+        {
+            "format": "Sonic 3&K Object.js",
+            "name": "EHZ Platform",
+            "palettes": [],
+            "art": {
+                "path": "LevelsS2\\EHZ\\Tiles\\Tiles.bin",
+                "compression": "Kosinski-M",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "LevelsS2\\EHZ\\Misc Object Data\\Map - Floating Platform.asm",
+                "label": ""
+            },
+            "dplcs": {
+                "enabled": false,
+                "path": "",
+                "label": ""
+            },
+            "uuid": "b16599dd-9179-4250-8fab-213fcf61e2e9"
+        }
+    ]
+}
