@@ -1,0 +1,13 @@
+	;          Object		Mappings		Subtype Frame Arttile
+	dbglistobj Obj_Ring,		Map_Ring,		   0,   0, make_art_tile(ArtTile_Ring,1,1)
+	dbglistobj Obj_Monitor,		Map_Monitor,		   6,   0, make_art_tile(ArtTile_Monitors,0,0)
+	dbglistobj Obj_PathSwap,	Map_PathSwap,		   9,   1, make_art_tile(ArtTile_Ring,1,0)
+	dbglistobj Obj_PathSwap,	Map_PathSwap,		  $D,   5, make_art_tile(ArtTile_Ring,1,0)
+	dbglistobj Obj_Spring,		Map_Spring,		 $81,   0, make_art_tile(ArtTile_SpikesSprings+$10,0,0)
+	dbglistobj Obj_Spring,		Map_Spring,		 $90,   3, make_art_tile(ArtTile_SpikesSprings+$20,0,0)
+	dbglistobj Obj_Spring,		Map_Spring,		 $A0,   6, make_art_tile(ArtTile_SpikesSprings+$10,0,0)
+	dbglistobj Obj_Spikes,		Map_Spikes,		   0,   0, make_art_tile(ArtTile_SpikesSprings+$8,0,0)
+	dbglistobj Obj_DDZMissile,	Map_DDZMissileAsteroid,	   0,  $E, make_art_tile(ArtTile_DDZMisc,2,0)
+	dbglistobj Obj_DDZAsteroid,	Map_DDZMissileAsteroid,	   2, $26, make_art_tile(ArtTile_DDZMisc,1,0)
+	dbglistobj Obj_DDZAsteroid,	Map_DDZMissileAsteroid,	 $12, $27, make_art_tile(ArtTile_DDZMisc,1,0)
+	dbglistobj Obj_DDZAsteroid,	Map_DDZMissileAsteroid,	 $22, $28, make_art_tile(ArtTile_DDZMisc,1,0)
