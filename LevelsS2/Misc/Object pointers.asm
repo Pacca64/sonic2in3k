@@ -25,7 +25,7 @@
 		dc.l Delete_Current_Sprite				; 17
 		dc.l Obj_FloatingPlatform				; 18
 		dc.l Delete_Current_Sprite				; 19
-		dc.l Delete_Current_Sprite				; 1A
+		dc.l Obj_CollapsingPlatform				; 1A
 		dc.l Delete_Current_Sprite				; 1B
 		dc.l Delete_Current_Sprite				; 1C
 		dc.l Delete_Current_Sprite				; 1D
@@ -35,7 +35,7 @@
 		dc.l Delete_Current_Sprite				; 21
 		dc.l Delete_Current_Sprite				; 22
 		dc.l Delete_Current_Sprite				; 23
-		dc.l Delete_Current_Sprite				; 24
+		dc.l Obj_Bubbler						; 24
 		dc.l Obj_Ring							; 25
 		dc.l Obj_Monitor						; 26
 		dc.l Delete_Current_Sprite				; 27
