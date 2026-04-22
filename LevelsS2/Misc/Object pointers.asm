@@ -53,7 +53,7 @@
 		dc.l Delete_Current_Sprite				; 33
 		dc.l Delete_Current_Sprite				; 34
 		dc.l Delete_Current_Sprite				; 35
-		dc.l Delete_Current_Sprite				; 36
+		dc.l Obj_Spikes							; 36
 		dc.l Delete_Current_Sprite				; 37
 		dc.l Delete_Current_Sprite				; 38
 		dc.l Delete_Current_Sprite				; 39
