@@ -39,7 +39,7 @@
 		dc.l Obj_Ring							; 25
 		dc.l Obj_Monitor						; 26
 		dc.l Delete_Current_Sprite				; 27
-		dc.l Delete_Current_Sprite				; 28
+		dc.l Obj_InvisibleBlock					; 28
 		dc.l Delete_Current_Sprite				; 29
 		dc.l Delete_Current_Sprite				; 2A
 		dc.l Delete_Current_Sprite				; 2B
