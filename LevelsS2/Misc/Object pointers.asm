@@ -16,7 +16,7 @@
 		dc.l Delete_Current_Sprite				; E ;Title Screen Intro Anim
 		dc.l Delete_Current_Sprite				; F ;Title Screen Menu
 		dc.l Delete_Current_Sprite				; 10 ;Special Stage Tails
-		dc.l Delete_Current_Sprite				; 11
+		dc.l Obj_TensionBridge					; 11
 		dc.l Delete_Current_Sprite				; 12
 		dc.l Delete_Current_Sprite				; 13
 		dc.l Delete_Current_Sprite				; 14
