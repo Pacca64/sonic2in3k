@@ -48,7 +48,7 @@
 		dc.l Delete_Current_Sprite				; 2E
 		dc.l Delete_Current_Sprite				; 2F
 		dc.l Delete_Current_Sprite				; 30
-		dc.l Delete_Current_Sprite				; 31
+		dc.l Obj_S2LavaMarker					; 31
 		dc.l Delete_Current_Sprite				; 32
 		dc.l Delete_Current_Sprite				; 33
 		dc.l Delete_Current_Sprite				; 34
@@ -120,7 +120,7 @@
 		dc.l Delete_Current_Sprite				; 76
 		dc.l Delete_Current_Sprite				; 77
 		dc.l Delete_Current_Sprite				; 78
-		dc.l Delete_Current_Sprite				; 79
+		dc.l Obj_StarPost						; 79
 		dc.l Delete_Current_Sprite				; 7A
 		dc.l Delete_Current_Sprite				; 7B
 		dc.l Delete_Current_Sprite				; 7C
