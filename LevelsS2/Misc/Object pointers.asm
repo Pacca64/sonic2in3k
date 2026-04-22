@@ -64,7 +64,7 @@
 		dc.l Delete_Current_Sprite				; 3E
 		dc.l Delete_Current_Sprite				; 3F
 		dc.l Delete_Current_Sprite				; 40
-		dc.l Delete_Current_Sprite				; 41
+		dc.l Obj_Spring							; 41
 		dc.l Delete_Current_Sprite				; 42
 		dc.l Delete_Current_Sprite				; 43
 		dc.l Delete_Current_Sprite				; 44
