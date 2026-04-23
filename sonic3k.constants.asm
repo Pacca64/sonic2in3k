@@ -364,7 +364,7 @@ SStage_collision_response_list := 	Block_table+$1400	; $100 bytes ; sprite colli
 SStage_blue_sphere_to_ring_queue :=	Block_table+$1500	; $100 bytes ; queue used by special stages to temporarily store the positions of blue spheres that have turned into rings
 SStage_red_sphere_dfs_walk_stack :=	Block_table+$1600	; $100 bytes ; stack of (direction index bounds, direction index, position) used by special stages
 								; as part of the red sphere DFS walk to check for loops of red spheres
-HScroll_table			ds.b $200		; array of background scroll positions for the level. WARNING: some references are before this label
+HScroll_table			ds.b $200		; array of background scroll positions for the level. WARNING: some references are before this label. Seems to be equivalent to S2 "TempArray_LayerDef"?
 _unkA880 :=			HScroll_table+$80	; used in SSZ screen/background events
 _unkA8E0 :=			HScroll_table+$E0	; used in SSZ screen/background events
 Nem_code_table			ds.b $200		; code table is built up here and then used during decompression
@@ -611,7 +611,7 @@ VDP_reg_1_command		ds.w 1			; AND the lower byte by $BF and write to VDP control
 Demo_timer			ds.w 1			; the time left for a demo to start/run
 V_scroll_value =		*			; both foreground and background
 V_scroll_value_FG		ds.w 1
-V_scroll_value_BG		ds.w 1
+V_scroll_value_BG		ds.w 1		;equivalent to S2s' "Vscroll_Factor_BG"
 _unkF61A			ds.l 1			; unused
 V_scroll_value_P2 =		*
 V_scroll_value_FG_P2		ds.w 1
@@ -858,7 +858,7 @@ Debug_placement_routine		ds.b 1
 Debug_placement_type		ds.b 1			; 0 = normal gameplay, 1 = normal object placement, 2 = frame cycling
 Debug_camera_delay		ds.b 1
 Debug_camera_speed		ds.b 1
-V_int_run_count			ds.l 1			; the number of times V-int has run
+V_int_run_count			ds.l 1			; the number of times V-int has run, likely equivalent to S2 "Vint_runcount"
 Current_zone_and_act =		*
 Current_zone			ds.b 1
 Current_act			ds.b 1
