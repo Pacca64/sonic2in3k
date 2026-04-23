@@ -3,6 +3,14 @@ TempArray_LayerDef = HScroll_table
 Camera_BG_X_pos = Camera_X_pos_BG_copy
 Camera_BG_Y_pos = Camera_Y_pos_BG_copy
 
+PalCycle_Timer = Palette_cycle_counter1
+PalCycle_Frame = Palette_cycle_counter0
+
+Normal_palette_line1 = Normal_palette
+Normal_palette_line2 = Normal_palette_line_2
+Normal_palette_line3 = Normal_palette_line_3
+Normal_palette_line4 = Normal_palette_line_4
+
 
 ;VRAM CONSTANTS
 
