@@ -2,3 +2,285 @@ TempArray_LayerDef = HScroll_table
 
 Camera_BG_X_pos = Camera_X_pos_BG_copy
 Camera_BG_Y_pos = Camera_Y_pos_BG_copy
+
+
+;VRAM CONSTANTS
+
+;General VRAM for all levels
+ArtTile_ArtKos_LevelArt               = $0000
+
+;EHZ
+ArtTile_ArtKos_Checkers               = ArtTile_ArtKos_LevelArt+$0158
+ArtTile_ArtUnc_Flowers1               = $0394
+ArtTile_ArtUnc_Flowers2               = $0396
+ArtTile_ArtUnc_Flowers3               = $0398
+ArtTile_ArtUnc_Flowers4               = $039A
+
+ArtTile_ArtUnc_EHZPulseBall           = $039C
+ArtTile_ArtNem_Waterfall              = $039E
+ArtTile_ArtNem_EHZ_Bridge             = $03B6
+ArtTile_ArtNem_Buzzer                 = $0500
+ArtTile_ArtNem_Coconuts               = $0409
+ArtTile_ArtNem_Masher                 = $0520	;prevents conflicts with water graphics.
+ArtTile_ArtUnc_EHZMountains           = $0500
+
+; GHZ
+ArtTile_ArtNem_GHZ_Bridge             = $038E
+;ArtTile_ArtNem_GHZ_Bridge             = ArtTile_ArtNem_EHZ_Bridge
+ArtTile_ArtNem_BuzzBomber             = $040E
+ArtTile_ArtNem_Newtron              	= $4FF;$04C0
+ArtTile_ArtNem_Newtron_split          	= $543
+ArtTile_ArtNem_Chopper                 = $0462
+ArtTile_ArtNem_Motobug                 = $0445
+ArtTile_ArtNem_Crabmeat                 = $03CA
+ArtTile_ArtNem_GHZ_Spiked_Log         = $0398
+ArtTile_ArtNem_BigRing                = ArtTile_ArtNem_GHZ_Purple_Rock;$0400
+ArtTile_ArtNem_FloatPlatform          = $0418
+ArtTile_ArtNem_BreakWall              = $0515
+ArtTile_ArtNem_GHZ_Purple_Rock        = $03B0
+ArtTile_ArtNem_GHZ_Swing            = $0380
+ArtTile_ArtNem_GHZ_Ball            = $03AA
+ArtTile_ArtNem_GHZ_Walls            = $034C
+
+; SBZ
+ArtTile_ArtNem_Stomper            = $2C0 ;$5800/$20
+ArtTile_ArtNem_SbzDoor1		= $2E8;$5D00/$20
+ArtTile_Nem_Girder	= $2F0;$5E00/$20	; girder
+ArtTile_Nem_BallHog	= $302;$6040/$20	; ball hog enemy
+ArtTile_Nem_SbzWheel1	= $344;$6880/$20	; spot on large	wheel
+ArtTile_Nem_SbzWheel2	= $348;$6900/$20	; wheel	that grabs Sonic
+ArtTile_Nem_SyzSpike1	= $391;$7220/$20	; large	spikeball
+ArtTile_Nem_Cutter	= $3B5;$76A0/$20	; pizza	cutter
+ArtTile_Nem_FlamePipe	= $3D9;$7B20/$20	; flaming pipe
+ArtTile_Nem_Cater	= $2B0;$5600/$20	; caterkiller enemy
+
+ArtTile_Nem_Orbinaut	= $429;$8520/$20	; orbinaut enemy
+ArtTile_Nem_SlideFloor = $429;$460;$8C00/$20	; floor	that slides away
+ArtTile_Nem_SbzDoor2	= $438;$46F;$8DE0/$20	; horizontal door
+ArtTile_Nem_Electric	= $55B;$47E;$8FC0/$20	; electric orb
+ArtTile_Nem_TrapDoor	= $447;$492;$9240/$20	; trapdoor
+ArtTile_Nem_SbzFloor	= $3F9;$7F20/$20	; collapsing floor
+ArtTile_Nem_SpinPform	= $4DF;$9BE0/$20	; small	spinning platform
+ArtTile_Nem_LzSwitch	= $50F;$A1E0/$20	; switch
+ArtTile_Nem_SbzFloor2	= $3F5;$7EA0/$20	; collapsing floor
+ArtTile_Nem_SbzBlock	= $53F;$4C3;$9860/$20	; vanishing block
+ArtTile_Nem_Bomb	= $400;$8000/$20	; bomb enemy
+
+; SLZ
+ArtTile_Nem_SeesawSLZ	=	$6E80/$20
+ArtTile_Nem_SlzFire		=	$448
+ArtTile_Nem_CollapsePlatform_SLZ	=	ArtTile_Nem_SLZCannon + $8
+ArtTile_Nem_SLZCannon	=	$0543
+ArtTile_Nem_SlzSpike	=	$55B
+ArtTile_Nem_SLZPylon	=	$500
+ArtTile_Nem_SLZSwing	=	$3DC
+
+; SYZ
+;SYZ has unused graphics at VRAM start that can be safely overwritten
+ArtTile_Nem_RollerBadnik	=	1;$439
+ArtTile_Nem_RollerBadnikPart2	=	$439;$4FF
+ArtTile_ArtNem_BuzzBomber_SYZ	= $040E - $C
+ArtTile_ArtNem_Crabmeat_SYZ		= $03CA - $C
+ArtTile_ArtNem_SYZRoundBumper         = $0380
+ArtTile_Nem_Yadrin		=		$520
+
+ArtTile_Nem_LzSwitch_SYZ	=	$46D
+
+; MZ
+ArtTile_ArtNem_BuzzBomberMZ	=	$445
+ArtTile_ArtNem_MZBatBadnik	=	$543
+ArtTile_ArtNem_MZButton		=	$513
+
+; LZ
+ArtTile_ArtNem_WaterSurface_LZ	= $429 - $8
+ArtTile_Nem_Burrobot	=	$2FA
+ArtTile_Nem_LzSpikeBall		=	$1C6
+ArtTile_Nem_LZWheels	=	$354
+ArtTile_Nem_Jaws	=	$39C
+ArtTile_ArtNem_SpikesS1_LZ	=	$0543
+ArtTile_ArtNem_LZ_RopedPlatforms	=	$394 - $40
+ArtTile_ArtNem_LZ_MovingBlock	=	$3BC
+ArtTile_ArtNem_LZ_VerticalDoor	=	ArtTile_ArtNem_LZ_MovingBlock + $8
+ArtTile_Nem_Orbinaut_LZ	= $0400	; orbinaut enemy
+
+ArtTile_ArtNem_SYZ_VrtclSprngS1             = $04FF
+ArtTile_ArtNem_SYZ_HrzntlSprngS1            = ArtTile_ArtNem_SYZ_VrtclSprngS1 + $14
+
+; MTZ
+ArtTile_ArtNem_Shellcracker           = $031C
+ArtTile_ArtUnc_Lava                   = $0340
+ArtTile_ArtUnc_MTZCylinder            = $034C
+ArtTile_ArtUnc_MTZAnimBack_1          = $035C
+ArtTile_ArtUnc_MTZAnimBack_2          = $0362
+ArtTile_ArtNem_MtzSupernova           = $0368
+ArtTile_ArtNem_MtzWheel               = $0378
+ArtTile_ArtNem_MtzWheelIndent         = $03F0
+ArtTile_ArtNem_LavaCup                = $03F9
+ArtTile_ArtNem_BoltEnd_Rope           = $03FD
+ArtTile_ArtNem_MtzSteam               = $0405
+ArtTile_ArtNem_MtzSpikeBlock          = $0414
+ArtTile_ArtNem_MtzSpike               = $041C
+ArtTile_ArtNem_MtzMantis              = $043C
+ArtTile_ArtNem_MtzAsstBlocks          = $0500
+ArtTile_ArtNem_MtzLavaBubble          = $0536
+ArtTile_ArtNem_MtzCog                 = $055F
+ArtTile_ArtNem_MtzSpinTubeFlash       = $056B
+
+ArtTile_ArtNem_MtzChainLift = ArtTile_ArtNem_MtzLavaBubble + 11
+
+; WFZ
+ArtTile_ArtNem_WfzScratch             = $0379
+ArtTile_ArtNem_WfzTiltPlatforms       = $0393
+ArtTile_ArtNem_WfzVrtclLazer          = $039F
+ArtTile_ArtNem_WfzWallTurret          = $03AB
+ArtTile_ArtNem_WfzHrzntlLazer         = $03C3
+ArtTile_ArtNem_WfzConveyorBeltWheel   = $03EA
+ArtTile_ArtNem_WfzHook                = $03FA
+ArtTile_ArtNem_WfzHook_Fudge          = ArtTile_ArtNem_WfzHook + 4 ; Bad mappings...
+ArtTile_ArtNem_WfzBeltPlatform        = $040E
+ArtTile_ArtNem_WfzGunPlatform         = $041A
+ArtTile_ArtNem_WfzUnusedBadnik        = $0450
+ArtTile_ArtNem_WfzLaunchCatapult      = $045C
+ArtTile_ArtNem_WfzSwitch              = $0461
+ArtTile_ArtNem_WfzThrust              = $0465
+ArtTile_ArtNem_WfzFloatingPlatform    = $046D
+ArtTile_ArtNem_BreakPanels            = $048C
+
+; SCZ
+ArtTile_ArtNem_Turtloid               = $038A
+ArtTile_ArtNem_Nebula                 = $036E
+
+; HTZ
+ArtTile_ArtNem_Rexon                  = $037E
+ArtTile_ArtNem_HtzFireball1           = $039E
+ArtTile_ArtNem_HtzRock                = $03B2
+ArtTile_ArtNem_HtzSeeSaw              = $03C6
+ArtTile_ArtNem_Sol                    = $03DE
+ArtTile_ArtNem_HtzZipline             = $03E6
+ArtTile_ArtNem_HtzFireball2           = $0416
+ArtTile_ArtNem_HtzValveBarrier        = $0430
+ArtTile_ArtUnc_HTZMountains           = $0500
+ArtTile_ArtUnc_HTZClouds              = ArtTile_ArtUnc_HTZMountains + $18
+ArtTile_ArtNem_Spiker                 = $0416
+
+ArtTile_ArtUnc_PlantHTZP              = ArtTile_ArtNem_Spiker	;spikers are replaced with this plant in HTZ past
+ArtTile_ArtUnc_PlantHTZP2             = ArtTile_ArtUnc_PlantHTZP + $C	;Second plant vram
+
+ArtTile_ArtNem_DinobotHTZ			= $0520	;Dinobot, from HPZ. Used in HTZ time zones.
+ArtTile_ArtNem_RhinobotHTZ			= $0550	;Rhinobot, from the beta.
+
+; OOZ
+ArtTile_ArtUnc_OOZPulseBall           = $02B6
+ArtTile_ArtUnc_OOZSquareBall1         = $02BA
+ArtTile_ArtUnc_OOZSquareBall2         = $02BE
+ArtTile_ArtUnc_Oil1                   = $02C2
+ArtTile_ArtUnc_Oil2                   = $02D2
+ArtTile_ArtNem_OOZBurn                = $02E2
+ArtTile_ArtNem_OOZElevator            = $02F4
+ArtTile_ArtNem_SpikyThing             = $030C
+ArtTile_ArtNem_BurnerLid              = $032C
+ArtTile_ArtNem_StripedBlocksVert      = $0332
+ArtTile_ArtNem_Oilfall                = $0336
+ArtTile_ArtNem_Oilfall2               = $0346
+ArtTile_ArtNem_BallThing              = $0354
+ArtTile_ArtNem_LaunchBall             = $0368
+ArtTile_ArtNem_OOZPlatform            = $039D
+ArtTile_ArtNem_PushSpring             = $03C5
+ArtTile_ArtNem_OOZSwingPlat           = $03E3
+ArtTile_ArtNem_StripedBlocksHoriz     = $03FF
+ArtTile_ArtNem_OOZFanHoriz            = $0403
+ArtTile_ArtNem_Aquis                  = $0500
+ArtTile_ArtNem_Octus                  = $0538
+ArtTile_SCDFish_OOZ					  = ArtTile_ArtNem_Octus+$3A
+
+ArtTile_ArtNem_OOZBridgeBadnik        = $02DA
+
+
+; MCZ
+ArtTile_ArtNem_Flasher                = $03A8
+ArtTile_ArtNem_Minecart               = ArtTile_ArtNem_Flasher+8
+ArtTile_ArtNem_Crawlton               = $03C0
+ArtTile_ArtNem_Crate                  = $03D4
+ArtTile_ArtNem_MCZCollapsePlat        = $03F4
+ArtTile_ArtNem_VineSwitch             = $040E
+ArtTile_ArtNem_VinePulley             = $041E
+ArtTile_ArtNem_MCZGateLog             = $043C
+
+ArtTile_ArtNem_MCZFBstomper           = $0380
+
+; CNZ
+ArtTile_ArtNem_Crawl                  = $0340
+ArtTile_ArtNem_BigMovingBlock         = $036C
+ArtTile_ArtNem_CNZSnake               = $037C
+ArtTile_ArtNem_CNZBonusSpike          = $0380
+ArtTile_ArtNem_CNZElevator            = $0384
+ArtTile_ArtNem_CNZCage                = $0388
+ArtTile_ArtNem_CNZHexBumper           = $0394
+ArtTile_ArtNem_CNZRoundBumper         = $039A
+ArtTile_ArtNem_CNZFlipper             = $03B2
+ArtTile_ArtNem_CNZMiniBumper          = $03E6
+ArtTile_ArtNem_CNZDiagPlunger         = $0402
+ArtTile_ArtNem_CNZVertPlunger         = $0422
+
+ArtTile_ArtNem_SCDSpringWheel_2	=	$538
+
+; Specific to 1p CNZ
+ArtTile_ArtUnc_CNZFlipTiles_1         = $0330
+ArtTile_ArtUnc_CNZFlipTiles_2         = $0540
+ArtTile_ArtUnc_CNZSlotPics_1          = $0550
+ArtTile_ArtUnc_CNZSlotPics_2          = $0560
+ArtTile_ArtUnc_CNZSlotPics_3          = $0570
+
+; Specific to 2p CNZ
+ArtTile_ArtUnc_CNZFlipTiles_1_2p      = $0330
+ArtTile_ArtUnc_CNZFlipTiles_2_2p      = $0740
+ArtTile_ArtUnc_CNZSlotPics_1_2p       = $0750
+ArtTile_ArtUnc_CNZSlotPics_2_2p       = $0760
+ArtTile_ArtUnc_CNZSlotPics_3_2p       = $0770
+
+; CPZ
+ArtTile_ArtUnc_CPZAnimBack            = $0370
+ArtTile_ArtNem_CPZMetalThings         = $0373
+ArtTile_ArtNem_ConstructionStripes_2  = $0394
+ArtTile_ArtNem_CPZBooster             = $039C
+ArtTile_ArtNem_CPZElevator            = $03A0
+ArtTile_ArtNem_CPZAnimatedBits        = $03B0
+ArtTile_ArtNem_CPZTubeSpring          = $03E0
+ArtTile_ArtNem_CPZStairBlock          = $0418
+ArtTile_ArtNem_CPZMetalBlock          = $0430
+ArtTile_ArtNem_CPZDroplet             = $043C
+ArtTile_ArtNem_Grabber                = $0500
+ArtTile_ArtNem_Spiny                  = $052D
+ArtTile_ArtNem_CPZFBDecor			  = $054D
+ArtTile_ArtNem_CPZFBOrbinaut		  = $055F
+
+ArtTile_ArtNem_BallBadnikVinzQ	=	ArtTile_ArtNem_CPZFBDecor
+
+; DEZ
+ArtTile_ArtUnc_DEZAnimBack            = $0326
+ArtTile_ArtNem_ConstructionStripes_1  = $0328
+
+; ARZ
+ArtTile_ArtNem_ARZBarrierThing        = $03F8
+ArtTile_ArtNem_Leaves                 = $0410
+ArtTile_ArtNem_ArrowAndShooter        = $0417
+ArtTile_ArtUnc_Waterfall3             = $0428
+ArtTile_ArtUnc_Waterfall2             = $042C
+ArtTile_ArtUnc_Waterfall1_1           = $0430
+ArtTile_ArtNem_Whisp                  = $0500
+ArtTile_ArtNem_Grounder               = $0509
+ArtTile_ArtNem_ChopChop               = $053B
+ArtTile_ArtUnc_Waterfall1_2           = $0557
+ArtTile_ArtNem_BigBubbles             = $055B
+
+;S2 unused
+ArtTile_ArtNem_MZ_Platform            = $02B8
+ArtTile_ArtUnc_HPZPulseOrb_1          = $02E8
+ArtTile_ArtUnc_HPZPulseOrb_2          = $02F0
+ArtTile_ArtUnc_HPZPulseOrb_3          = $02F8
+ArtTile_ArtNem_HPZ_Bridge             = $0300
+ArtTile_ArtNem_HPZ_Waterfall          = $0315
+ArtTile_ArtNem_HPZPlatform            = $034A
+ArtTile_ArtNem_HPZOrb                 = $035A
+ArtTile_ArtNem_HPZ_Emerald            = $0392
+ArtTile_ArtNem_Unknown                = $03FA
