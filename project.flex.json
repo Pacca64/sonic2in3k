@@ -1,8 +1,108 @@
 {
     "Flex": 2,
     "name": "",
-    "node": "b16599dd-9179-4250-8fab-213fcf61e2e9",
+    "node": "99429c9c-f5eb-4ca8-9338-4f01d41d49ee",
     "objects": [
+        {
+            "format": "Sonic 3&K Object.js",
+            "name": "S3K HUD",
+            "palettes": [
+                {
+                    "path": "Levels\\AIZ\\Palettes\\Main.bin",
+                    "length": 1
+                }
+            ],
+            "art": {
+                "path": "General\\Sprites\\Ring\\RingHUDText.bin",
+                "compression": "Nemesis",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "General\\Sprites\\PaccaHelperSprites\\hud_ref.bin",
+                "label": ""
+            },
+            "dplcs": {
+                "enabled": false,
+                "path": "",
+                "label": ""
+            },
+            "uuid": "5cd41e69-5a82-4001-9ff2-a6a5fc5b81aa"
+        },
+        {
+            "format": "Sonic 3&K Object.js",
+            "name": "S3K HUD S2",
+            "palettes": [
+                {
+                    "path": "LevelsS2\\EHZ\\Palettes\\Palette.bin",
+                    "length": 1
+                }
+            ],
+            "art": {
+                "path": "General\\SpritesS2\\Ring\\RingHUDText.bin",
+                "compression": "Nemesis",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "General\\Sprites\\PaccaHelperSprites\\hud_ref.bin",
+                "label": ""
+            },
+            "dplcs": {
+                "enabled": false,
+                "path": "",
+                "label": ""
+            },
+            "uuid": "f5eb1ca8-5338-4f01-941d-49ee4de20ce8"
+        },
+        {
+            "format": "Sonic 3&K Object.js",
+            "name": "Rings S3K",
+            "palettes": [
+                {
+                    "path": "Levels\\AIZ\\Palettes\\Main.bin",
+                    "length": 1
+                }
+            ],
+            "art": {
+                "path": "General\\Sprites\\Ring\\RingHUDText.bin",
+                "compression": "Nemesis",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "General\\Sprites\\Ring\\Map - Ring.asm",
+                "label": ""
+            },
+            "dplcs": {
+                "enabled": false,
+                "path": "",
+                "label": ""
+            },
+            "uuid": "99429c9c-f5eb-4ca8-9338-4f01d41d49ee"
+        },
+        {
+            "format": "Sonic 3&K Object.js",
+            "name": "Rings S2",
+            "palettes": [
+                {
+                    "path": "LevelsS2\\EHZ\\Palettes\\Palette.bin",
+                    "length": 1
+                }
+            ],
+            "art": {
+                "path": "General\\SpritesS2\\Ring\\RingHUDText.bin",
+                "compression": "Nemesis",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "General\\SpritesS2\\Ring\\Map - Ring.asm",
+                "label": ""
+            },
+            "dplcs": {
+                "enabled": false,
+                "path": "",
+                "label": ""
+            },
+            "uuid": "c699429c-9cf5-4b1c-a853-384f01d41d49"
+        },
         {
             "format": "Sonic 3&K Object.js",
             "name": "EHZ Platform",
