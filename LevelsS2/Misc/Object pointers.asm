@@ -115,7 +115,7 @@
 		dc.l Delete_Current_Sprite				; 71
 		dc.l Delete_Current_Sprite				; 72
 		dc.l Delete_Current_Sprite				; 73
-		dc.l Delete_Current_Sprite				; 74
+		dc.l Obj_InvisibleBlock					; 74
 		dc.l Delete_Current_Sprite				; 75
 		dc.l Delete_Current_Sprite				; 76
 		dc.l Delete_Current_Sprite				; 77
