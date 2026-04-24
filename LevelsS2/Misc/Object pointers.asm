@@ -12,7 +12,7 @@
 		dc.l Delete_Current_Sprite				; A ;Small Bubbles
 		dc.l Delete_Current_Sprite				; B ;CPZ Tipping Pipe
 		dc.l Delete_Current_Sprite				; C ;Unused Platform
-		dc.l Delete_Current_Sprite				; D ;End of Level Signpost (no equivalent in S3K due to Miniboss system!)
+		dc.l Pacca_TemporarySignpost			; D ;End of Level Signpost (no equivalent in S3K due to Miniboss system!)
 		dc.l Delete_Current_Sprite				; E ;Title Screen Intro Anim
 		dc.l Delete_Current_Sprite				; F ;Title Screen Menu
 		dc.l Delete_Current_Sprite				; 10 ;Special Stage Tails

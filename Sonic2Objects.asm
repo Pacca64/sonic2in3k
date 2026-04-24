@@ -415,3 +415,21 @@ RideObject_SetRide_S2Compat_NotInAir:
 
     rts
 ; End of function RideObject_SetRide
+
+
+;hacky replacement code for a signpost.
+;Please fix x3
+Pacca_TemporarySignpost:
+    move.w  (MainCharacter + x_pos).w,d0    ;get player x pos
+    move.w  x_pos(a0),d1    ;get our x pos
+    sub.w   d0,d1   ;get the difference
+    tst.w   d1  ;is the difference 0?
+    bmi.s   +   ;if positive (player is past our position), branch
+    rts ;return without despawning, gross x3
+
++
+    move.b	#1,(Restart_level_flag).w   ;restart level
+    add.b   #1,(Current_act).w  ;go to act 2 (lol)
+    move.b  (Current_act).w,(Apparent_act).w    ;^ for apparent act
+    clr.b   (Last_star_post_hit).w  ;clear checkpoints.
+    rts
