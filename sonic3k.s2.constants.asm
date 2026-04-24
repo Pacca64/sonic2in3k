@@ -1,3 +1,4 @@
+;RAM address equivalents between S2 and S3K
 TempArray_LayerDef = HScroll_table
 
 Camera_BG_X_pos = Camera_X_pos_BG_copy
@@ -10,6 +11,20 @@ Normal_palette_line1 = Normal_palette
 Normal_palette_line2 = Normal_palette_line_2
 Normal_palette_line3 = Normal_palette_line_3
 Normal_palette_line4 = Normal_palette_line_4
+
+MainCharacter = Player_1
+Sidekick = Player_1
+
+;RAM addresses that need to be reestablished from S2
+MTZCylinder_Angle_Sonic = _unkEEF2  ;these *might* be unsafe.
+MTZCylinder_Angle_Tails = _unkEEF4  ;perhaps make sure these are initiliazed or something?
+
+;Object RAM
+
+;Players
+obj_control = object_control
+inertia = ground_vel
+flip_turned = flip_type
 
 
 ;VRAM CONSTANTS
@@ -292,3 +307,42 @@ ArtTile_ArtNem_HPZPlatform            = $034A
 ArtTile_ArtNem_HPZOrb                 = $035A
 ArtTile_ArtNem_HPZ_Emerald            = $0392
 ArtTile_ArtNem_Unknown                = $03FA
+
+
+;Player Animations S2
+AniIDSonAni_Walk			= 0 ;   0
+AniIDSonAni_Run				= 1 ;   1
+AniIDSonAni_Roll			= 2 ;   2
+AniIDSonAni_Roll2			= 3 ;   3
+AniIDSonAni_Push			= 4 ;   4
+AniIDSonAni_Wait			= 5 ;   5
+AniIDSonAni_Balance			= 6 ;   6
+AniIDSonAni_LookUp			= 7 ;   7
+AniIDSonAni_Duck			= 8 ;   8
+AniIDSonAni_Spindash		= 9 ;   9
+AniIDSonAni_Blink			= 10 ;  $A
+AniIDSonAni_GetUp			= 11 ;  $B
+AniIDSonAni_Balance2		= 12 ;  $C
+AniIDSonAni_Stop			= 13 ;  $D
+AniIDSonAni_Float			= 14 ;  $E
+AniIDSonAni_Float2			= 15 ;  $F
+AniIDSonAni_Spring			= 16 ; $10
+AniIDSonAni_Hang			= 17 ; $11
+AniIDSonAni_Dash2			= 18 ; $12
+AniIDSonAni_Dash3			= 19 ; $13
+AniIDSonAni_Hang2			= 20 ; $14
+AniIDSonAni_Bubble			= 21 ; $15
+AniIDSonAni_DeathBW			= 22 ; $16
+AniIDSonAni_Drown			= 23 ; $17
+AniIDSonAni_Death			= 24 ; $18
+AniIDSonAni_Hurt			= 25 ; $19
+AniIDSonAni_Hurt2			= 26 ; $1A
+AniIDSonAni_Slide			= 27 ; $1B
+AniIDSonAni_Blank			= 28 ; $1C
+AniIDSonAni_Balance3		= 29 ; $1D
+AniIDSonAni_Balance4		= 30 ; $1E
+AniIDSupSonAni_Transform	= 31 ; $1F
+AniIDSonAni_Lying			= 32 ; $20
+AniIDSonAni_LieDown			= 33 ; $21
+
+

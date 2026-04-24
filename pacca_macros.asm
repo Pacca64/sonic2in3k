@@ -13,3 +13,27 @@ BranchIfNOTS2 macro BranchToIfS2
 
 ;copied from S2, hope it works! Pawbs crossed x3
 make_block_tile function addr,flx,fly,pal,pri,((pri&1)<<15)|((pal&3)<<13)|((fly&1)<<12)|((flx&1)<<11)|(addr&tile_mask)
+
+
+
+;macros copied from S2 disasembly that are not engine specific, but make code in general easier to work with and port.
+
+; macro to declare an offset table
+offsetTable macro {INTLABEL}
+current_offset_table := __LABEL__
+__LABEL__ label *
+    endm
+
+; macro to declare an entry in an offset table
+offsetTableEntry macro ptr
+	dc.ATTRIBUTE ptr-current_offset_table
+    endm
+
+
+; macro to move the absolute value of the source in the destination
+mvabs macro source,destination
+	move.ATTRIBUTE	source,destination
+	bpl.s	.skip
+	neg.ATTRIBUTE	destination
+.skip:
+    endm

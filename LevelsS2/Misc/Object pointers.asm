@@ -5,7 +5,7 @@
 		dc.l Obj_PathSwap						; 3
 		dc.l Delete_Current_Sprite				; 4 ;Water Surface
 		dc.l Delete_Current_Sprite				; 5 ;Tails' Tails
-		dc.l Delete_Current_Sprite				; 6 ;EHZ/MTZ Spiral Run Object
+		dc.l Obj06								; 6 ;EHZ/MTZ Spiral Run Object
 		dc.l Delete_Current_Sprite				; 7 ;OOZ Oil
 		dc.l Delete_Current_Sprite				; 8 ;Spindash Dust/Water Splash
 		dc.l Delete_Current_Sprite				; 9 ;Special Stage Sonic

@@ -1,8 +1,33 @@
 {
     "Flex": 2,
     "name": "",
-    "node": "99429c9c-f5eb-4ca8-9338-4f01d41d49ee",
+    "node": "e96408aa-3cb7-459d-9258-dee84f707494",
     "objects": [
+        {
+            "format": "Sonic 3&K Sonic.js",
+            "name": "Sonic S3K",
+            "palettes": [
+                {
+                    "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                    "length": 1
+                }
+            ],
+            "art": {
+                "path": "General\\Sprites\\Sonic\\Art\\Sonic.bin",
+                "compression": "Uncompressed",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "General\\Sprites\\Sonic\\Map - Sonic.asm",
+                "label": ""
+            },
+            "dplcs": {
+                "enabled": true,
+                "path": "General\\Sprites\\Sonic\\DPLC - Sonic.asm",
+                "label": ""
+            },
+            "uuid": "e96408aa-3cb7-459d-9258-dee84f707494"
+        },
         {
             "format": "Sonic 3&K Object.js",
             "name": "S3K HUD",

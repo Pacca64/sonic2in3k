@@ -8,23 +8,24 @@ Obj06:
 	move.b	routine(a0),d0
 	move.w	Obj06_Index(pc,d0.w),d1
 	jsr	Obj06_Index(pc,d1.w)
-	tst.w	(Two_player_mode).w
-	beq.s	Obj06_ChkDel
-	rts
+	;tst.w	(Two_player_mode).w
+	;beq.s	Obj06_ChkDel
+	;rts
+
 ; ---------------------------------------------------------------------------
-; seems to be an optimization to delete the object the instant it goes offscreen
-; only in 1-player mode, because it would screw up the other player
 ; loc_214DA:
-Obj06_ChkDel:
-	move.w	x_pos(a0),d0
-	andi.w	#$FF80,d0
-	sub.w	(Camera_X_pos_coarse).w,d0
-	cmpi.w	#$280,d0
-	bhi.s	JmpTo19_DeleteObject
-	rts
+;Obj06_ChkDel:
+	;move.w	x_pos(a0),d0
+	;andi.w	#$FF80,d0
+	;sub.w	(Camera_X_pos_coarse).w,d0
+	;cmpi.w	#$280,d0
+	;bhi.s	JmpTo19_DeleteObject
+	;rts
 ; ---------------------------------------------------------------------------
-JmpTo19_DeleteObject 
-	jmp	(DeleteObject).l
+;JmpTo19_DeleteObject 
+	;jmp	(DeleteObject).l
+
+    jmp Sprite_OnScreen_Test    ;old Sonic 1 era despawn code does not seem to work in S3K, so we use S3K equivalent of MarkObjGone.
 
 ; ===========================================================================
 ; off_214F4:
@@ -56,8 +57,8 @@ Obj06_Spiral:
 	bne.w	Obj06_Spiral_PlayerOnUs		;if yes, branch
 	btst	#1,status(a1)	;is player in the air?
 	bne.w	return_215BE	;if they are in the air, rts
-	btst	#3,status(a1)	;is standing on object flag set?
-	bne.s	loc_21580		;if not, branch
+	btst	#3,status(a1)	;is players' standing on object flag set?
+	bne.s	loc_21580		;if yes, branch
 
 	move.w	x_pos(a1),d0	;get player x pos
 	sub.w	x_pos(a0),d0	;relative to our own
@@ -85,21 +86,21 @@ loc_21562:
 	bhs.s	return_215BE	;if higher, rts
 	tst.b	obj_control(a1)	;is player under object control lock?
 	bne.s	return_215BE	;if yes, rts
-	jsr	RideObject_SetRide	;run part of SolidObject code, presumably to make player 'stand' on us
+	jsr	RideObject_SetRide_S2Compat	;run part of SolidObject code, presumably to make player 'stand' on us
 	rts
 ; ---------------------------------------------------------------------------
 ;runs when player is standing on an object already, but not us
 ;looks very similar to above checks, but with some stuff missing.
 loc_21580:
-	move.w	x_pos(a1),d0
-	sub.w	x_pos(a0),d0
-	tst.w	x_vel(a1)
-	bmi.s	loc_2159C
-	cmpi.w	#-$B0,d0
-	bgt.s	return_215BE
-	cmpi.w	#-$C0,d0
-	blt.s	return_215BE
-	bra.s	loc_215A8
+	move.w	x_pos(a1),d0    ;get player x pos
+	sub.w	x_pos(a0),d0    ;relative to us
+	tst.w	x_vel(a1)       ;is player x_vel 0?
+	bmi.s	loc_2159C       ;if negative, branch to other direction checks.
+	cmpi.w	#-$B0,d0        ;are we too slow?
+	bgt.s	return_215BE    ;if yes, rts
+	cmpi.w	#-$C0,d0        ;are we too fast?
+	blt.s	return_215BE    ;if yes, rts
+	bra.s	loc_215A8       ;
 ; ---------------------------------------------------------------------------
 
 loc_2159C:
@@ -108,13 +109,14 @@ loc_2159C:
 	cmpi.w	#$C0,d0
 	bgt.s	return_215BE
 
+;Seems to be how we remount the spiral when transfering between them
 loc_215A8:
-	move.w	y_pos(a1),d1
-	sub.w	y_pos(a0),d1
-	subi.w	#$10,d1
-	cmpi.w	#$30,d1
-	bhs.s	return_215BE
-	jsr	RideObject_SetRide
+	move.w	y_pos(a1),d1    ;get player y pos
+	sub.w	y_pos(a0),d1    ;relative to us
+	subi.w	#$10,d1         ;subtract $10 (push up by a block)
+	cmpi.w	#$30,d1         ;is d1 $30?
+	bhs.s	return_215BE    ;if player y position is equal to or greater then $30 (too low), rts
+	jsr	RideObject_SetRide_S2Compat  ;ride spiral
 
 return_215BE:
 	rts
@@ -123,20 +125,51 @@ return_215BE:
 Obj06_Spiral_PlayerOnUs:
 	mvabs.w	inertia(a1),d0	;abs value player inertia
 	cmpi.w	#$600,d0
-	blo.s	Obj06_Spiral_CharacterFallsOff	;if less then $600, fall off
+	blo 	Obj06_Spiral_CharacterFallsOff_whenTooSlow	;if less then $600, fall off
 	btst	#1,status(a1)			
-	bne.s	Obj06_Spiral_CharacterFallsOff	;if player is midair (jumped), fall off object.
+	bne 	Obj06_Spiral_CharacterFallsOff_whenJumping	;if player is midair (jumped), fall off object.
 	move.w	x_pos(a1),d0	;get player x pos
 	sub.w	x_pos(a0),d0	;relative to ourself
 	addi.w	#$D0,d0			;offset by $D0
-	bmi.s	Obj06_Spiral_CharacterFallsOff	;if negative, I'm guessing this means we are off the left edge, so fall off.
+	bmi 	Obj06_Spiral_CharacterFallsOff	;if negative, I'm guessing this means we are off the left edge, so fall off.
 	cmpi.w	#$1A0,d0		;is position after offset $1A0?
-	blo.s	Obj06_Spiral_MoveCharacter	;if less then, keep moving character on spiral
+	blo 	Obj06_Spiral_MoveCharacter	;if less then, keep moving character on spiral
 	;otherwise, fall through to fall off (check for right edge)
 
-; loc_215EA:
+;For some reason, this code needs to be changed in S3K.
+;The original code causes the player to fall off the spiral when transfering between 2 spiral objects.
+;Since the subtypes go almost entirely unused, I've used them here to fix this problem.
 Obj06_Spiral_CharacterFallsOff:
+    moveq   #0,d1
+    move.b  subtype(a0),d1  ;get subtype in d1
+
+    tst.w  d1   ;is subtype 0?
+    beq.s   Obj06_Spiral_CharacterFallsOff_whenTooSlow  ;if 0, run normal falling off code.
+
+    cmp.w   #2,d1   ;is subtype 2? (left side subtype)
+    beq.s   Obj06_Spiral_CharacterFallsOff_LeftSideSubtype
+
+    cmp.w   #3,d1   ;is subtype 3? (Connected on both sides subtype?)
+    beq.s   Obj06_Spiral_CharacterFallsOff_AfterClearingPlayerStandingFlag  ;if yes, ONLY run the code that connects us to other spirals.
+
+    ;subtype 1 and invalid subtypes fall down to right side code.
+
+;Obj06_Spiral_CharacterFallsOff_RightSideSubtype:
+    cmpi.w	#$1A0,d0    ;did we fall off right side?
+    blo.s   Obj06_Spiral_CharacterFallsOff_whenTooSlow  ;if not, run normal code.
+    bra     Obj06_Spiral_CharacterFallsOff_AfterClearingPlayerStandingFlag  ;if we DID fall off the right side, and have right side subtype, don't clear standing flag.
+
+Obj06_Spiral_CharacterFallsOff_LeftSideSubtype:
+    subi.w	#$D0,d0			;
+    addi.w	#$D0,d0			;repeat the operation for the left side check
+    bpl.s   Obj06_Spiral_CharacterFallsOff_whenTooSlow  ;if we did not fall off the left side, run normal code.
+    bra     Obj06_Spiral_CharacterFallsOff_AfterClearingPlayerStandingFlag  ;if we DID fall off the right side, and have right side subtype, don't clear standing flag.
+
+Obj06_Spiral_CharacterFallsOff_whenJumping:
+Obj06_Spiral_CharacterFallsOff_whenTooSlow:
 	bclr	#3,status(a1)	;clear players stood on object flag
+
+Obj06_Spiral_CharacterFallsOff_AfterClearingPlayerStandingFlag:
 	bclr	d6,status(a0)	;clear our own flag for player standing on us
 	move.b	#0,flips_remaining(a1)	;reset flips counter for the player
 	move.b	#4,flip_speed(a1)	;reset flips speed for the player
@@ -286,7 +319,7 @@ Obj06_Cylinder:
 	addq.w	#3,d2
 	move.w	d2,y_pos(a1)
 	move.b	#1,flip_turned(a1) ; face the other way
-	jsr	RideObject_SetRide
+	jsr	RideObject_SetRide_S2Compat
 	move.w	#AniIDSonAni_Run,anim(a1)
 	move.b	#0,(a2)
 	tst.w	inertia(a1)
@@ -331,7 +364,7 @@ loc_218E0:
 	btst	#3,status(a1)
 	beq.s	return_2188A
 	move.b	(a2),d0
-	jsrto	(CalcSine).l, JmpTo6_CalcSine
+	jsr	(CalcSine).l
 	muls.w	#$2800,d1
 	swap	d1
 	move.w	y_pos(a0),d2
@@ -352,9 +385,33 @@ return_2191E:
 	rts
 ; ===========================================================================
 
-    if ~~removeJmpTos
-JmpTo6_CalcSine 
-	jmp	(CalcSine).l
 
-	align 4
-    endif
+;Slightly modified to more closely match Sonic 2s' behavior here.
+;Hopefully will fix EHZ spirals not chaining together?
+RideObject_SetRide_S2Compat:
+		btst	#Status_OnObj,status(a1)
+		beq.s	loc_1E4A0_RideObject_SetRide_S2Compat
+		movea.w	interact(a1),a3
+		bclr	d6,status(a3)
+
+loc_1E4A0_RideObject_SetRide_S2Compat:
+		move.w	a0,interact(a1)
+		move.b	#0,angle(a1)
+		move.w	#0,y_vel(a1)
+		move.w	x_vel(a1),ground_vel(a1)
+
+        btst    #Status_InAir,status(a1)    ;is player in the air?
+        beq.s   RideObject_SetRide_S2Compat_NotInAir    ;if not, branch
+
+		move.l	a0,-(sp)
+		movea.l	a1,a0
+		jsr	(Player_TouchFloor).l
+		movea.l	(sp)+,a0
+
+RideObject_SetRide_S2Compat_NotInAir:
+	bset	#Status_OnObj,status(a1)    ;set walking on object flag for player
+	bclr	#Status_InAir,status(a1)    ;clear in air status
+	bset	d6,status(a0)
+
+    rts
+; End of function RideObject_SetRide
