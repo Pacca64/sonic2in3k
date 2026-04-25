@@ -1,7 +1,7 @@
 {
     "Flex": 2,
     "name": "",
-    "node": "36876f27-c0ef-4ad6-8a95-0c029f64268b",
+    "node": "6f27c0ef-4ad6-4a95-8c02-9f64268b2621",
     "objects": [
         {
             "name": "S3K Global",
@@ -275,6 +275,26 @@
         {
             "name": "ICZ",
             "children": [
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Title Card",
+                    "palettes": [],
+                    "art": {
+                        "path": "Levels\\ICZ\\KosinskiM Art\\Title Card.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Title Card\\Map - Title Card.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "6f27c0ef-4ad6-4a95-8c02-9f64268b2621"
+                },
                 {
                     "format": "Sonic 3&K Object.js",
                     "name": "ICZ bridge",
