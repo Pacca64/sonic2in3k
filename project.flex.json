@@ -1,250 +1,349 @@
 {
     "Flex": 2,
     "name": "",
-    "node": "88b7a436-5ad8-4c6c-9a72-e5b031c554ac",
+    "node": "755788b7-a436-4ad8-8c6c-9a72e5b031c5",
     "objects": [
         {
-            "format": "Sonic 3&K Object.js",
-            "name": "Masher S2",
-            "palettes": [],
-            "art": {
-                "path": "General\\SpritesS2\\Masher\\art.bin",
-                "compression": "Nemesis",
-                "offset": 0
-            },
-            "mappings": {
-                "path": "General\\SpritesS2\\Masher\\mappings.bin",
-                "label": ""
-            },
-            "dplcs": {
-                "enabled": false,
-                "path": "",
-                "label": ""
-            },
-            "uuid": "88b7a436-5ad8-4c6c-9a72-e5b031c554ac"
-        },
-        {
-            "format": "Sonic 3&K Object.js",
-            "name": "Buzzer S2",
-            "palettes": [],
-            "art": {
-                "path": "General\\SpritesS2\\Buzzer\\buzzer.bin",
-                "compression": "Nemesis",
-                "offset": 0
-            },
-            "mappings": {
-                "path": "General\\SpritesS2\\Buzzer\\mappings.bin",
-                "label": ""
-            },
-            "dplcs": {
-                "enabled": false,
-                "path": "",
-                "label": ""
-            },
-            "uuid": "755788b7-a436-4ad8-8c6c-9a72e5b031c5"
-        },
-        {
-            "format": "Sonic 3&K Object.js",
-            "name": "Monitor S3k",
-            "palettes": [
+            "name": "S3K Global",
+            "children": [
                 {
-                    "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
-                    "length": 1
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Monitor S3k",
+                    "palettes": [
+                        {
+                            "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                            "length": 1
+                        },
+                        {
+                            "path": "Levels\\AIZ\\Palettes\\Main.bin",
+                            "length": 3
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\Monitors\\Monitors.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Monitors\\Map - Monitor.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "864e7557-88b7-4436-9ad8-cc6c9a72e5b0"
                 },
                 {
-                    "path": "Levels\\AIZ\\Palettes\\Main.bin",
-                    "length": 3
-                }
-            ],
-            "art": {
-                "path": "General\\Sprites\\Monitors\\Monitors.bin",
-                "compression": "Nemesis",
-                "offset": 0
-            },
-            "mappings": {
-                "path": "General\\Sprites\\Monitors\\Map - Monitor.asm",
-                "label": ""
-            },
-            "dplcs": {
-                "enabled": false,
-                "path": "",
-                "label": ""
-            },
-            "uuid": "864e7557-88b7-4436-9ad8-cc6c9a72e5b0"
-        },
-        {
-            "format": "Sonic 3&K Object.js",
-            "name": "Monitor S2",
-            "palettes": [
-                {
-                    "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
-                    "length": 1
+                    "format": "Sonic 3&K Sonic.js",
+                    "name": "Sonic S3K",
+                    "palettes": [
+                        {
+                            "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\Sonic\\Art\\Sonic.bin",
+                        "compression": "Uncompressed",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Sonic\\Map - Sonic.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": true,
+                        "path": "General\\Sprites\\Sonic\\DPLC - Sonic.asm",
+                        "label": ""
+                    },
+                    "uuid": "e96408aa-3cb7-459d-9258-dee84f707494"
                 },
                 {
-                    "path": "LevelsS2\\EHZ\\Palettes\\Palette.bin",
-                    "length": 3
-                }
-            ],
-            "art": {
-                "path": "General\\SpritesS2\\Monitors\\Monitors.bin",
-                "compression": "Nemesis",
-                "offset": 0
-            },
-            "mappings": {
-                "path": "General\\Sprites\\Monitors\\Map - Monitor.asm",
-                "label": ""
-            },
-            "dplcs": {
-                "enabled": false,
-                "path": "",
-                "label": ""
-            },
-            "uuid": "13864e75-5788-47a4-b65a-d8cc6c9a72e5"
-        },
-        {
-            "format": "Sonic 3&K Sonic.js",
-            "name": "Sonic S3K",
-            "palettes": [
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Rings S3K",
+                    "palettes": [
+                        {
+                            "path": "Levels\\AIZ\\Palettes\\Main.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\Ring\\RingHUDText.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Ring\\Map - Ring.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "99429c9c-f5eb-4ca8-9338-4f01d41d49ee"
+                },
                 {
-                    "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
-                    "length": 1
+                    "format": "Sonic 3&K Object.js",
+                    "name": "S3K HUD",
+                    "palettes": [
+                        {
+                            "path": "Levels\\AIZ\\Palettes\\Main.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\Ring\\RingHUDText.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\PaccaHelperSprites\\hud_ref.bin",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "5cd41e69-5a82-4001-9ff2-a6a5fc5b81aa"
                 }
             ],
-            "art": {
-                "path": "General\\Sprites\\Sonic\\Art\\Sonic.bin",
-                "compression": "Uncompressed",
-                "offset": 0
-            },
-            "mappings": {
-                "path": "General\\Sprites\\Sonic\\Map - Sonic.asm",
-                "label": ""
-            },
-            "dplcs": {
-                "enabled": true,
-                "path": "General\\Sprites\\Sonic\\DPLC - Sonic.asm",
-                "label": ""
-            },
-            "uuid": "e96408aa-3cb7-459d-9258-dee84f707494"
+            "isDirectory": true,
+            "expanded": false,
+            "uuid": "1731c7e2-e00d-421b-bb08-40cf5ef5b84a"
         },
         {
-            "format": "Sonic 3&K Object.js",
-            "name": "S3K HUD",
-            "palettes": [
+            "name": "S2 Global",
+            "children": [
                 {
-                    "path": "Levels\\AIZ\\Palettes\\Main.bin",
-                    "length": 1
-                }
-            ],
-            "art": {
-                "path": "General\\Sprites\\Ring\\RingHUDText.bin",
-                "compression": "Nemesis",
-                "offset": 0
-            },
-            "mappings": {
-                "path": "General\\Sprites\\PaccaHelperSprites\\hud_ref.bin",
-                "label": ""
-            },
-            "dplcs": {
-                "enabled": false,
-                "path": "",
-                "label": ""
-            },
-            "uuid": "5cd41e69-5a82-4001-9ff2-a6a5fc5b81aa"
-        },
-        {
-            "format": "Sonic 3&K Object.js",
-            "name": "S3K HUD S2",
-            "palettes": [
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Monitor S2",
+                    "palettes": [
+                        {
+                            "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                            "length": 1
+                        },
+                        {
+                            "path": "LevelsS2\\EHZ\\Palettes\\Palette.bin",
+                            "length": 3
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\SpritesS2\\Monitors\\Monitors.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Monitors\\Map - Monitor.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "13864e75-5788-47a4-b65a-d8cc6c9a72e5"
+                },
                 {
-                    "path": "LevelsS2\\EHZ\\Palettes\\Palette.bin",
-                    "length": 1
-                }
-            ],
-            "art": {
-                "path": "General\\SpritesS2\\Ring\\RingHUDText.bin",
-                "compression": "Nemesis",
-                "offset": 0
-            },
-            "mappings": {
-                "path": "General\\Sprites\\PaccaHelperSprites\\hud_ref.bin",
-                "label": ""
-            },
-            "dplcs": {
-                "enabled": false,
-                "path": "",
-                "label": ""
-            },
-            "uuid": "f5eb1ca8-5338-4f01-941d-49ee4de20ce8"
-        },
-        {
-            "format": "Sonic 3&K Object.js",
-            "name": "Rings S3K",
-            "palettes": [
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Rings S2",
+                    "palettes": [
+                        {
+                            "path": "LevelsS2\\EHZ\\Palettes\\Palette.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\SpritesS2\\Ring\\RingHUDText.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\SpritesS2\\Ring\\Map - Ring.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "c699429c-9cf5-4b1c-a853-384f01d41d49"
+                },
                 {
-                    "path": "Levels\\AIZ\\Palettes\\Main.bin",
-                    "length": 1
+                    "format": "Sonic 3&K Object.js",
+                    "name": "S3K HUD S2",
+                    "palettes": [
+                        {
+                            "path": "LevelsS2\\EHZ\\Palettes\\Palette.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\SpritesS2\\Ring\\RingHUDText.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\PaccaHelperSprites\\hud_ref.bin",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "f5eb1ca8-5338-4f01-941d-49ee4de20ce8"
                 }
             ],
-            "art": {
-                "path": "General\\Sprites\\Ring\\RingHUDText.bin",
-                "compression": "Nemesis",
-                "offset": 0
-            },
-            "mappings": {
-                "path": "General\\Sprites\\Ring\\Map - Ring.asm",
-                "label": ""
-            },
-            "dplcs": {
-                "enabled": false,
-                "path": "",
-                "label": ""
-            },
-            "uuid": "99429c9c-f5eb-4ca8-9338-4f01d41d49ee"
+            "isDirectory": true,
+            "expanded": false,
+            "uuid": "31c7e2e0-0d42-4bfb-8840-cf5ef5b84ac3"
         },
         {
-            "format": "Sonic 3&K Object.js",
-            "name": "Rings S2",
-            "palettes": [
+            "name": "ICZ",
+            "children": [
                 {
-                    "path": "LevelsS2\\EHZ\\Palettes\\Palette.bin",
-                    "length": 1
+                    "format": "Sonic 3&K Object.js",
+                    "name": "ICZ bridge",
+                    "palettes": [],
+                    "art": {
+                        "path": "Levels\\ICZ\\Nemesis Art\\Misc Art 1.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Levels\\ICZ\\Misc Object Data\\Map - ICZ Tension Bridge.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "6b4e1731-c7e2-400d-821b-fb0840cf5ef5"
                 }
             ],
-            "art": {
-                "path": "General\\SpritesS2\\Ring\\RingHUDText.bin",
-                "compression": "Nemesis",
-                "offset": 0
-            },
-            "mappings": {
-                "path": "General\\SpritesS2\\Ring\\Map - Ring.asm",
-                "label": ""
-            },
-            "dplcs": {
-                "enabled": false,
-                "path": "",
-                "label": ""
-            },
-            "uuid": "c699429c-9cf5-4b1c-a853-384f01d41d49"
+            "isDirectory": true,
+            "expanded": true,
+            "uuid": "c7e2e00d-421b-4b08-80cf-5ef5b84ac371"
         },
         {
-            "format": "Sonic 3&K Object.js",
-            "name": "EHZ Platform",
-            "palettes": [],
-            "art": {
-                "path": "LevelsS2\\EHZ\\Tiles\\Tiles.bin",
-                "compression": "Kosinski-M",
-                "offset": 0
-            },
-            "mappings": {
-                "path": "LevelsS2\\EHZ\\Misc Object Data\\Map - Floating Platform.asm",
-                "label": ""
-            },
-            "dplcs": {
-                "enabled": false,
-                "path": "",
-                "label": ""
-            },
-            "uuid": "b16599dd-9179-4250-8fab-213fcf61e2e9"
+            "name": "EHZ",
+            "children": [
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Buzzer S2",
+                    "palettes": [
+                        {
+                            "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "LevelsS2\\EHZ\\Nemesis Art\\Buzzer enemy.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\SpritesS2\\Buzzer\\mappings.bin",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "755788b7-a436-4ad8-8c6c-9a72e5b031c5",
+                    "expanded": true
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Masher S2",
+                    "palettes": [],
+                    "art": {
+                        "path": "General\\SpritesS2\\Masher\\art.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\SpritesS2\\Masher\\mappings.bin",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "88b7a436-5ad8-4c6c-9a72-e5b031c554ac",
+                    "expanded": true
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Coconuts",
+                    "palettes": [],
+                    "art": {
+                        "path": "LevelsS2\\EHZ\\Nemesis Art\\Coconuts badnik from EHZ.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "LevelsS2\\EHZ\\Misc Object Data\\Map - Coconuts.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "0d421bfb-0840-4f5e-b5b8-4ac371e0849f"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "EHZ Platform",
+                    "palettes": [],
+                    "art": {
+                        "path": "LevelsS2\\EHZ\\Tiles\\Tiles.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "LevelsS2\\EHZ\\Misc Object Data\\Map - Floating Platform.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "b16599dd-9179-4250-8fab-213fcf61e2e9"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "EHZ Bridge",
+                    "palettes": [],
+                    "art": {
+                        "path": "LevelsS2\\EHZ\\Nemesis Art\\TensionBridge.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "LevelsS2\\EHZ\\Misc Object Data\\Map - Tension Bridge.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "4e1731c7-e2e0-4d42-9bfb-0840cf5ef5b8"
+                }
+            ],
+            "isDirectory": true,
+            "expanded": true,
+            "uuid": "e2e00d42-1bfb-4840-8f5e-f5b84ac371e0"
         }
     ]
 }
