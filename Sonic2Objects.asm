@@ -138,8 +138,11 @@ Obj06_Spiral_CharacterFallsOff:
     ;subtype 1 and invalid subtypes fall down to right side code.
 
 ;Obj06_Spiral_CharacterFallsOff_RightSideSubtype:
+	move.w	d0,($FFFF0000).l	;debug write
+	move.w	#$42,($FFFF0004).l	;debug write
     cmpi.w	#$1A0,d0    ;did we fall off right side?
-    blo.s   Obj06_Spiral_CharacterFallsOff_whenTooSlow  ;if not, run normal code.
+    blt.s   Obj06_Spiral_CharacterFallsOff_whenTooSlow  ;if not, run normal code.
+	move.w	#$69,($FFFF0004).l	;debug write
     bra     Obj06_Spiral_CharacterFallsOff_AfterClearingPlayerStandingFlag  ;if we DID fall off the right side, and have right side subtype, don't clear standing flag.
 
 Obj06_Spiral_CharacterFallsOff_LeftSideSubtype:
@@ -162,7 +165,7 @@ Obj06_Spiral_CharacterFallsOff_AfterClearingPlayerStandingFlag:
 ; loc_21602:
 Obj06_Spiral_MoveCharacter:
 	btst	#3,status(a1)	;is standing on object flag set?
-	beq.s	return_215BE	;if not, rts. Seems to be some kind of failsafe.
+	beq		Obj06_Spiral_MoveCharacter_rts	;if not, rts. Seems to be some kind of failsafe.
 	bsr.s	Obj06_Spiral_MoveCharacter_readcosinetable	;calculate cosine based on player x pos relative to ourself and put that in d1.
 	ext.w	d1	;extend to word
 	move.w	y_pos(a0),d2	;get our y pos in d2
@@ -175,6 +178,8 @@ Obj06_Spiral_MoveCharacter:
 	lsr.w	#3,d0			;divide x pos offset by 8
 	andi.w	#$3F,d0			;limit between 0 and $3F (63)
 	move.b	Obj06_FlipAngleTable(pc,d0.w),flip_angle(a1)	;set players flip angle value based on that.
+
+Obj06_Spiral_MoveCharacter_rts:
 	rts
 
 ; ===========================================================================
