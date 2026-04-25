@@ -74,7 +74,7 @@
 		dc.l Delete_Current_Sprite				; 48
 		dc.l Delete_Current_Sprite				; 49
 		dc.l Delete_Current_Sprite				; 4A
-		dc.l Delete_Current_Sprite				; 4B
+		dc.l Obj_Buzzer							; 4B
 		dc.l Delete_Current_Sprite				; 4C
 		dc.l Delete_Current_Sprite				; 4D
 		dc.l Delete_Current_Sprite				; 4E

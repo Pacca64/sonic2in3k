@@ -19,6 +19,8 @@ Sidekick = Player_1
 MTZCylinder_Angle_Sonic = _unkEEF2  ;these *might* be unsafe.
 MTZCylinder_Angle_Tails = _unkEEF4  ;perhaps make sure these are initiliazed or something?
 
+Vint_runcount = V_int_run_count
+
 ;Object RAM
 
 ;Players

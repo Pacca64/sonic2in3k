@@ -37,3 +37,28 @@ mvabs macro source,destination
 	neg.ATTRIBUTE	destination
 .skip:
     endm
+
+;these could be toggled for more accurate or more efficient variants in the S2 Disasm
+;We just default to the more efficient version. Makes moving code faster.
+	; regular meaning to the assembler; better but unlike original
+_move	macro
+		!move.ATTRIBUTE ALLARGS
+	endm
+_add	macro
+		!add.ATTRIBUTE ALLARGS
+	endm
+_addq	macro
+		!addq.ATTRIBUTE ALLARGS
+	endm
+_cmp	macro
+		!cmp.ATTRIBUTE ALLARGS
+	endm
+_cmpi	macro
+		!cmpi.ATTRIBUTE ALLARGS
+	endm
+_clr	macro
+		!clr.ATTRIBUTE ALLARGS
+	endm
+_tst	macro
+		!tst.ATTRIBUTE ALLARGS
+	endm
