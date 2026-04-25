@@ -310,6 +310,23 @@ ArtTile_ArtNem_HPZOrb                 = $035A
 ArtTile_ArtNem_HPZ_Emerald            = $0392
 ArtTile_ArtNem_Unknown                = $03FA
 
+; ---------------------------------------------------------------------------
+; Art tile stuff
+flip_x              =      (1<<11)
+flip_y              =      (1<<12)
+palette_bit_0       =      5
+palette_bit_1       =      6
+;palette_line_0      =      (0<<13)
+;palette_line_1      =      (1<<13)
+;palette_line_2      =      (2<<13)
+;palette_line_3      =      (3<<13)
+high_priority_bit   =      7
+;high_priority       =      (1<<15)
+palette_mask        =      $6000
+;tile_mask           =      $07FF
+nontile_mask        =      $F800
+;drawing_mask        =      $7FFF
+
 
 ;Player Animations S2
 AniIDSonAni_Walk			= 0 ;   0

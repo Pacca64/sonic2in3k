@@ -774,3 +774,693 @@ Obj5C_MapUnc_2D442:	BINCLUDE "General\SpritesS2\Masher\mappings.bin"
 
 Chopper_map:;	BINCLUDE	"mappings\sprite\Sonic1\s1chopper.bin"
 	even
+
+
+; ===========================================================================
+; ----------------------------------------------------------------------------
+; Object 9D - Coconuts (monkey badnik) from EHZ
+; ----------------------------------------------------------------------------
+; OST Variables:
+Obj9D_timer		= objoff_31	; byte
+Obj9D_climb_table_index	= objoff_32	; word
+Obj9D_attack_timer	= objoff_38	; byte	; time player needs to spend close to object before it attacks
+; Sprite_37BFA:
+Obj_Coconuts:
+Obj9D:
+	moveq	#0,d0
+	move.b	routine(a0),d0
+	move.w	Obj9D_Index(pc,d0.w),d1
+	jmp	Obj9D_Index(pc,d1.w)
+; ===========================================================================
+; off_37C08:
+Obj9D_Index:	offsetTable
+		offsetTableEntry.w Obj9D_Init		; 0
+		offsetTableEntry.w Obj9D_Idle		; 2
+		offsetTableEntry.w Obj9D_Climbing	; 4
+		offsetTableEntry.w Obj9D_Throwing	; 6
+; ===========================================================================
+; loc_37C10:
+Obj9D_Init:
+	;jsr	S2CDR_EnemySpawnHook
+	bsr.w	LoadSubObject
+	move.b	#$10,Obj9D_timer(a0)
+	rts
+; ===========================================================================
+; loc_37C1C: Obj9D_Main:
+Obj9D_Idle:
+	bsr		Obj_GetOrientationToPlayer
+	bclr	#0,render_flags(a0)	; face right
+	bclr	#0,status(a0)
+	tst.w	d0		; is player to object's left?
+	beq.s	+		; if not, branch
+	bset	#0,render_flags(a0)	; face left
+	bset	#0,status(a0)
++
+	addi.w	#$60,d2
+	cmpi.w	#$C0,d2
+	bcc.s	+	; branch, if distance to player is greater than 60 in either direction
+	tst.b	Obj9D_attack_timer(a0)	; wait for a bit before attacking
+	beq.s	Obj9D_StartThrowing	; branch, when done waiting
+	subq.b	#1,Obj9D_attack_timer(a0)
++
+	subq.b	#1,Obj9D_timer(a0)	; wait for a bit...
+	bmi.s	Obj9D_StartClimbing	; branch, when done waiting
+	jmp	(MarkObjGone).l
+; ---------------------------------------------------------------------------
+
+Obj9D_StartClimbing:
+	addq.b	#2,routine(a0)	; => Obj9D_Climbing
+	bsr.w	Obj9D_SetClimbingDirection
+	jmp	(MarkObjGone).l
+; ---------------------------------------------------------------------------
+; loc_37C66:
+Obj9D_StartThrowing:
+	move.b	#6,routine(a0)	; => Obj9D_Throwing
+	move.b	#1,mapping_frame(a0)	; display first throwing frame
+	move.b	#8,Obj9D_timer(a0)	; set time to display frame
+	move.b	#$20,Obj9D_attack_timer(a0)	; reset timer
+	jmp	(MarkObjGone).l
+; ---------------------------------------------------------------------------
+; loc_37C82:
+Obj9D_SetClimbingDirection:
+	move.w	Obj9D_climb_table_index(a0),d0
+	cmpi.w	#$C,d0
+	blo.s	+	; branch, if index is less than $C
+	moveq	#0,d0	; otherwise, reset to 0
++
+	lea	Obj9D_ClimbData(pc,d0.w),a1
+	addq.w	#2,d0
+	move.w	d0,Obj9D_climb_table_index(a0)
+	move.b	(a1)+,y_vel(a0)	; climbing speed
+	move.b	(a1)+,Obj9D_timer(a0) ; time to spend moving at this speed
+	rts
+; ===========================================================================
+; byte_37CA2:
+Obj9D_ClimbData:
+	dc.b  -1,$20
+	dc.b   1,$18	; 2
+	dc.b  -1,$10	; 4
+	dc.b   1,$28	; 6
+	dc.b  -1,$20	; 8
+	dc.b   1,$10	; 10
+; ===========================================================================
+; loc_37CAE: Obj09_Climbing:
+Obj9D_Climbing:
+	subq.b	#1,Obj9D_timer(a0)
+	beq.s	Obj9D_StopClimbing	; branch, if done moving
+	jsr	(ObjectMove).l	; else, keep moving
+	lea	(Ani_obj09).l,a1
+	jsr	(AnimateSprite).l
+	jmp	(MarkObjGone).l
+; ===========================================================================
+; loc_37CC6:
+Obj9D_StopClimbing:
+	subq.b	#2,routine(a0)	; => Obj9D_Idle
+	move.b	#$10,Obj9D_timer(a0)	; time to remain idle
+	jmp	(MarkObjGone).l
+; ===========================================================================
+; loc_37CD4: Obj09_Throwing:
+Obj9D_Throwing:
+	moveq	#0,d0
+	move.b	routine_secondary(a0),d0
+	move.w	Obj9D_ThrowingStates(pc,d0.w),d1
+	jsr	Obj9D_ThrowingStates(pc,d1.w)
+	jmp	(MarkObjGone).l
+; ===========================================================================
+; off_37CE6:
+Obj9D_ThrowingStates:	offsetTable
+		offsetTableEntry.w Obj9D_ThrowingHandRaised	; 0
+		offsetTableEntry.w Obj9D_ThrowingHandLowered	; 2
+; ===========================================================================
+; loc_37CEA:
+Obj9D_ThrowingHandRaised:
+	subq.b	#1,Obj9D_timer(a0)	; wait for a bit...
+	bmi.s	+
+	rts
+; ---------------------------------------------------------------------------
++	addq.b	#2,routine_secondary(a0)	; => Obj9D_ThrowingHandLowered
+	move.b	#8,Obj9D_timer(a0)
+	move.b	#2,mapping_frame(a0)	; display second throwing frame
+	bra.w	Obj9D_CreateCoconut
+; ===========================================================================
+; loc_37D06:
+Obj9D_ThrowingHandLowered:
+	subq.b	#1,Obj9D_timer(a0)	; wait for a bit...
+	bmi.s	+
+	rts
+; ---------------------------------------------------------------------------
++	clr.b	routine_secondary(a0)	; reset routine counter for next time
+	move.b	#4,routine(a0) ; => Obj9D_Climbing
+	move.b	#8,Obj9D_timer(a0)	; this gets overwrittten by the next subroutine...
+	bra.w	Obj9D_SetClimbingDirection
+; ===========================================================================
+; loc_37D22:
+Obj9D_CreateCoconut:
+	jsr	(SingleObjLoad).l
+	bne.s	return_37D74		; branch, if no free slots
+	move.l	#Obj_ProjectileS2,code(a1) ; load obj98
+	move.b	#3,mapping_frame(a1)
+	move.b	#$20,subtype(a1) ; <== Obj9D_SubObjData2
+	move.w	x_pos(a0),x_pos(a1)	; align with parent object
+	move.w	y_pos(a0),y_pos(a1)
+	addi.w	#-$D,y_pos(a1)		; offset slightly upward
+	moveq	#0,d0		; use rightfacing data
+	btst	#0,render_flags(a0)	; is object facing left?
+	bne.s	+		; if yes, branch
+	moveq	#4,d0		; use leftfacing data
++
+	lea	Obj9D_ThrowData(pc,d0.w),a2
+	move.w	(a2)+,d0
+	add.w	d0,x_pos(a1)	; offset slightly left or right depending on object's direction
+	move.w	(a2)+,x_vel(a1)	; set projectile speed
+	move.w	#-$100,y_vel(a1)
+	lea_	Obj98_CoconutFall,a2 ; set the routine used to move the projectile
+	move.l	a2,Obj_ProjectileS2_CodePointer(a1)
+
+return_37D74:
+	rts
+; ===========================================================================
+; word_37D76:
+Obj9D_ThrowData:
+	dc.w   -$B,  $100	; 0
+	dc.w	$B, -$100	; 4
+; off_37D7E:
+Obj9D_SubObjData:
+	subObjData Obj9D_Obj98_MapUnc_37D96,make_art_tile(ArtTile_ArtNem_Coconuts,0,0),4,5,$C,9
+
+; animation script
+; off_37D88:
+Ani_obj09:	offsetTable
+		offsetTableEntry.w byte_37D8C	; 0
+		offsetTableEntry.w byte_37D90	; 1
+byte_37D8C:	dc.b   5,  0,  1,$FF
+byte_37D90:	dc.b   9,  1,  2,  1,$FF
+		even
+; ------------------------------------------------------------------------
+; sprite mappings
+; ------------------------------------------------------------------------
+Obj9D_Obj98_MapUnc_37D96:	INCLUDE "LevelsS2\EHZ\Misc Object Data\Map - Coconuts.asm"
+
+; ===========================================================================
+; ----------------------------------------------------------------------------
+; Object 98 - Projectile with optional gravity (EHZ coconut, CPZ spiny, etc.)
+; ----------------------------------------------------------------------------
+
+;formerly objoff_2A, which conflicts with S3Ks object ram layout.
+;Any object that attempts to summon Obj98 needs to have this swapped in for objoff_2A.
+Obj_ProjectileS2_CodePointer	=	objoff_32
+
+; Sprite_376E8:
+Obj_ProjectileS2:
+Obj98:
+	moveq	#0,d0
+	move.b	routine(a0),d0
+	move.w	Obj98_Index(pc,d0.w),d1
+	jmp	Obj98_Index(pc,d1.w)
+; ===========================================================================
+; off_376F6: Obj98_States:
+Obj98_Index:	offsetTable
+		offsetTableEntry.w Obj98_Init	; 0
+		offsetTableEntry.w Obj98_Main	; 2
+; ===========================================================================
+; loc_376FA:
+Obj98_Init: ;;
+	bra.w	LoadSubObject
+; ===========================================================================
+; loc_376FE:
+Obj98_Main:
+	tst.b	render_flags(a0)
+	bpl		JmpTo65_DeleteObject
+	movea.l	Obj_ProjectileS2_CodePointer(a0),a1
+	jsr	(a1)	; dynamic call! to Obj98_NebulaBombFall, Obj98_TurtloidShotMove, Obj98_CoconutFall, Obj98_CluckerShotMove, Obj98_SpinyShotFall, or Obj98_WallTurretShotMove, assuming the code hasn't been changed
+	jmp	(MarkObjGone).l
+
+JmpTo65_DeleteObject:
+	jmp	(DeleteObject).l
+
+; ===========================================================================
+; for obj99
+; loc_37710:
+Obj98_NebulaBombFall:
+	bchg	#palette_bit_0,art_tile(a0) ; bypass the animation system and make it blink
+	jmp	(ObjectMoveAndFall).l
+
+; ===========================================================================
+; for obj9A
+; loc_3771A:
+Obj98_TurtloidShotMove:
+	jsr	(ObjectMove).l
+	lea	(Ani_TurtloidShot).l,a1
+	jmp	(AnimateSprite).l
+
+; ===========================================================================
+; for obj9D
+; loc_37728:
+Obj98_CoconutFall:
+	addi.w	#$20,y_vel(a0) ; apply gravity (less than normal)
+	jsr	(ObjectMove).l
+	rts
+
+; ===========================================================================
+; for objAE
+; loc_37734:
+Obj98_CluckerShotMove:
+	jsr	(ObjectMove).l
+	lea	(Ani_CluckerShot).l,a1
+	jmp	(AnimateSprite).l
+
+; ===========================================================================
+; for objA6
+; loc_37742:
+Obj98_SpinyShotFall:
+	addi.w	#$20,y_vel(a0) ; apply gravity (less than normal)
+
+Obj98_SpinyShotFall_MetalKnuckles:
+	jsr	(ObjectMove).l
+	lea	(Ani_SpinyShot).l,a1
+	jmp	(AnimateSprite).l
+
+; ===========================================================================
+; for objB8
+; loc_37756:
+Obj98_WallTurretShotMove:
+	jsr	(ObjectMove).l
+	lea	(Ani_WallTurretShot).l,a1
+	jmp	(AnimateSprite).l
+
+; animation script
+; off_37B50: TurtloidShotAniData:
+Ani_TurtloidShot: offsetTable
+		offsetTableEntry.w +
++		dc.b   1,  4,  5,$FF
+		even
+
+; off_38CC4
+Ani_SpinyShot:	offsetTable
+		offsetTableEntry.w +	; 0
++		dc.b   3,  6,  7,$FF
+		even
+
+; animation script
+; off_395A8
+Ani_CluckerShot:offsetTable
+		offsetTableEntry.w +	; 0
++		dc.b   3, $D, $E, $F,$10,$11,$12,$13,$14,$FF
+		even
+
+; animation script
+; off_3BA40:
+Ani_WallTurretShot: offsetTable
+		offsetTableEntry.w +	; 0
++		dc.b   2,  3,  4,$FF
+		even
+
+; ===========================================================================
+; ---------------------------------------------------------------------------
+; Get Orientation To Player
+; Returns the horizontal and vertical distances of the closest player object.
+;
+; input variables:
+;  a0 = object
+;
+; returns:
+;  a1 = address of closest player character
+;  d0 = 0 if player is left from object, 2 if right
+;  d1 = 0 if player is above object, 2 if below
+;  d2 = closest character's horizontal distance to object
+;  d3 = closest character's vertical distance to object
+;
+; writes:
+;  d0, d1, d2, d3, d4, d5
+;  a1
+;  a2 = sidekick
+; ---------------------------------------------------------------------------
+;loc_366D6:
+Obj_GetOrientationToPlayer:
+	moveq	#0,d0
+	moveq	#0,d1
+	lea	(MainCharacter).w,a1 ; a1=character
+	move.w	x_pos(a0),d2
+	sub.w	x_pos(a1),d2
+	mvabs.w	d2,d4	; absolute horizontal distance to main character
+	lea	(Sidekick).w,a2 ; a2=character
+	move.w	x_pos(a0),d3
+	sub.w	x_pos(a2),d3
+	mvabs.w	d3,d5	; absolute horizontal distance to sidekick
+	cmp.w	d5,d4	; get shorter distance
+	bls.s	+	; branch, if main character is closer
+	; if sidekick is closer
+	movea.l	a2,a1
+	move.w	d3,d2
++
+	tst.w	d2	; is player to enemy's left?
+	bpl.s	+	; if not, branch
+	addq.w	#2,d0
++
+	move.w	y_pos(a0),d3
+	sub.w	y_pos(a1),d3	; vertical distance to closest character
+	bhs.s	+	; branch, if enemy is under
+	addq.w	#2,d1
++
+	rts
+
+; ---------------------------------------------------------------------------
+; LoadSubObject
+; loads information from a sub-object into this object a0
+; I'm personally not found of this system, but porting it is a lot easier then dismantling it x3
+; ---------------------------------------------------------------------------
+
+; ||||||||||||||| S U B R O U T I N E |||||||||||||||||||||||||||||||||||||||
+
+; loc_365F4:
+LoadSubObject:
+	moveq	#0,d0
+	move.b	subtype(a0),d0
+; loc_365FA:
+LoadSubObject_Part2:
+	move.w	SubObjData_Index(pc,d0.w),d0
+	lea	SubObjData_Index(pc,d0.w),a1
+; loc_36602:
+LoadSubObject_Part3:
+	move.l	(a1)+,mappings(a0)
+	move.w	(a1)+,art_tile(a0)
+	;jsr	(Adjust2PArtPointer).l
+	move.b	(a1)+,d0
+	or.b	d0,render_flags(a0)
+	moveq	#0,d0	;clear d0
+
+	move.b	(a1)+,d0	;load Sonic 2 format priority byte in d0
+	lsl.w	#7,d0	;multiply by $80 (convert to S3K style priority word)
+	move.w	d0,priority(a0)	;Load converted priority word.
+
+	move.b	(a1)+,width_pixels(a0)
+	move.b	(a1),collision_flags(a0)
+	addq.b	#2,routine(a0)
+	rts
+
+; ===========================================================================
+; table that maps from the subtype ID to which address to load the data from
+; the format of the data there is
+;	dc.l Pointer_To_Sprite_Mappings
+;	dc.w VRAM_Location
+;	dc.b render_flags, priority, width_pixels, collision_flags
+; 
+; for whatever reason, only Obj8C and later have entries in this table
+
+; off_36628:
+SubObjData_Index: offsetTable
+	offsetTableEntry.w Obj8C_SubObjData	; $0
+	offsetTableEntry.w Obj8D_SubObjData	; $2
+	offsetTableEntry.w Obj90_SubObjData	; $4
+	offsetTableEntry.w Obj90_SubObjData2	; $6
+	offsetTableEntry.w Obj91_SubObjData	; $8
+	offsetTableEntry.w Obj92_SubObjData	; $A
+	offsetTableEntry.w Invalid_SubObjData	; $C
+	offsetTableEntry.w Obj94_SubObjData	; $E
+	offsetTableEntry.w Obj94_SubObjData2	; $10
+	offsetTableEntry.w Obj99_SubObjData2	; $12
+	offsetTableEntry.w Obj99_SubObjData	; $14
+	offsetTableEntry.w Obj9A_SubObjData	; $16
+	offsetTableEntry.w Obj9B_SubObjData	; $18
+	offsetTableEntry.w Obj9C_SubObjData	; $1A
+	offsetTableEntry.w Obj9A_SubObjData2	; $1C
+	offsetTableEntry.w Obj9D_SubObjData	; $1E
+	offsetTableEntry.w Obj9D_SubObjData2	; $20
+	offsetTableEntry.w Obj9E_SubObjData	; $22
+	offsetTableEntry.w Obj9F_SubObjData	; $24
+	offsetTableEntry.w ObjA0_SubObjData	; $26
+	offsetTableEntry.w ObjA1_SubObjData	; $28
+	offsetTableEntry.w ObjA2_SubObjData	; $2A
+	offsetTableEntry.w ObjA3_SubObjData	; $2C
+	offsetTableEntry.w ObjA4_SubObjData	; $2E
+	offsetTableEntry.w ObjA4_SubObjData2	; $30
+	offsetTableEntry.w ObjA5_SubObjData	; $32
+	offsetTableEntry.w ObjA6_SubObjData	; $34
+	offsetTableEntry.w ObjA7_SubObjData	; $36
+	offsetTableEntry.w ObjA7_SubObjData2	; $38
+	offsetTableEntry.w ObjA8_SubObjData	; $3A
+	offsetTableEntry.w ObjA8_SubObjData2	; $3C
+	offsetTableEntry.w ObjA7_SubObjData3	; $3E
+	offsetTableEntry.w ObjAC_SubObjData	; $40
+	offsetTableEntry.w ObjAD_SubObjData	; $42
+	offsetTableEntry.w ObjAD_SubObjData2	; $44
+	offsetTableEntry.w ObjAD_SubObjData3	; $46
+	offsetTableEntry.w ObjAF_SubObjData2	; $48
+	offsetTableEntry.w ObjAF_SubObjData	; $4A
+	offsetTableEntry.w ObjB0_SubObjData	; $4C
+	offsetTableEntry.w ObjB1_SubObjData	; $4E
+	offsetTableEntry.w ObjB2_SubObjData	; $50
+	offsetTableEntry.w ObjB2_SubObjData	; $52
+	offsetTableEntry.w ObjB2_SubObjData	; $54
+	offsetTableEntry.w ObjBC_SubObjData2	; $56
+	offsetTableEntry.w ObjBC_SubObjData2	; $58
+	offsetTableEntry.w ObjB3_SubObjData	; $5A
+	offsetTableEntry.w ObjB2_SubObjData2	; $5C
+	offsetTableEntry.w ObjB3_SubObjData	; $5E
+	offsetTableEntry.w ObjB3_SubObjData	; $60
+	offsetTableEntry.w ObjB3_SubObjData	; $62
+	offsetTableEntry.w ObjB4_SubObjData	; $64
+	offsetTableEntry.w ObjB5_SubObjData	; $66
+	offsetTableEntry.w ObjB5_SubObjData	; $68
+	offsetTableEntry.w ObjB6_SubObjData	; $6A
+	offsetTableEntry.w ObjB6_SubObjData	; $6C
+	offsetTableEntry.w ObjB6_SubObjData	; $6E
+	offsetTableEntry.w ObjB6_SubObjData	; $70
+	offsetTableEntry.w ObjB7_SubObjData	; $72
+	offsetTableEntry.w ObjB8_SubObjData	; $74
+	offsetTableEntry.w ObjB9_SubObjData	; $76
+	offsetTableEntry.w ObjBA_SubObjData	; $78
+	offsetTableEntry.w ObjBA_SubObjData	; $7A
+	offsetTableEntry.w ObjBC_SubObjData2	; $7C
+	offsetTableEntry.w ObjBD_SubObjData	; $7E
+	offsetTableEntry.w ObjBD_SubObjData	; $80
+	offsetTableEntry.w ObjBE_SubObjData	; $82
+	offsetTableEntry.w ObjBE_SubObjData2	; $84
+	offsetTableEntry.w ObjC0_SubObjData	; $86
+	offsetTableEntry.w ObjC1_SubObjData	; $88
+	offsetTableEntry.w ObjC2_SubObjData	; $8A
+	offsetTableEntry.w Invalid_SubObjData2	; $8C
+	offsetTableEntry.w ObjB8_SubObjData2	; $8E
+	offsetTableEntry.w ObjC3_SubObjData	; $90
+	offsetTableEntry.w ObjC5_SubObjData	; $92
+	offsetTableEntry.w ObjC5_SubObjData2	; $94
+	offsetTableEntry.w ObjC5_SubObjData3	; $96
+	offsetTableEntry.w ObjC5_SubObjData3	; $98
+	offsetTableEntry.w ObjC5_SubObjData3	; $9A
+	offsetTableEntry.w ObjC5_SubObjData3	; $9C
+	offsetTableEntry.w ObjC5_SubObjData3	; $9E
+	offsetTableEntry.w ObjC6_SubObjData2	; $A0
+	offsetTableEntry.w ObjC5_SubObjData4	; $A2
+	offsetTableEntry.w ObjAF_SubObjData3	; $A4
+	offsetTableEntry.w ObjC6_SubObjData3	; $A6
+	offsetTableEntry.w ObjC6_SubObjData4	; $A8
+	offsetTableEntry.w ObjC6_SubObjData	; $AA
+	offsetTableEntry.w ObjC8_SubObjData	; $AC
+
+Invalid_SubObjData:
+Invalid_SubObjData2:
+
+Obj8C_SubObjData:
+	;subObjData Obj8C_MapUnc_36A4E,make_art_tile(ArtTile_ArtNem_Whisp,1,1),4,4,$C,$B
+
+; off_36CC4:
+Obj8D_SubObjData:
+	;subObjData Obj8D_MapUnc_36CF0,make_art_tile(ArtTile_ArtNem_Grounder,1,1),4,5,$10,2
+; off_36CCE:
+Obj90_SubObjData:
+	;subObjData Obj90_MapUnc_36D00,make_art_tile(ArtTile_ArtKos_LevelArt,0,0),$84,4,$10,0
+; off_36CD8:
+Obj90_SubObjData2:
+	;subObjData Obj90_MapUnc_36CFA,make_art_tile(ArtTile_ArtNem_Grounder,1,1),$84,4,8,0
+; off_36EE6:
+Obj91_SubObjData:
+	;subObjData Obj91_MapUnc_36EF6,make_art_tile(ArtTile_ArtNem_ChopChop,1,0),4,4,$10,2
+; off_3707C:
+Obj92_SubObjData:
+	;subObjData Obj92_Obj93_MapUnc_37092,make_art_tile(ArtTile_ArtKos_LevelArt,0,0),4,4,$10,$12
+; off_3766E:
+Obj94_SubObjData:
+	;subObjData Obj94_Obj98_MapUnc_37678,make_art_tile(ArtTile_ArtNem_Rexon,3,0),4,4,$10,0
+; off_37764:
+Obj94_SubObjData2:
+	;subObjData Obj94_Obj98_MapUnc_37678,make_art_tile(ArtTile_ArtNem_Rexon,1,0),$84,4,4,$98
+; off_3776E:
+Obj99_SubObjData:
+	;subObjData Obj99_Obj98_MapUnc_3789A,make_art_tile(ArtTile_ArtNem_Nebula,1,1),$84,4,8,$8B
+; off_37778:
+Obj9A_SubObjData2:
+	;subObjData Obj9A_Obj98_MapUnc_37B62,make_art_tile(ArtTile_ArtNem_Turtloid,0,0),$84,4,4,$98
+; off_37B32:
+Obj9A_SubObjData:
+	;subObjData Obj9A_Obj98_MapUnc_37B62,make_art_tile(ArtTile_ArtNem_Turtloid,0,0),4,5,$18,0
+; off_37B3C:
+Obj9B_SubObjData:
+	;subObjData Obj9A_Obj98_MapUnc_37B62,make_art_tile(ArtTile_ArtNem_Turtloid,0,0),4,4,$C,$1A
+; off_37B46:
+Obj9C_SubObjData:
+	;subObjData Obj9A_Obj98_MapUnc_37B62,make_art_tile(ArtTile_ArtNem_Turtloid,0,0),4,5,8,0
+; off_37782:
+Obj9D_SubObjData2:
+	;subObjData Obj9D_Obj98_MapUnc_37D96,make_art_tile(ArtTile_ArtNem_Coconuts,0,0),$84,4,8,$8B
+; off_37FE8:
+Obj9E_SubObjData:
+	;subObjData Obj9E_MapUnc_37FF2,make_art_tile(ArtTile_ArtNem_Crawlton,1,0),4,4,$80,$B
+; off_3778C:
+ObjA4_SubObjData2:
+	;subObjData ObjA4_Obj98_MapUnc_38A96,make_art_tile(ArtTile_ArtNem_MtzSupernova,0,1),$84,5,4,$98
+; off_37796:
+ObjA6_SubObjData:
+	;subObjData ObjA5_ObjA6_Obj98_MapUnc_38CCA,make_art_tile(ArtTile_ArtNem_Spiny,1,0),$84,5,4,$98
+; off_377A0:
+ObjA7_SubObjData3:
+	;subObjData ObjA7_ObjA8_ObjA9_Obj98_MapUnc_3921A,make_art_tile(ArtTile_ArtNem_Grabber,1,1),$84,4,4,$98
+; off_377AA:
+ObjAD_SubObjData3:
+	;subObjData ObjAD_Obj98_MapUnc_395B4,make_art_tile(ArtTile_ArtNem_WfzScratch,0,0),$84,5,4,$98
+; off_377B4:
+ObjAF_SubObjData:
+	;subObjData ObjAF_Obj98_MapUnc_39E68,make_art_tile(ArtTile_ArtNem_CNZBonusSpike,1,0),$84,5,4,$98
+; off_377BE:
+ObjB8_SubObjData2:
+	;subObjData ObjB8_Obj98_MapUnc_3BA46,make_art_tile(ArtTile_ArtNem_WfzWallTurret,0,0),$84,3,4,$98
+
+ObjC3_SubObjData:
+	;subObjData Obj27_MapUnc_21120,make_art_tile(ArtTile_ArtNem_Explosion,0,0),4,5,$C,0
+
+ObjC5_SubObjData:		; Laser Case
+	;subObjData ObjC5_MapUnc_3CCD8,make_art_tile(ArtTile_ArtNem_WFZBoss,0,0),4,4,$20,0
+; off_3CC8A:
+ObjC5_SubObjData2:		; Laser Walls
+	;subObjData ObjC5_MapUnc_3CCD8,make_art_tile(ArtTile_ArtNem_WFZBoss,0,0),4,1,8,0
+; off_3CC94:
+ObjC5_SubObjData3:		; Platforms, platform releaser, laser and laser shooter
+	;subObjData ObjC5_MapUnc_3CCD8,make_art_tile(ArtTile_ArtNem_WFZBoss,0,0),4,5,$10,0
+; off_3CC9E:
+ObjC6_SubObjData2:		; Robotnik
+	;subObjData ObjC6_MapUnc_3D0EE,make_art_tile(ArtTile_ArtKos_LevelArt,0,0),4,5,$20,0
+; off_3CCA8:
+ObjC5_SubObjData4:		; Robotnik platform
+	;subObjData ObjC5_MapUnc_3CEBC,make_art_tile(ArtTile_ArtNem_WfzFloatingPlatform,1,1),4,5,$20,0
+
+ObjC6_SubObjData3:
+	;subObjData ObjC6_MapUnc_3D0EE,make_art_tile(ArtTile_ArtKos_LevelArt,0,0),4,5,$18,0
+; off_3D0BC:
+ObjC6_SubObjData4:
+	;subObjData ObjC6_MapUnc_3D1DE,make_art_tile(ArtTile_ArtNem_ConstructionStripes_1,1,0),4,1,8,0
+; off_3D0C6:
+ObjC6_SubObjData:
+	;subObjData ObjC6_MapUnc_3D0EE,make_art_tile(ArtTile_ArtKos_LevelArt,0,0),4,5,4,0
+
+ObjC7_SubObjData:
+	;subObjData ObjC7_MapUnc_3E5F8,make_art_tile(ArtTile_ArtNem_DEZBoss,0,0),4,4,$38,$00
+
+
+ObjC8_SubObjData:
+	;subObjData ObjC8_MapUnc_3D450,make_art_tile(ArtTile_ArtNem_Crawl,0,1),4,3,$10,$D7
+
+ObjC1_SubObjData:
+	;subObjData ObjC1_MapUnc_3C280,make_art_tile(ArtTile_ArtNem_BreakPanels,3,1),4,4,$40,$E1
+
+ObjB7_SubObjData:
+	;subObjData ObjB7_MapUnc_3B8E4,make_art_tile(ArtTile_ArtNem_WfzVrtclLazer,2,1),4,4,$18,$A9
+
+Obj99_SubObjData2:
+	;subObjData Obj99_Obj98_MapUnc_3789A,make_art_tile(ArtTile_ArtNem_Nebula,1,1),4,4,$10,6
+; off_382F0:
+Obj9F_SubObjData:
+	;subObjData Obj9F_MapUnc_38314,make_art_tile(ArtTile_ArtNem_Shellcracker,0,0),4,5,$18,$A
+; off_382FA:
+ObjA0_SubObjData:
+	;subObjData Obj9F_MapUnc_38314,make_art_tile(ArtTile_ArtNem_Shellcracker,0,0),4,4,$C,$9A
+ObjA1_SubObjData:
+	;subObjData ObjA1_MapUnc_385E2,make_art_tile(ArtTile_ArtNem_MtzMantis,1,0),4,5,$10,6
+; off_385CA:
+ObjA2_SubObjData:
+	;subObjData ObjA1_MapUnc_385E2,make_art_tile(ArtTile_ArtNem_MtzMantis,1,0),4,4,$10,$9A
+; off_388AC:
+ObjA3_SubObjData:
+	;subObjData ObjA3_MapUnc_388F0,make_art_tile(ArtTile_ArtNem_Flasher,0,1),4,4,$10,6
+ObjA4_SubObjData:
+	;subObjData ObjA4_Obj98_MapUnc_38A96,make_art_tile(ArtTile_ArtNem_MtzSupernova,0,1),4,4,$10,$B
+ObjA5_SubObjData:
+	;subObjData ObjA5_ObjA6_Obj98_MapUnc_38CCA,make_art_tile(ArtTile_ArtNem_Spiny,1,0),4,4,8,$B
+; off_391EC:
+ObjA7_SubObjData:
+	;subObjData ObjA7_ObjA8_ObjA9_Obj98_MapUnc_3921A,make_art_tile(ArtTile_ArtNem_Grabber,1,1),4,4,$10,$B
+; off_391F6:
+ObjA7_SubObjData2:
+	;subObjData ObjA7_ObjA8_ObjA9_Obj98_MapUnc_3921A,make_art_tile(ArtTile_ArtNem_Grabber,1,1),4,1,$10,$D7
+; off_39200:
+ObjA8_SubObjData:
+	;subObjData ObjA7_ObjA8_ObjA9_Obj98_MapUnc_3921A,make_art_tile(ArtTile_ArtNem_Grabber,1,1),4,4,4,0
+; off_3920A:
+ObjA8_SubObjData2:
+	;subObjData ObjAA_MapUnc_39228,make_art_tile(ArtTile_ArtNem_Grabber,1,1),4,5,4,0
+; off_393C2:
+ObjAC_SubObjData:
+	;subObjData ObjAC_MapUnc_393CC,make_art_tile(ArtTile_ArtNem_Balkrie,0,0),4,4,$20,8
+ObjAD_SubObjData:
+	;subObjData ObjAD_Obj98_MapUnc_395B4,make_art_tile(ArtTile_ArtNem_WfzScratch,0,0),4,4,$18,0
+ObjAD_SubObjData2:
+	;subObjData ObjAD_Obj98_MapUnc_395B4,make_art_tile(ArtTile_ArtNem_WfzScratch,0,0),4,5,$10,0
+; off_39DCE:
+ObjAF_SubObjData2:
+	;subObjData ObjAF_Obj98_MapUnc_39E68,make_art_tile(ArtTile_ArtNem_SilverSonic,1,0),4,4,$10,$1A
+; off_39DD8:
+ObjAF_SubObjData3:
+	;subObjData ObjAF_MapUnc_3A08C,make_art_tile(ArtTile_ArtNem_DEZWindow,0,0),4,6,$10,0
+; off_3A58A:
+ObjB0_SubObjData:
+	;subObjData ObjB1_MapUnc_3A5A6,make_art_tile(ArtTile_ArtUnc_Giant_Sonic,2,1),0,1,$10,0
+
+; off_3A594:
+ObjB1_SubObjData:
+	;subObjData ObjB1_MapUnc_3A5A6,make_art_tile(ArtTile_ArtNem_Sega_Logo+2,0,0),0,2,8,0
+
+
+; off_3AFC8:
+ObjB2_SubObjData:
+	;subObjData ObjB2_MapUnc_3AFF2,make_art_tile(ArtTile_ArtNem_Tornado,0,1),4,4,$60,0
+; off_3AFD2:
+ObjB2_SubObjData2:
+	;subObjData ObjB2_MapUnc_3B292,make_art_tile(ArtTile_ArtNem_TornadoThruster,0,0),4,3,$40,0
+; off_3BBFE:
+ObjBC_SubObjData2:
+	;subObjData ObjBC_MapUnc_3BC08,make_art_tile(ArtTile_ArtNem_WfzThrust,2,0),4,4,$10,0
+; off_3B322:
+ObjB3_SubObjData:
+	;subObjData ObjB3_MapUnc_3B32C,make_art_tile(ArtTile_ArtNem_Clouds,2,0),4,6,$30,0
+; off_3B3AC:
+ObjB4_SubObjData:
+	;subObjData ObjB4_MapUnc_3B3BE,make_art_tile(ArtTile_ArtNem_WfzVrtclPrpllr,1,1),4,4,4,$A8
+
+; off_3B4DE:
+ObjB5_SubObjData:
+	;subObjData ObjB5_MapUnc_3B548,make_art_tile(ArtTile_ArtNem_WfzHrzntlPrpllr,1,1),4,4,$40,0
+; off_3B818:
+ObjB6_SubObjData:
+	;subObjData ObjB6_MapUnc_3B856,make_art_tile(ArtTile_ArtNem_WfzTiltPlatforms,1,1),4,4,$10,0
+; off_3BA36:
+ObjB8_SubObjData:
+	;subObjData ObjB8_Obj98_MapUnc_3BA46,make_art_tile(ArtTile_ArtNem_WfzWallTurret,0,0),4,4,$10,0
+; off_3BB0E:
+ObjB9_SubObjData:
+	;subObjData ObjB9_MapUnc_3BB18,make_art_tile(ArtTile_ArtNem_WfzHrzntlLazer,2,1),4,1,$60,0
+; off_3BB66:
+ObjBA_SubObjData:
+	;subObjData ObjBA_MapUnc_3BB70,make_art_tile(ArtTile_ArtNem_WfzConveyorBeltWheel,2,1),4,4,$10,0
+; off_3BD24:
+ObjBD_SubObjData:
+	;subObjData ObjBD_MapUnc_3BD3E,make_art_tile(ArtTile_ArtNem_WfzBeltPlatform,3,1),4,4,$18,0
+; off_3BE2C:
+ObjBE_SubObjData:
+	;subObjData ObjBE_MapUnc_3BE46,make_art_tile(ArtTile_ArtNem_WfzGunPlatform,3,1),4,4,$18,0
+; off_3C08E:
+ObjC0_SubObjData:
+	;subObjData ObjC0_MapUnc_3C098,make_art_tile(ArtTile_ArtNem_WfzLaunchCatapult,1,0),4,4,$10,0
+; off_3C3B8:
+ObjC2_SubObjData:
+	;subObjData ObjC2_MapUnc_3C3C2,make_art_tile(ArtTile_ArtNem_WfzSwitch,1,1),4,4,$10,0
+; off_3BECE:
+ObjBE_SubObjData2:
+	;subObjData ObjBF_MapUnc_3BEE0,make_art_tile(ArtTile_ArtNem_WfzUnusedBadnik,3,1),4,4,4,4

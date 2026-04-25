@@ -156,7 +156,7 @@
 		dc.l Delete_Current_Sprite				; 9A
 		dc.l Delete_Current_Sprite				; 9B
 		dc.l Delete_Current_Sprite				; 9C
-		dc.l Delete_Current_Sprite				; 9D
+		dc.l Obj_Coconuts						; 9D
 		dc.l Delete_Current_Sprite				; 9E
 		dc.l Delete_Current_Sprite				; 9F
 		dc.l Delete_Current_Sprite				; A0
