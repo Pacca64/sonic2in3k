@@ -138,11 +138,8 @@ Obj06_Spiral_CharacterFallsOff:
     ;subtype 1 and invalid subtypes fall down to right side code.
 
 ;Obj06_Spiral_CharacterFallsOff_RightSideSubtype:
-	move.w	d0,($FFFF0000).l	;debug write
-	move.w	#$42,($FFFF0004).l	;debug write
     cmpi.w	#$1A0,d0    ;did we fall off right side?
     blt.s   Obj06_Spiral_CharacterFallsOff_whenTooSlow  ;if not, run normal code.
-	move.w	#$69,($FFFF0004).l	;debug write
     bra     Obj06_Spiral_CharacterFallsOff_AfterClearingPlayerStandingFlag  ;if we DID fall off the right side, and have right side subtype, don't clear standing flag.
 
 Obj06_Spiral_CharacterFallsOff_LeftSideSubtype:
