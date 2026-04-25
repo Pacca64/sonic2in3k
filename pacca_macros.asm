@@ -10,6 +10,17 @@ BranchIfNOTS2 macro BranchToIfS2
     blo     BranchToIfS2    ;if yes or higher, branch.
     endm
 
+; Some S1 macros for behavior that is intended for Sonic 1 in S2CDR code, even though S1 is not implemented in S123K yet.
+; So They'll be blank until that happens.
+
+ ; macro for detecting a Sonic 1 Zone ID.
+BranchIfS1 macro BranchToIfS1
+    endm
+
+; macro for detecting a Sonic 1 Zone ID.
+BranchIfNOTS1 macro BranchToIfS1
+    endm
+
 
 ;copied from S2, hope it works! Pawbs crossed x3
 make_block_tile function addr,flx,fly,pal,pri,((pri&1)<<15)|((pal&3)<<13)|((fly&1)<<12)|((flx&1)<<11)|(addr&tile_mask)
