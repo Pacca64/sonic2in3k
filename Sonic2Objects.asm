@@ -465,6 +465,7 @@ Obj4B_Index:	offsetTable
 ; ===========================================================================
 ; loc_2D07E:
 Obj4B_Projectile:
+	jsr		Add_SpriteToCollisionResponseList	;Collision only works if this is called every frame.
 	jsr	(ObjectMove).l
 	lea	(Ani_obj4B).l,a1
 	jsr	(AnimateSprite).l
@@ -500,6 +501,7 @@ Obj4B_Init:
 	;jsr	(Adjust2PArtPointer).l
 	ori.b	#4,render_flags(a0)
 	move.b	#$A,collision_flags(a0)
+	jsr		Add_SpriteToCollisionResponseList	;Collision only works if this is called. Thankfully only needs to be called once at init.
 	move.w	#4*$80,priority(a0)
 	move.b	#$10,width_pixels(a0)
 	move.b	#$10,y_radius(a0)
@@ -538,6 +540,7 @@ Obj4B_Main:
 	move.b	routine_secondary(a0),d0
 	move.w	Obj4B_Buzzer_States(pc,d0.w),d1
 	jsr	Obj4B_Buzzer_States(pc,d1.w)
+	jsr		Add_SpriteToCollisionResponseList	;Collision only works if this is called every frame.
 	lea	(Ani_obj4B).l,a1
 	jsr	(AnimateSprite).l
 	jmp	(MarkObjGone_P1).l
@@ -646,6 +649,7 @@ Obj4B_ShootProjectile:
 	;jsrto	(Adjust2PArtPointer2).l, JmpTo7_Adjust2PArtPointer2
 	move.w	#4*$80,priority(a1)
 	move.b	#$98,collision_flags(a1)
+	move.b	#shield_reaction_bounce,shield_reaction(a1)	;Made projectiles bounce off shields for consistency.
 	move.b	#$10,width_pixels(a1)
 	move.b	status(a0),status(a1)
 	move.b	render_flags(a0),render_flags(a1)

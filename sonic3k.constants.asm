@@ -196,6 +196,16 @@ shield_art          = $38
 shield_plc          = $3C
 
 ; ---------------------------------------------------------------------------
+; Shield Reaction Values, Can Be &'d togther for shield_reaction
+; Added by Pacca.
+; bit 3 = bounces off shield, bit 4 = negated by fire shield, bit 5 = negated by lightning shield, bit 6 = negated by bubble shield
+
+shield_reaction_bounce		=	%00001000
+shield_reaction_fire		=	%00010000
+shield_reaction_lightning	=	%00100000
+shield_reaction_bubble		=	%00100000
+
+; ---------------------------------------------------------------------------
 ; Clock equates
 ; ---------------------------------------------------------------------------
 
