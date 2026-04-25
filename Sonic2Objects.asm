@@ -420,6 +420,10 @@ RideObject_SetRide_S2Compat_NotInAir:
 ;hacky replacement code for a signpost.
 ;Please fix x3
 Pacca_TemporarySignpost:
+	tst.b	(Apparent_act).w	;are we in act 1?
+	beq.s	+	;if yes, run signpost code
+	jmp	DeleteObject	;if not in Act 1, we are an S2 2 player mode signpost. Those aren't supposed to work!
++
     move.w  (MainCharacter + x_pos).w,d0    ;get player x pos
     move.w  x_pos(a0),d1    ;get our x pos
     sub.w   d0,d1   ;get the difference
