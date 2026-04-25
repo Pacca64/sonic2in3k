@@ -808,6 +808,7 @@ Obj9D_Init:
 ; ===========================================================================
 ; loc_37C1C: Obj9D_Main:
 Obj9D_Idle:
+	jsr		Add_SpriteToCollisionResponseList	;Collision only works if this is called every frame.
 	bsr		Obj_GetOrientationToPlayer
 	bclr	#0,render_flags(a0)	; face right
 	bclr	#0,status(a0)
@@ -866,6 +867,7 @@ Obj9D_ClimbData:
 ; ===========================================================================
 ; loc_37CAE: Obj09_Climbing:
 Obj9D_Climbing:
+	jsr		Add_SpriteToCollisionResponseList	;Collision only works if this is called every frame.
 	subq.b	#1,Obj9D_timer(a0)
 	beq.s	Obj9D_StopClimbing	; branch, if done moving
 	jsr	(ObjectMove).l	; else, keep moving
@@ -881,6 +883,7 @@ Obj9D_StopClimbing:
 ; ===========================================================================
 ; loc_37CD4: Obj09_Throwing:
 Obj9D_Throwing:
+	jsr		Add_SpriteToCollisionResponseList	;Collision only works if this is called every frame.
 	moveq	#0,d0
 	move.b	routine_secondary(a0),d0
 	move.w	Obj9D_ThrowingStates(pc,d0.w),d1
@@ -994,6 +997,7 @@ Obj98_Init: ;;
 Obj98_Main:
 	tst.b	render_flags(a0)		;is render flags 0?
 	bpl		JmpTo65_DeleteObject	;if positive (means on screen flag is NOT set on bit 7), delete self.
+	jsr		Add_SpriteToCollisionResponseList	;Collision only works if this is called every frame.
 	movea.l	Obj_ProjectileS2_CodePointer(a0),a1
 	jsr	(a1)	; dynamic call! to Obj98_NebulaBombFall, Obj98_TurtloidShotMove, Obj98_CoconutFall, Obj98_CluckerShotMove, Obj98_SpinyShotFall, or Obj98_WallTurretShotMove, assuming the code hasn't been changed
 	jmp	(MarkObjGone).l
