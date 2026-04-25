@@ -989,8 +989,8 @@ Obj98_Init: ;;
 ; ===========================================================================
 ; loc_376FE:
 Obj98_Main:
-	tst.b	render_flags(a0)
-	bpl		JmpTo65_DeleteObject
+	tst.b	render_flags(a0)		;is render flags 0?
+	bpl		JmpTo65_DeleteObject	;if positive (means on screen flag is NOT set on bit 7), delete self.
 	movea.l	Obj_ProjectileS2_CodePointer(a0),a1
 	jsr	(a1)	; dynamic call! to Obj98_NebulaBombFall, Obj98_TurtloidShotMove, Obj98_CoconutFall, Obj98_CluckerShotMove, Obj98_SpinyShotFall, or Obj98_WallTurretShotMove, assuming the code hasn't been changed
 	jmp	(MarkObjGone).l
@@ -1301,7 +1301,7 @@ Obj9C_SubObjData:
 	;subObjData Obj9A_Obj98_MapUnc_37B62,make_art_tile(ArtTile_ArtNem_Turtloid,0,0),4,5,8,0
 ; off_37782:
 Obj9D_SubObjData2:
-	;subObjData Obj9D_Obj98_MapUnc_37D96,make_art_tile(ArtTile_ArtNem_Coconuts,0,0),$84,4,8,$8B
+	subObjData Obj9D_Obj98_MapUnc_37D96,make_art_tile(ArtTile_ArtNem_Coconuts,0,0),$84,4,8,$8B
 ; off_37FE8:
 Obj9E_SubObjData:
 	;subObjData Obj9E_MapUnc_37FF2,make_art_tile(ArtTile_ArtNem_Crawlton,1,0),4,4,$80,$B
