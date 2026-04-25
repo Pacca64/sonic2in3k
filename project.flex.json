@@ -1,8 +1,66 @@
 {
     "Flex": 2,
     "name": "",
-    "node": "e96408aa-3cb7-459d-9258-dee84f707494",
+    "node": "13864e75-5788-47a4-b65a-d8cc6c9a72e5",
     "objects": [
+        {
+            "format": "Sonic 3&K Object.js",
+            "name": "Monitor S3k",
+            "palettes": [
+                {
+                    "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                    "length": 1
+                },
+                {
+                    "path": "Levels\\AIZ\\Palettes\\Main.bin",
+                    "length": 3
+                }
+            ],
+            "art": {
+                "path": "General\\Sprites\\Monitors\\Monitors.bin",
+                "compression": "Nemesis",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "General\\Sprites\\Monitors\\Map - Monitor.asm",
+                "label": ""
+            },
+            "dplcs": {
+                "enabled": false,
+                "path": "",
+                "label": ""
+            },
+            "uuid": "864e7557-88b7-4436-9ad8-cc6c9a72e5b0"
+        },
+        {
+            "format": "Sonic 3&K Object.js",
+            "name": "Monitor S2",
+            "palettes": [
+                {
+                    "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                    "length": 1
+                },
+                {
+                    "path": "LevelsS2\\EHZ\\Palettes\\Palette.bin",
+                    "length": 3
+                }
+            ],
+            "art": {
+                "path": "General\\SpritesS2\\Monitors\\Monitors.bin",
+                "compression": "Nemesis",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "General\\Sprites\\Monitors\\Map - Monitor.asm",
+                "label": ""
+            },
+            "dplcs": {
+                "enabled": false,
+                "path": "",
+                "label": ""
+            },
+            "uuid": "13864e75-5788-47a4-b65a-d8cc6c9a72e5"
+        },
         {
             "format": "Sonic 3&K Sonic.js",
             "name": "Sonic S3K",
