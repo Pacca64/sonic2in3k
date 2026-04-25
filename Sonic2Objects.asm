@@ -8,23 +8,6 @@ Obj06:
 	move.b	routine(a0),d0
 	move.w	Obj06_Index(pc,d0.w),d1
 	jsr	Obj06_Index(pc,d1.w)
-	;tst.w	(Two_player_mode).w
-	;beq.s	Obj06_ChkDel
-	;rts
-
-; ---------------------------------------------------------------------------
-; loc_214DA:
-;Obj06_ChkDel:
-	;move.w	x_pos(a0),d0
-	;andi.w	#$FF80,d0
-	;sub.w	(Camera_X_pos_coarse).w,d0
-	;cmpi.w	#$280,d0
-	;bhi.s	JmpTo19_DeleteObject
-	;rts
-; ---------------------------------------------------------------------------
-;JmpTo19_DeleteObject 
-	;jmp	(DeleteObject).l
-
     jmp Sprite_OnScreen_Test    ;old Sonic 1 era despawn code does not seem to work in S3K, so we use S3K equivalent of MarkObjGone.
 
 ; ===========================================================================
@@ -685,3 +668,107 @@ byte_2D2E1:	dc.b	$09, $01, $01, $01, $01, $01, $FD, $00
 ; ----------------------------------------------------------------------------
 ; MapUnc_2D2EA: SprTbl_Buzzer:
 Obj4B_MapUnc_2D2EA:	BINCLUDE "General/SpritesS2/Buzzer/mappings.bin"
+
+
+; ===========================================================================
+; ----------------------------------------------------------------------------
+; Object 5C - Masher (jumping piranha fish badnik) from EHZ
+; ----------------------------------------------------------------------------
+; OST Variables:
+Obj5C_initial_y_pos	= objoff_30	; word
+
+Obj_Chopper:
+Obj_Masher:
+Obj5C:
+	moveq	#0,d0
+	move.b	routine(a0),d0
+	move.w	Obj5C_Index(pc,d0.w),d1
+	jsr	Obj5C_Index(pc,d1.w)
+	jmp	(MarkObjGone).l
+; ===========================================================================
+; off_2D3A6:
+Obj5C_Index:	offsetTable
+		offsetTableEntry.w Obj5C_Init	; 0
+		offsetTableEntry.w Obj5C_Main	; 2
+; ===========================================================================
+; loc_2D3AA:
+Obj5C_Init:
+	;jsr	S2CDR_EnemySpawnHook
+	addq.b	#2,routine(a0)
+	move.b	#4,render_flags(a0)
+	move.w	#4*$80,priority(a0)
+	move.b	#9,collision_flags(a0)
+	move.b	#$10,width_pixels(a0)
+	move.w	y_pos(a0),Obj5C_initial_y_pos(a0)	; set initial (and lowest) y position
+
+	move.w	#-$700,y_vel(a0) ; set vertical speed
+	move.w	#make_art_tile(ArtTile_ArtNem_Chopper,0,0),art_tile(a0)	;make it load chopper art
+	move.l	#Chopper_map,mappings(a0)
+
+	BranchIfS1	obj5C_init_GHZ
+
+	move.w	#-$400,y_vel(a0)
+	move.w	#make_art_tile(ArtTile_ArtNem_Masher,0,0),art_tile(a0)
+	move.l	#Obj5C_MapUnc_2D442,mappings(a0)
+
+obj5C_init_GHZ:
+
+; loc_2D3E4:
+Obj5C_Main:
+	jsr		Add_SpriteToCollisionResponseList	;Collision only works if this is called every frame.
+	lea	(Ani_obj5C).l,a1
+	jsr	(AnimateSprite).l
+	jsr	(ObjectMove).l
+	addi.w	#$18,y_vel(a0)	; apply gravity
+	move.w	Obj5C_initial_y_pos(a0),d0
+	cmp.w	y_pos(a0),d0	; has object reached its initial y position?
+	bhs.s	+		; if not, branch
+	move.w	d0,y_pos(a0)
+	BranchIfS1	obj5C_jump_GHZ		;if in S1 zone, use S1 GHZ settings
+	move.w	#-$500,y_vel(a0)	; jump
+	bra.s	+
+obj5C_jump_GHZ:
+	move.w	#-$700,y_vel(a0) ; set vertical speed
++
+	move.b	#1,anim(a0)	;use animation 1 (slow chomp)
+
+	subi.w	#$C0,d0		;adjust initial pos
+	cmp.w	y_pos(a0),d0	;compare to y_pos
+	bhs.s	+	; rts
+	move.b	#0,anim(a0)	;animation 0 (fast chomp)
+	tst.w	y_vel(a0)	; is object falling?
+	bmi.s	+	; rts	; if not, branch
+	move.b	#2,anim(a0)	; use closed mouth animation
++
+	;cmp.b	#FutureBadID,(Time_Zone).w	;are we in bad future?
+	;bne.s	+	;if not, branch
+	;add.b	#3,anim(a0)	;if in bad future, use the bad future animations with the broken jaw!
+;+
+
+	rts
+; ===========================================================================
+; animation script
+; off_2D430:
+Ani_obj5C:	offsetTable
+		offsetTableEntry.w byte_2D436	; 0 ;fast chomp 
+		offsetTableEntry.w byte_2D43A	; 1 ;slow chomp
+		offsetTableEntry.w byte_2D43E	; 2
+		offsetTableEntry.w byte_2D436_BF	; 3
+		offsetTableEntry.w byte_2D43A_BF	; 4
+		offsetTableEntry.w byte_2D43E_BF	; 5
+
+byte_2D436:	dc.b   7,  0,  1,$FF	;fast chomp 
+byte_2D43A:	dc.b   3,  0,  1,$FF	;slow chomp
+byte_2D43E:	dc.b   7,  0,$FF		;idle
+byte_2D436_BF:	dc.b   7,  2,  1,$FF	;fast chomp (broken)
+byte_2D43A_BF:	dc.b   3,  2,  1,$FF	;slow chomp (broken)
+byte_2D43E_BF:	dc.b   7,  2,$FF		;idle (broken)
+	even
+; ----------------------------------------------------------------------------
+; sprite mappings
+; ----------------------------------------------------------------------------
+Obj5C_MapUnc_2D442:	BINCLUDE "General\SpritesS2\Masher\mappings.bin"
+	even
+
+Chopper_map:;	BINCLUDE	"mappings\sprite\Sonic1\s1chopper.bin"
+	even

@@ -91,7 +91,7 @@
 		dc.l Delete_Current_Sprite				; 59
 		dc.l Delete_Current_Sprite				; 5A
 		dc.l Delete_Current_Sprite				; 5B
-		dc.l Delete_Current_Sprite				; 5C
+		dc.l Obj_Masher							; 5C
 		dc.l Delete_Current_Sprite				; 5D
 		dc.l Delete_Current_Sprite				; 5E
 		dc.l Delete_Current_Sprite				; 5F
