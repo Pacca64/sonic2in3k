@@ -1,7 +1,7 @@
 {
     "Flex": 2,
     "name": "",
-    "node": "5a36876f-27c0-4f4a-968a-950c029f6426",
+    "node": "36876f27-c0ef-4ad6-8a95-0c029f64268b",
     "objects": [
         {
             "name": "S3K Global",
@@ -129,6 +129,31 @@
                         "label": ""
                     },
                     "uuid": "5a36876f-27c0-4f4a-968a-950c029f6426"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Hud Numbers",
+                    "palettes": [
+                        {
+                            "path": "Levels\\AIZ\\Palettes\\Main.bin",
+                            "length": 3
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\HUD Icon\\HUD Digits.bin",
+                        "compression": "Uncompressed",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "876f27c0-ef4a-468a-950c-029f64268b26"
                 }
             ],
             "isDirectory": true,
@@ -216,10 +241,35 @@
                         "label": ""
                     },
                     "uuid": "f5eb1ca8-5338-4f01-941d-49ee4de20ce8"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Hud Numbers",
+                    "palettes": [
+                        {
+                            "path": "LevelsS2\\EHZ\\Palettes\\Palette.bin",
+                            "length": 3
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\SpritesS2\\HUD Icon\\HUD Digits.bin",
+                        "compression": "Uncompressed",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "36876f27-c0ef-4ad6-8a95-0c029f64268b"
                 }
             ],
             "isDirectory": true,
-            "expanded": false,
+            "expanded": true,
             "uuid": "31c7e2e0-0d42-4bfb-8840-cf5ef5b84ac3"
         },
         {
