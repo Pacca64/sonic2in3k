@@ -27,7 +27,7 @@
 		dc.l Delete_Current_Sprite				; 19
 		dc.l Obj_CollapsingPlatform				; 1A
 		dc.l Delete_Current_Sprite				; 1B
-		dc.l Delete_Current_Sprite				; 1C
+		dc.l Obj_ZoneDecor_S2					; 1C
 		dc.l Delete_Current_Sprite				; 1D
 		dc.l Delete_Current_Sprite				; 1E
 		dc.l Delete_Current_Sprite				; 1F

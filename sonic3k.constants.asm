@@ -285,6 +285,22 @@ hidden_palace_special_stage_hub_zone	=	$17
 FirstNewZoneID	=	$18	;the first zone ID added after the vanilla S3K zones. Needed to help with competition/bonus level jank.
 
 emerald_hill_zone	=	$18
+sonic2_blank_zone_1	=	$19
+wood_zone			=	$1A
+sonic2_blank_zone_3	=	$1B
+metropolis_zone		=	$1C
+metropolis_zone_2 	=	$1D	;MTZ act 3
+wing_fortress_zone	=	$1E
+hill_top_zone 		=	$1F
+hidden_palace_zone_s2	=	$20	;make sure ported code accounts for this! Abbreviated form is 'HPS2' to avoid conflicts with S3K HPZ.
+sonic2_blank_zone_9	=	$21
+oil_ocean_zone 		=	$22
+mystic_cave_zone 	=	$23
+casino_night_zone 	=	$24
+chemical_plant_zone =	$25
+death_egg_zone_s2	=	$26	;make sure ported code accounts for this! Abbreviated form is 'DES2' to avoid conflicts with S3K DEZ.
+aquatic_ruin_zone 	=	$27
+sky_chase_zone 		=	$28
 
 ; ---------------------------------------------------------------------------
 ;Zone and Act IDs

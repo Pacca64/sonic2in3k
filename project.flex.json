@@ -1,7 +1,7 @@
 {
     "Flex": 2,
     "name": "",
-    "node": "0d421bfb-0840-4f5e-b5b8-4ac371e0849f",
+    "node": "5a36876f-27c0-4f4a-968a-950c029f6426",
     "objects": [
         {
             "name": "S3K Global",
@@ -109,10 +109,30 @@
                         "label": ""
                     },
                     "uuid": "5cd41e69-5a82-4001-9ff2-a6a5fc5b81aa"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "S3K springs",
+                    "palettes": [],
+                    "art": {
+                        "path": "",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "5a36876f-27c0-4f4a-968a-950c029f6426"
                 }
             ],
             "isDirectory": true,
-            "expanded": false,
+            "expanded": true,
             "uuid": "1731c7e2-e00d-421b-bb08-40cf5ef5b84a"
         },
         {
@@ -339,6 +359,26 @@
                         "label": ""
                     },
                     "uuid": "4e1731c7-e2e0-4d42-9bfb-0840cf5ef5b8"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Bridge Post",
+                    "palettes": [],
+                    "art": {
+                        "path": "LevelsS2\\EHZ\\Nemesis Art\\TensionBridge.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "LevelsS2\\EHZ\\Misc Object Data\\Map - Bridge Post.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "a5c3cb5a-3687-4f27-80ef-4ad68a950c02"
                 }
             ],
             "isDirectory": true,

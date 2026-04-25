@@ -5,9 +5,9 @@ BranchIfS2 macro BranchToIfS2
     endm
 
 ; macro for detecting a Sonic 2 Zone ID.
-BranchIfNOTS2 macro BranchToIfS2
+BranchIfNOTS2 macro BranchToIfNotS2
 	cmp.b   #emerald_hill_zone,(Current_zone).w ;are we in Emerald Hill Zone?
-    blo     BranchToIfS2    ;if yes or higher, branch.
+    blo     BranchToIfNotS2    ;if lower, branch.
     endm
 
 ; Some S1 macros for behavior that is intended for Sonic 1 in S2CDR code, even though S1 is not implemented in S123K yet.
@@ -18,7 +18,8 @@ BranchIfS1 macro BranchToIfS1
     endm
 
 ; macro for detecting a Sonic 1 Zone ID.
-BranchIfNOTS1 macro BranchToIfS1
+BranchIfNOTS1 macro BranchToIfNotS1
+	bra	BranchToIfNotS1
     endm
 
 

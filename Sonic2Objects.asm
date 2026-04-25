@@ -1468,3 +1468,201 @@ ObjC2_SubObjData:
 ; off_3BECE:
 ObjBE_SubObjData2:
 	;subObjData ObjBF_MapUnc_3BEE0,make_art_tile(ArtTile_ArtNem_WfzUnusedBadnik,3,1),4,4,4,4
+
+; ===========================================================================
+; ----------------------------------------------------------------------------
+; Object 1C - Bridge stake in Emerald Hill Zone and Hill Top Zone, falling oil in Oil Ocean Zone
+; ----------------------------------------------------------------------------
+; Sprite_111D4:
+Obj_ZoneDecor_S1:
+Obj_ZoneDecor_S2:
+Obj1C:
+	moveq	#0,d0
+	move.b	routine(a0),d0
+	move.w	Obj1C_Index(pc,d0.w),d1
+	jmp	Obj1C_Index(pc,d1.w)
+; ===========================================================================
+; off_111E2:
+Obj1C_Index:	offsetTable
+		offsetTableEntry.w Obj1C_Init		; 0
+		offsetTableEntry.w BranchTo_MarkObjGone	; 2
+; ===========================================================================
+
+objsubdecl macro frame, mapaddr,artaddr,width,priority
+	dc.l frame<<24|mapaddr
+	dc.w artaddr
+	dc.b width, priority
+    endm
+
+Obj1C_InitData_S1:
+	objsubdecl 0, Obj1C_MapUnc_SLZCannon,  make_art_tile(ArtTile_Nem_SLZCannon,0,0), 8, 2	;SLZ Fire Launchers
+	objsubdecl 0, Obj1C_MapUnc_SLZCannon,  make_art_tile(ArtTile_Nem_SLZCannon,0,0), 8, 2	;SLZ fire launcher duplicate? (Likely unused)
+	objsubdecl 0, Obj1C_MapUnc_SLZCannon,  make_art_tile(ArtTile_Nem_SLZCannon,0,0), 8, 2	;SLZ Fire (3 of them, lol)
+	objsubdecl 1, Obj11_MapUnc_GHZ,  make_art_tile(ArtTile_ArtNem_GHZ_Bridge,0,0), 4, 1	;GHZ Bridge Posts
+
+	;Scen_Values:
+		;dc.l Map_Scen		; mappings address
+		;dc.w $44D8		; VRAM setting
+		;dc.b 0,	8, 2, 0		; frame, width,	priority, collision response
+
+		;dc.l Map_Scen
+		;dc.w $44D8
+		;dc.b 0,	8, 2, 0
+
+		;dc.l Map_Scen
+		;dc.w $44D8
+		;dc.b 0,	8, 2, 0
+
+		;dc.l Map_Bri
+		;dc.w $438E
+		;dc.b 1,	$10, 1,	0
+		;even
+
+; dword_111E6:
+Obj1C_InitData:
+	objsubdecl 0, Obj1C_MapUnc_11552, make_art_tile(ArtTile_ArtNem_BoltEnd_Rope,2,0), 4, 6				;0
+	objsubdecl 1, Obj1C_MapUnc_11552, make_art_tile(ArtTile_ArtNem_BoltEnd_Rope,2,0), 4, 6				;1
+	objsubdecl 1, Map_EHZTensionBridge,  make_art_tile(ArtTile_ArtNem_EHZ_Bridge,2,0), 4, 1				;2
+	objsubdecl 2, Obj1C_MapUnc_11552, make_art_tile(ArtTile_ArtNem_BoltEnd_Rope,1,0), $10, 6			;3
+	objsubdecl 3, Obj16_MapUnc_21F14, make_art_tile(ArtTile_ArtNem_HtzZipline,2,0), 8, 4				;4
+	objsubdecl 4, Obj16_MapUnc_21F14, make_art_tile(ArtTile_ArtNem_HtzZipline,2,0), 8, 4				;5
+	objsubdecl 1, Obj16_MapUnc_21F14, make_art_tile(ArtTile_ArtNem_HtzZipline,2,0), $20, 1				;6
+	objsubdecl 0, Obj1C_MapUnc_113D6, make_art_tile(ArtTile_ArtKos_LevelArt,2,0), 8, 1					;7
+	objsubdecl 1, Obj1C_MapUnc_113D6, make_art_tile(ArtTile_ArtKos_LevelArt,2,0), 8, 1					;8
+	objsubdecl 0, Obj1C_MapUnc_113EE, make_art_tile(ArtTile_ArtUnc_Waterfall3,2,0), 4, 4				;9
+	objsubdecl 0, Obj1C_MapUnc_11406, make_art_tile(ArtTile_ArtNem_Oilfall2,2,0), 4, 4					;A
+	objsubdecl 1, Obj1C_MapUnc_11406, make_art_tile(ArtTile_ArtNem_Oilfall2,2,0), 4, 4					;B
+	objsubdecl 2, Obj1C_MapUnc_11406, make_art_tile(ArtTile_ArtNem_Oilfall2,2,0), 4, 4					;C
+	objsubdecl 3, Obj1C_MapUnc_11406, make_art_tile(ArtTile_ArtNem_Oilfall2,2,0), 4, 4					;D
+	objsubdecl 4, Obj1C_MapUnc_11406, make_art_tile(ArtTile_ArtNem_Oilfall2,2,0), 4, 4					;E
+	objsubdecl 5, Obj1C_MapUnc_11406, make_art_tile(ArtTile_ArtNem_Oilfall2,2,0), 4, 4					;F
+	objsubdecl 0, Obj1C_MapUnc_114AE, make_art_tile(ArtTile_ArtNem_Oilfall2,2,0), $18, 4				;10
+	objsubdecl 1, Obj1C_MapUnc_114AE, make_art_tile(ArtTile_ArtNem_Oilfall2,2,0), $18, 4				;11
+	objsubdecl 2, Obj1C_MapUnc_114AE, make_art_tile(ArtTile_ArtNem_Oilfall2,2,0), 8, 4					;12
+	objsubdecl 3, Obj1C_MapUnc_114AE, make_art_tile(ArtTile_ArtNem_Oilfall2,2,0), 8, 4					;13
+	objsubdecl 4, Obj1C_MapUnc_114AE, make_art_tile(ArtTile_ArtNem_Oilfall2,2,0), 8, 4					;14
+
+	;objsubdecl 1, Obj11_MapUnc_ARZ, make_art_tile(ArtTile_ArtNem_ARZBarrierThing,0,0), 4, 1				;15		;Custom Bridge post for ARZ alt
+	;objsubdecl 0, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;16		;EHZ Future Techno Stuff.
+	;objsubdecl 1, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;17		;EHZ Future Techno Stuff.
+	;objsubdecl 2, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;18		;EHZ Future Techno Stuff.
+	;objsubdecl 3, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;19		;EHZ Future Techno Stuff.
+	;objsubdecl 4, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,1), 4, 0		;1A		;EHZ Future Techno Bush cover
+	;objsubdecl 5, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,1), 4, 0		;1B		;EHZ Future Techno Bush cover 2
+	;objsubdecl 6, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;1C		;EHZ Future Techno Flower (low priority)
+	;objsubdecl 7, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,1), 4, 0		;1D		;EHZ Future Techno Flower (high priority)
+	;objsubdecl 8, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;1E		;EHZ Future Techno Smol Pipe Top
+	;objsubdecl 9, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;1F		;EHZ Future Techno Smol Pipe Bottom
+	;objsubdecl $A, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;20		;EHZ Future Techno Smol Pipe 10 long
+	;objsubdecl $B, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;21		;EHZ Future Techno Smol Pipe 9 long
+	;objsubdecl $C, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;22		;EHZ Future Techno Smol Pipe 8 long
+	;objsubdecl $D, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;23		;EHZ Future Techno Smol Pipe 7 long
+	;objsubdecl $E, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;24		;EHZ Future Techno Smol Pipe 6 long
+	;objsubdecl $F, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;25		;EHZ Future Techno Smol Pipe 5 long
+	;objsubdecl $10, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;26		;EHZ Future Techno Smol Pipe 4 long
+	;objsubdecl $11, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;27		;EHZ Future Techno Smol Pipe 3 long
+	;objsubdecl $12, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;28		;EHZ Future Techno Smol Pipe 2 long
+	;objsubdecl $13, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;29		;EHZ Future Techno Smol Pipe 1.5 long
+	;objsubdecl $14, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;2A		;EHZ Future Techno Smol Greebling combo 1
+	;objsubdecl $15, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;2B		;EHZ Future Techno Smol Greebling combo 2
+	;objsubdecl $16, Obj1C_MapUnc_EHZF_Greebling, make_art_tile(ArtTile_ArtNem_EHZ_Future_Greebling,0,0), 4, 7		;2C		;EHZ Future Techno Smol Greebling combo 3
+	;objsubdecl 0, Obj1C_MapUnc_MTZFG_Decor, make_art_tile(0,0,0), 32, 7		;2D		;MTZFG decor objects (grass pot)
+	;objsubdecl 1, Obj1C_MapUnc_MTZFG_Decor, make_art_tile(0,0,0), 32, 0		;2E		;MTZFG decor objects (grass pot high priority)
+	;objsubdecl 2, Obj1C_MapUnc_MTZFG_Decor, make_art_tile(0,0,0), 32+16, 7		;2F		;MTZFG decor objects (sprinkler)
+	;objsubdecl 3, Obj1C_MapUnc_MTZFG_Decor, make_art_tile(0,0,0), 32+16, 7		;30		;MTZFG decor objects (sprinkler ceiling)
+	;objsubdecl 4, Obj1C_MapUnc_MTZFG_Decor, make_art_tile(0,0,0), 16, 0		;31		;MTZFG decor objects (pipe segment)
+	;objsubdecl 5, Obj1C_MapUnc_MTZFG_Decor, make_art_tile(0,0,0), 16, 0		;32		;MTZFG decor objects (pipe segment)
+	;objsubdecl 6, Obj1C_MapUnc_MTZFG_Decor, make_art_tile(0,0,0), 16, 0		;33		;MTZFG decor objects (pipe segment)
+	;objsubdecl 7, Obj1C_MapUnc_MTZFG_Decor, make_art_tile(0,0,0), 16, 0		;34		;MTZFG decor objects (pipe segment)
+	;objsubdecl 8, Obj1C_MapUnc_MTZFG_Decor, make_art_tile(0,0,0), 16, 0		;35		;MTZFG decor objects (water spray)
+	;objsubdecl 9, Obj1C_MapUnc_MTZFG_Decor, make_art_tile(0,0,0), 16, 0		;36		;MTZFG decor objects (sprinkler 2)
+	;objsubdecl $A, Obj1C_MapUnc_MTZFG_Decor, make_art_tile(0,0,0), 16, 0		;37		;MTZFG decor objects (sprinkler 2 ceiling)
+	;objsubdecl $A, Obj1C_MapUnc_MTZFG_Decor, make_art_tile(0,0,0), 16, 0		;38		;MTZFG decor objects (sprinkler 2 ceiling)
+	;objsubdecl $D, Obj80_MapUnc_MTZ, make_art_tile(ArtTile_ArtNem_MtzChainLift,0,0), 48, 0		;39		;MTZ Chain Lift Base
+	;objsubdecl 1, Map_EHZTensionBridge,  make_art_tile(ArtTile_ArtNem_EHZ_Bridge,3,0), 4, 1		;3A     ;EHZ Bad Future Bridge
+	even
+
+; byte_1128E:
+Obj1C_Radii:
+	dc.b   0
+	dc.b   0	; 1
+	dc.b   0	; 2
+	dc.b   0	; 3
+	dc.b   0	; 4
+	dc.b   0	; 5
+	dc.b   0	; 6
+	dc.b   0	; 7
+	dc.b   0	; 8
+	dc.b   0	; 9
+	dc.b   0	; 10
+	dc.b   0	; 11
+	dc.b   0	; 12
+	dc.b $30	; 13
+	dc.b $40	; 14
+	dc.b $60	; 15
+	dc.b   0	; 16
+	dc.b   0	; 17
+	dc.b $30	; 18
+	dc.b $40	; 19
+	dc.b $50	; 20
+	dc.b   0	; 21	;$15
+	dc.b   0	; $16
+	dc.b   0	; $17
+	dc.b   0	; $18
+	dc.b   0	; $19
+	dc.b   0	; $1A
+	dc.b   0	; $1B
+	even
+; ===========================================================================
+; loc_112A4:
+Obj1C_Init:
+	;cmp.b    #emerald_hill_zone_f_bad,(Current_zone).w    ;are we in EHZFB?
+    ;bne.s    Obj1C_Init_SpawnNormally    ;if not, spawn normally
+    ;cmp.b    #2,subtype(a0)    ;are we the bridge post subtype (I think its' 2?)?
+    ;bne.s    Obj1C_Init_DeleteSelf    ;if not, delete self
+
+    ;move.b #$3A,subtype(a0)    ;use new bridge post for bad future
+    ;bra  Obj1C_Init_SpawnNormally
+;Obj1C_Init_DeleteSelf:
+    ;jmp    DeleteObject    ;despawn ourselves
+
+Obj1C_Init_SpawnNormally:
+	addq.b	#2,routine(a0)
+	moveq	#0,d0
+	move.b	subtype(a0),d0
+	move.w	d0,d1
+	lsl.w	#3,d0
+
+	lea	Obj1C_InitData_S1(pc),a1	;Load S1 data
+	BranchIfS1	Obj1C_Init_AfterLoadingData		;if sonic 1, use S1 data instead of S2 data
+
+	lea	Obj1C_InitData(pc),a1	;Load S2 data
+
+Obj1C_Init_AfterLoadingData:
+	lea	(a1,d0.w),a1
+	move.b	(a1),mapping_frame(a0)
+	move.l	(a1)+,mappings(a0)
+	move.w	(a1)+,art_tile(a0)
+	;bsr.w	Adjust2PArtPointer
+	ori.b	#4,render_flags(a0)
+	move.b	(a1)+,width_pixels(a0)
+	move.b	(a1)+,priority(a0)
+	lea	Obj1C_Radii(pc),a1
+	move.b	(a1,d1.w),d1
+	beq.s	BranchTo_MarkObjGone	; if the radius is zero, branch
+	move.b	d1,y_radius(a0)
+	bset	#4,render_flags(a0)
+
+BranchTo_MarkObjGone 
+	jmp	MarkObjGone
+
+;Mappings scatter throughout S2 used by Obj1C (ZoneDecor). Should be filled in as new zones and objects are implemented.
+Obj1C_MapUnc_11552:
+Obj1C_MapUnc_SLZCannon:
+Obj11_MapUnc_GHZ:
+Obj16_MapUnc_21F14:	;BINCLUDE "mappings/sprite/obj16.bin"
+Obj1C_MapUnc_113D6:
+Obj1C_MapUnc_113EE:
+
+Obj1C_MapUnc_11406
+Obj1C_MapUnc_114AE
