@@ -947,6 +947,9 @@ Obj9D_ThrowData:
 ; off_37D7E:
 Obj9D_SubObjData:
 	subObjData Obj9D_Obj98_MapUnc_37D96,make_art_tile(ArtTile_ArtNem_Coconuts,0,0),4,5,$C,9
+; off_37782:
+Obj9D_SubObjData2:
+	subObjData Obj9D_Obj98_MapUnc_37D96,make_art_tile(ArtTile_ArtNem_Coconuts,0,0),$84,4,8,$8B
 
 ; animation script
 ; off_37D88:
@@ -1299,9 +1302,6 @@ Obj9B_SubObjData:
 ; off_37B46:
 Obj9C_SubObjData:
 	;subObjData Obj9A_Obj98_MapUnc_37B62,make_art_tile(ArtTile_ArtNem_Turtloid,0,0),4,5,8,0
-; off_37782:
-Obj9D_SubObjData2:
-	subObjData Obj9D_Obj98_MapUnc_37D96,make_art_tile(ArtTile_ArtNem_Coconuts,0,0),$84,4,8,$8B
 ; off_37FE8:
 Obj9E_SubObjData:
 	;subObjData Obj9E_MapUnc_37FF2,make_art_tile(ArtTile_ArtNem_Crawlton,1,0),4,4,$80,$B
