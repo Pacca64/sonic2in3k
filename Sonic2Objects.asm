@@ -1788,7 +1788,7 @@ Obj_EHZBoss_Routine3 = objoff_48	;objoff_2C
 Obj_EHZBoss_State = objoff_47	;objoff_2D	;Seems to be only a byte? Could put at an odd position.
 Obj_EHZBoss_Wheel_y_pos = objoff_2E		;Seems to be fine here. I have not labeled them all x3
 Obj_EHZBoss_Parent		=	objoff_34	;^
-Obj_EHZBoss_DefeatTimer	=	objoff_3C	;^
+Obj_EHZBoss_DefeatTimer	=	objoff_44;objoff_3C	;Conflicts with routine_secondary in S3K!
 
 ; loc_2EF36:
 Obj56_Init:
@@ -2038,7 +2038,7 @@ loc_2F304:	; Obj56_VehicleMain_Sub4:
 ; ===========================================================================
 
 loc_2F336:	; Obj56_VehicleMain_Sub6:
-	subq.w	#1,objoff_3C(a0)	; timer set after defeat
+	subq.w	#1,Obj_EHZBoss_DefeatTimer(a0)	; timer set after defeat
 	bmi.s	loc_2F35C	; if countdown finished
 	bsr.w	Boss_LoadExplosion
 	jsr	(ObjectMoveAndFall).l
@@ -2053,7 +2053,7 @@ loc_2F336:	; Obj56_VehicleMain_Sub6:
 loc_2F35C:
 	clr.w	x_vel(a0)
 	addq.b	#2,routine_secondary(a0)
-	move.w	#-$26,objoff_3C(a0)
+	move.w	#-$26,Obj_EHZBoss_DefeatTimer(a0)
 	move.w	#$C,Obj_EHZBoss_Timer(a0)
 	bra.w	JmpTo35_DisplaySprite
 ; ===========================================================================
@@ -2203,7 +2203,7 @@ loc_2F4EE:	;	boss defeated
 	move.b	#6,routine_secondary(a0)
 	move.w	#0,x_vel(a0)
 	move.w	#-$180,y_vel(a0)
-	move.w	#$B3,objoff_3C(a0)	; timer
+	move.w	#$B3,Obj_EHZBoss_DefeatTimer(a0)	; timer
 	bset	#3,Obj_EHZBoss_State(a0)	; flag to separate spike from vehicle
 	movea.l	objoff_34(a0),a1 ; address top part
 	move.b	#4,anim(a1)	; flying off animation
