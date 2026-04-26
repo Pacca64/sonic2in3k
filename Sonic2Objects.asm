@@ -414,7 +414,7 @@ Pacca_TemporarySignpost:
     sub.w   d0,d1   ;get the difference
     tst.w   d1  ;is the difference 0?
     bmi.s   +   ;if positive (player is past our position), branch
-    rts ;return without despawning, gross x3
+    jmp	MarkObjGone3	;potentially despawn, but without drawing a sprite.
 
 +
     move.b	#1,(Restart_level_flag).w   ;restart level
