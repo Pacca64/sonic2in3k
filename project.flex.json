@@ -1,7 +1,7 @@
 {
     "Flex": 2,
     "name": "",
-    "node": "27c0ef4a-d68a-450c-829f-64268b262127",
+    "node": "ac3e9222-1d6d-4a10-bba9-47572a5a421d",
     "objects": [
         {
             "name": "S3K Global",
@@ -154,6 +154,66 @@
                         "label": ""
                     },
                     "uuid": "876f27c0-ef4a-468a-950c-029f64268b26"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Flicky",
+                    "palettes": [],
+                    "art": {
+                        "path": "",
+                        "compression": "Uncompressed",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "9e4967ac-3e92-421d-ad5a-107ba947572a"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "S3K subtitle card",
+                    "palettes": [],
+                    "art": {
+                        "path": "General\\Sprites\\Title Card\\Title Card S3K Zone.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Title Card\\Map - Title Card Subtitle Dummy.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "3e92221d-6d5a-407b-a947-572a5a421dd0"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "S&K subtitle card",
+                    "palettes": [],
+                    "art": {
+                        "path": "General\\Sprites\\Title Card\\Title Card SK Zone.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Title Card\\Map - Title Card Subtitle Dummy.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "4967ac3e-9222-4d6d-9a10-7ba947572a5a"
                 }
             ],
             "isDirectory": true,
@@ -266,6 +326,46 @@
                         "label": ""
                     },
                     "uuid": "36876f27-c0ef-4ad6-8a95-0c029f64268b"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "S2K subtitle card",
+                    "palettes": [],
+                    "art": {
+                        "path": "General\\Sprites\\Title Card\\Title Card S2K Zone.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Title Card\\Map - Title Card Subtitle Dummy.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "221d6d5a-107b-4947-972a-5a421dd072b6"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "S2 subtitle card",
+                    "palettes": [],
+                    "art": {
+                        "path": "General\\Sprites\\Title Card\\Title Card S2 Zone.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Title Card\\Map - Title Card Subtitle Dummy.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "ac3e9222-1d6d-4a10-bba9-47572a5a421d"
                 }
             ],
             "isDirectory": true,
