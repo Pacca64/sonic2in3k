@@ -1,7 +1,7 @@
 {
     "Flex": 2,
     "name": "",
-    "node": "6f27c0ef-4ad6-4a95-8c02-9f64268b2621",
+    "node": "27c0ef4a-d68a-450c-829f-64268b262127",
     "objects": [
         {
             "name": "S3K Global",
@@ -293,7 +293,27 @@
                         "path": "",
                         "label": ""
                     },
-                    "uuid": "6f27c0ef-4ad6-4a95-8c02-9f64268b2621"
+                    "uuid": "30bff9ad-1a09-4cd8-9e49-67ac3e92221d"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Title Card Helper",
+                    "palettes": [],
+                    "art": {
+                        "path": "Levels\\ICZ\\KosinskiM Art\\Title Card.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Title Card\\Map - Title Card Dummy.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "d68a950c-029f-4426-8b26-2127085d9a70"
                 },
                 {
                     "format": "Sonic 3&K Object.js",
@@ -449,11 +469,111 @@
                         "label": ""
                     },
                     "uuid": "a5c3cb5a-3687-4f27-80ef-4ad68a950c02"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Title Card",
+                    "palettes": [],
+                    "art": {
+                        "path": "LevelsS2\\EHZ\\KosinskiM Art\\Title Card.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Title Card\\Map - Title Card.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "27c0ef4a-d68a-450c-829f-64268b262127"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Title Card Helper",
+                    "palettes": [],
+                    "art": {
+                        "path": "LevelsS2\\EHZ\\KosinskiM Art\\Title Card.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Title Card\\Map - Title Card Dummy.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "c29d30bf-f9ad-4a09-9cd8-9e4967ac3e92"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Title Card Helper2",
+                    "palettes": [],
+                    "art": {
+                        "path": "LevelsS2\\EHZ\\KosinskiM Art\\Title Card.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Title Card\\Map - Title Card DummyEHZ.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "6f27c0ef-4ad6-4a95-8c02-9f64268b2621"
                 }
             ],
             "isDirectory": true,
             "expanded": true,
             "uuid": "e2e00d42-1bfb-4840-8f5e-f5b84ac371e0"
+        },
+        {
+            "format": "Sonic 3&K Object.js",
+            "name": "Title Card Ref",
+            "palettes": [],
+            "art": {
+                "path": "Levels\\HCZ\\KosinskiM Art\\Title Card.bin",
+                "compression": "Kosinski-M",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "",
+                "label": ""
+            },
+            "dplcs": {
+                "enabled": false,
+                "path": "",
+                "label": ""
+            },
+            "uuid": "573d8fc2-9d30-4ff9-ad1a-09dcd89e4967"
+        },
+        {
+            "format": "Sonic 3&K Object.js",
+            "name": "Title Card Ref2",
+            "palettes": [],
+            "art": {
+                "path": "General\\Sprites\\Title Card\\Title Card Red ACT.bin",
+                "compression": "Kosinski-M",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "",
+                "label": ""
+            },
+            "dplcs": {
+                "enabled": false,
+                "path": "",
+                "label": ""
+            },
+            "uuid": "0c029f64-268b-4621-a708-5d9a70a86939"
         }
     ]
 }
