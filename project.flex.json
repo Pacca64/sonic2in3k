@@ -1,7 +1,7 @@
 {
     "Flex": 2,
     "name": "",
-    "node": "6527c35e-65f5-4e32-a88c-689c9eb4e981",
+    "node": "81a621c1-222a-451d-89c8-30a5c1edacaa",
     "objects": [
         {
             "name": "Universal",
@@ -308,7 +308,7 @@
                 }
             ],
             "isDirectory": true,
-            "expanded": true,
+            "expanded": false,
             "uuid": "8c689c9e-b4e9-41a6-a1c1-222a051dc9c8"
         },
         {
@@ -635,7 +635,7 @@
                 }
             ],
             "isDirectory": true,
-            "expanded": true,
+            "expanded": false,
             "uuid": "1731c7e2-e00d-421b-bb08-40cf5ef5b84a"
         },
         {
@@ -937,7 +937,7 @@
                 }
             ],
             "isDirectory": true,
-            "expanded": true,
+            "expanded": false,
             "uuid": "31c7e2e0-0d42-4bfb-8840-cf5ef5b84ac3"
         },
         {
@@ -1005,7 +1005,7 @@
                 }
             ],
             "isDirectory": true,
-            "expanded": true,
+            "expanded": false,
             "uuid": "c7e2e00d-421b-4b08-80cf-5ef5b84ac371"
         },
         {
@@ -1157,6 +1157,66 @@
                         "label": ""
                     },
                     "uuid": "a5c3cb5a-3687-4f27-80ef-4ad68a950c02"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Boss Propellers",
+                    "palettes": [],
+                    "art": {
+                        "path": "LevelsS2\\EHZ\\Nemesis Art\\Boss Propellers.bin",
+                        "compression": "Uncompressed",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "LevelsS2\\EHZ\\Misc Object Data\\Map - Boss Propellers.bin",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "a621c122-2a05-4dc9-8830-a5c1edacaa27"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Boss Car ",
+                    "palettes": [],
+                    "art": {
+                        "path": "LevelsS2\\EHZ\\Nemesis Art\\Boss Drill Car.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "LevelsS2\\EHZ\\Misc Object Data\\Map - Boss Drill Car.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "21c1222a-051d-49c8-b0a5-c1edacaa273e"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "EHZ Boss 3",
+                    "palettes": [],
+                    "art": {
+                        "path": "General\\SpritesS2\\Eggman\\Ship.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "LevelsS2\\EHZ\\Misc Object Data\\Map - Boss Ship.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "81a621c1-222a-451d-89c8-30a5c1edacaa"
                 },
                 {
                     "format": "Sonic 3&K Object.js",

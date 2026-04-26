@@ -86,3 +86,14 @@ _tst	macro
 lea_ macro address,reg
 	!lea address(pc),reg
     endm
+
+; if addsubOptimize, optimize these
+addi_	macro
+		!addq.ATTRIBUTE ALLARGS
+	endm
+subi_	macro
+		!subq.ATTRIBUTE ALLARGS
+	endm
+adda_	macro
+		!addq.ATTRIBUTE ALLARGS
+	endm

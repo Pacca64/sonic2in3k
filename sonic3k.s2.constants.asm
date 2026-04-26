@@ -15,11 +15,17 @@ Normal_palette_line4 = Normal_palette_line_4
 MainCharacter = Player_1
 Sidekick = Player_1
 
+Vint_runcount = V_int_run_count
+
+Boss_defeated_flag = Boss_flag
+
+Camera_Max_X_pos = Camera_max_X_pos
+Camera_Min_X_pos = Camera_min_X_pos
+
 ;RAM addresses that need to be reestablished from S2
 MTZCylinder_Angle_Sonic = _unkEEF2  ;these *might* be unsafe.
 MTZCylinder_Angle_Tails = _unkEEF4  ;perhaps make sure these are initiliazed or something?
 
-Vint_runcount = V_int_run_count
 
 ;Object RAM
 
@@ -48,6 +54,11 @@ ArtTile_ArtNem_Buzzer                 = $0500
 ArtTile_ArtNem_Coconuts               = $0409
 ArtTile_ArtNem_Masher                 = $0520	;prevents conflicts with water graphics.
 ArtTile_ArtUnc_EHZMountains           = $0500
+
+; EHZ boss
+ArtTile_ArtNem_Eggpod_1               = $03A0
+ArtTile_ArtNem_EHZBoss                = $0400
+ArtTile_ArtNem_EggChoppers            = $056C
 
 ; GHZ
 ArtTile_ArtNem_GHZ_Bridge             = $038E
@@ -310,6 +321,10 @@ ArtTile_ArtNem_HPZOrb                 = $035A
 ArtTile_ArtNem_HPZ_Emerald            = $0392
 ArtTile_ArtNem_Unknown                = $03FA
 
+
+; PLCs
+PLCID_Capsule = $81
+
 ; ---------------------------------------------------------------------------
 ; Art tile stuff
 flip_x              =      (1<<11)
@@ -365,3 +380,13 @@ AniIDSonAni_Lying			= 32 ; $20
 AniIDSonAni_LieDown			= 33 ; $21
 
 
+;Equivalent Sound Effects
+MusID_StopSFX = cmd_StopSFX
+MusID_Stop = cmd_Stop
+
+SndID_BossHit = sfx_BossHit
+
+;Placeholder Sound Effects
+;These are BAD and should be fixed!
+;Ideally, the original sound effects should be ported to the sound driver to fix these.
+SndID_Helicopter = sfx_Flying

@@ -85,7 +85,7 @@
 		dc.l Delete_Current_Sprite				; 53
 		dc.l Delete_Current_Sprite				; 54
 		dc.l Delete_Current_Sprite				; 55
-		dc.l Delete_Current_Sprite				; 56
+		dc.l Delete_Current_Sprite				; 56	;Formerly EHZ boss. Now free!
 		dc.l Delete_Current_Sprite				; 57
 		dc.l Delete_Current_Sprite				; 58
 		dc.l Delete_Current_Sprite				; 59
