@@ -1,7 +1,7 @@
 {
     "Flex": 2,
     "name": "",
-    "node": "27c0ef4a-d68a-450c-829f-64268b262127",
+    "node": "db678583-168e-4e9b-a718-6527c35e65f5",
     "objects": [
         {
             "name": "S3K Global",
@@ -244,6 +244,106 @@
                         "label": ""
                     },
                     "uuid": "5a36876f-27c0-4f4a-968a-950c029f6426"
+                },
+                {
+                    "format": "Sonic 1.js",
+                    "name": "Sonic Life HUD",
+                    "palettes": [
+                        {
+                            "path": "Levels\\AIZ\\Palettes\\Main.bin",
+                            "length": 3
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\HUD Icon\\Sonic Life Icon.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "6a2218db-6785-4316-8e4e-9ba7186527c3"
+                },
+                {
+                    "format": "Sonic 1.js",
+                    "name": "Tails Life HUD",
+                    "palettes": [
+                        {
+                            "path": "Levels\\AIZ\\Palettes\\Main.bin",
+                            "length": 3
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\HUD Icon\\Tails Life Icon.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "2218db67-8583-468e-8e9b-a7186527c35e"
+                },
+                {
+                    "format": "Sonic 1.js",
+                    "name": "Knux Life HUD",
+                    "palettes": [
+                        {
+                            "path": "Levels\\AIZ\\Palettes\\Main.bin",
+                            "length": 3
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\HUD Icon\\Knuckles Life Icon.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "18db6785-8316-4e4e-9ba7-186527c35e65"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Lives Counter",
+                    "palettes": [
+                        {
+                            "path": "Levels\\AIZ\\Palettes\\Main.bin",
+                            "length": 3
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\HUD Icon\\Lives Digits.bin",
+                        "compression": "Uncompressed",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "67858316-8e4e-4ba7-9865-27c35e65f5be"
                 }
             ],
             "isDirectory": true,
@@ -446,6 +546,106 @@
                         "label": ""
                     },
                     "uuid": "107ba947-572a-4a42-9dd0-72b60da22bb3"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Sonic Life HUD",
+                    "palettes": [
+                        {
+                            "path": "LevelsS2\\EHZ\\Palettes\\Palette.bin",
+                            "length": 3
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\SpritesS2\\HUD Icon\\Sonic Life Icon.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "22b26a22-18db-4785-8316-8e4e9ba71865"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Tails Life HUD",
+                    "palettes": [
+                        {
+                            "path": "LevelsS2\\EHZ\\Palettes\\Palette.bin",
+                            "length": 3
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\SpritesS2\\HUD Icon\\Tails Life Icon.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "b26a2218-db67-4583-968e-4e9ba7186527"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Knux Life HUD",
+                    "palettes": [
+                        {
+                            "path": "LevelsS2\\EHZ\\Palettes\\Palette.bin",
+                            "length": 3
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\SpritesS2\\HUD Icon\\Knuckles Life Icon.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "3d216db5-016c-4290-8fdf-3bebdbf7d8c2"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Lives Counter",
+                    "palettes": [
+                        {
+                            "path": "LevelsS2\\EHZ\\Palettes\\Palette.bin",
+                            "length": 3
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\SpritesS2\\HUD Icon\\Lives Digits.bin",
+                        "compression": "Uncompressed",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "db678583-168e-4e9b-a718-6527c35e65f5"
                 }
             ],
             "isDirectory": true,
