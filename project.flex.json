@@ -1,7 +1,7 @@
 {
     "Flex": 2,
     "name": "",
-    "node": "81a621c1-222a-451d-89c8-30a5c1edacaa",
+    "node": "a621c122-2a05-4dc9-8830-a5c1edacaa27",
     "objects": [
         {
             "name": "Universal",
@@ -1161,7 +1161,12 @@
                 {
                     "format": "Sonic 3&K Object.js",
                     "name": "Boss Propellers",
-                    "palettes": [],
+                    "palettes": [
+                        {
+                            "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                            "length": 1
+                        }
+                    ],
                     "art": {
                         "path": "LevelsS2\\EHZ\\Nemesis Art\\Boss Propellers.bin",
                         "compression": "Nemesis",
