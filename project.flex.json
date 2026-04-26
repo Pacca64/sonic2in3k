@@ -1,8 +1,316 @@
 {
     "Flex": 2,
     "name": "",
-    "node": "db678583-168e-4e9b-a718-6527c35e65f5",
+    "node": "6527c35e-65f5-4e32-a88c-689c9eb4e981",
     "objects": [
+        {
+            "name": "Universal",
+            "children": [
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Rabbit",
+                    "palettes": [
+                        {
+                            "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\Animals\\Rabbit.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Animals\\Map - Animals 5.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "8e4e9ba7-1865-47c3-9e65-f5be32a88c68"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Chicken",
+                    "palettes": [
+                        {
+                            "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\Animals\\Chicken.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Animals\\Map - Animals 1.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "4e9ba718-6527-435e-a5f5-be32a88c689c"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Penguin",
+                    "palettes": [
+                        {
+                            "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\Animals\\Penguin.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Animals\\Map - Animals 5.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "9ba71865-27c3-4e65-b5be-32a88c689c9e"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Seal",
+                    "palettes": [
+                        {
+                            "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\Animals\\Seal.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Animals\\Map - Animals 4.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "a7186527-c35e-45f5-be32-a88c689c9eb4"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Pig",
+                    "palettes": [
+                        {
+                            "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\Animals\\Pig.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Animals\\Map - Animals 3.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "168e4e9b-a718-4527-835e-65f5be32a88c"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Flicky",
+                    "palettes": [
+                        {
+                            "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\Animals\\Blue Flicky.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Animals\\Map - Animals 1.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "83168e4e-9ba7-4865-a7c3-5e65f5be32a8"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Squirrel",
+                    "palettes": [
+                        {
+                            "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\Animals\\Squirrel.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Animals\\Map - Animals 2.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "186527c3-5e65-45be-b2a8-8c689c9eb4e9"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Eagle",
+                    "palettes": [
+                        {
+                            "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\Animals\\Eagle.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Animals\\Map - Animals 1.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "6527c35e-65f5-4e32-a88c-689c9eb4e981"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Mouse",
+                    "palettes": [
+                        {
+                            "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\Animals\\Mouse.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Animals\\Map - Animals 2.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "27c35e65-f5be-42a8-8c68-9c9eb4e981a6"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Monkey",
+                    "palettes": [
+                        {
+                            "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\Animals\\Beaver.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Animals\\Map - Animals 2.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "c35e65f5-be32-488c-a89c-9eb4e981a621"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Turtle",
+                    "palettes": [
+                        {
+                            "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\Animals\\Turtle.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Animals\\Map - Animals 2.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "5e65f5be-32a8-4c68-9c9e-b4e981a621c1"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Bear",
+                    "palettes": [
+                        {
+                            "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\Animals\\Bear.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\Sprites\\Animals\\Map - Animals 2.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "9e4967ac-3e92-421d-ad5a-107ba947572a"
+                }
+            ],
+            "isDirectory": true,
+            "expanded": true,
+            "uuid": "8c689c9e-b4e9-41a6-a1c1-222a051dc9c8"
+        },
         {
             "name": "S3K Global",
             "children": [
@@ -159,26 +467,6 @@
                         "label": ""
                     },
                     "uuid": "876f27c0-ef4a-468a-950c-029f64268b26"
-                },
-                {
-                    "format": "Sonic 3&K Object.js",
-                    "name": "Flicky",
-                    "palettes": [],
-                    "art": {
-                        "path": "",
-                        "compression": "Uncompressed",
-                        "offset": 0
-                    },
-                    "mappings": {
-                        "path": "",
-                        "label": ""
-                    },
-                    "dplcs": {
-                        "enabled": false,
-                        "path": "",
-                        "label": ""
-                    },
-                    "uuid": "9e4967ac-3e92-421d-ad5a-107ba947572a"
                 },
                 {
                     "format": "Sonic 3&K Object.js",
