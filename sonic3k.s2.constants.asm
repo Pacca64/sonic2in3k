@@ -62,7 +62,7 @@ ArtTile_ArtNem_Perfect                = $0540
 ArtTile_ArtNem_ResultsText            = $05B0
 ArtTile_ArtUnc_Signpost               = $05E8
 ArtTile_ArtNem_MiniCharacter          = $05F4
-ArtTile_ArtNem_Capsule                = $0680
+ArtTile_ArtNem_Capsule                = ArtTile_Monitors    ;$0680  ;moved due to conflict with player art!
 
 ;General VRAM for all levels
 ArtTile_ArtKos_LevelArt               = $0000
