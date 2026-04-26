@@ -2737,7 +2737,7 @@ loc_3F272:
 
 	;unfortunately, objoff_3c conflicts with routine_secondary in s3k.
 	;hotfix for that!
-	move.w	objoff_3C(a0),objoff_48(a0)
+	move.w	objoff_3C(a0),objoff_46(a0)
 	clr.w	objoff_3C(a0)
 
 	rts
@@ -2805,7 +2805,7 @@ loc_3F2FC:
 	subq.w	#8,d5
 	dbf	d6,-
 +
-	movea.w	objoff_48(a0),a2 ; a2=object	;changed to avoid conflict with routine_secondary.
+	movea.w	objoff_46(a0),a2 ; a2=object	;changed to avoid conflict with routine_secondary.
 	move.w	#$B4,anim_frame_duration(a2)
 	addq.b	#2,routine_secondary(a2)
 	addq.b	#2,routine_secondary(a0)
