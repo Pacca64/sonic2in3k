@@ -922,6 +922,7 @@ Obj9D_CreateCoconut:
 	jsr	(SingleObjLoad).l
 	bne.s	return_37D74		; branch, if no free slots
 	move.l	#Obj_ProjectileS2,code(a1) ; load obj98
+	move.b	#shield_reaction_bounce,shield_reaction(a1)	;Made projectiles bounce off shields for consistency.
 	move.b	#3,mapping_frame(a1)
 	move.b	#$20,subtype(a1) ; <== Obj9D_SubObjData2
 	move.w	x_pos(a0),x_pos(a1)	; align with parent object
