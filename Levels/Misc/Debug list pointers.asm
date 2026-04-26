@@ -47,4 +47,6 @@
 		dc.w Debug_Gumball_Special-DebugOffs
 		dc.w Debug_Gumball_Special-DebugOffs
 
-		dc.w Debug_EHZ-DebugOffs
+		dc.w Debug_EHZ-DebugOffs	;EHZ1
+		dc.w Debug_EHZ-DebugOffs	;EHZ2
+
