@@ -1956,6 +1956,7 @@ loc_2F098:
 ; ===========================================================================
 
 loc_2F262:	; Obj56_VehicleMain:
+	jsr		Add_SpriteToCollisionResponseList	;Collision only works if this is called every frame.
 	moveq	#0,d0
 	move.b	routine_secondary(a0),d0
 	move.w	off_2F270(pc,d0.w),d1
@@ -2466,6 +2467,7 @@ BranchTo_JmpTo36_MarkObjGone
 ; ===========================================================================
 
 loc_2F7F4:	; Obj56_Spike:
+	jsr		Add_SpriteToCollisionResponseList	;Collision only works if this is called every frame.
 	tst.b	routine_secondary(a0)
 	bne.s	loc_2F824
 ; Obj56_Spike_Sub0:
