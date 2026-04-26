@@ -1784,8 +1784,8 @@ Obj56_Index:	offsetTable
 ; objoff_3C(ax)	timer after defeat
 
 Obj_EHZBoss_Timer = objoff_32	;objoff_2A
-Obj_EHZBoss_Routine3 = objoff_31	;objoff_2C
-Obj_EHZBoss_State = objoff_36	;objoff_2D	;Seems to be only a byte? Could put at an odd position.
+Obj_EHZBoss_Routine3 = objoff_48	;objoff_2C
+Obj_EHZBoss_State = objoff_47	;objoff_2D	;Seems to be only a byte? Could put at an odd position.
 Obj_EHZBoss_Wheel_y_pos = objoff_2E		;Seems to be fine here. I have not labeled them all x3
 Obj_EHZBoss_Parent		=	objoff_34	;^
 Obj_EHZBoss_DefeatTimer	=	objoff_3C	;^
