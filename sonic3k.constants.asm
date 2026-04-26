@@ -727,7 +727,13 @@ _unkF712			ds.b $1C		; ??? ; unknown object respawn table
 AIZ1_palette_cycle_flag		ds.b 1			; selects which palette cycles are used in AIZ1
 			ds.b 1				; unused
 Water_flag			ds.b 1
-			ds.b $D				; unused
+			ds.b	1	;unused
+			ds.b	2	;unused, Demo_button_index_2P in Sonic 2
+			ds.b	2	;unused, Demo_press_counter_2P
+			ds.b	2	;unused, Tornado_Velocity_X in Sonic 2
+			ds.b	2	;unused, Tornado_Velocity_Y in Sonic 2
+ScreenShift:		ds.b	1	;ScreenShift in Sonic 2
+			ds.b $D-1-2-2-4-1				; unused
 Flying_carrying_Sonic_flag	ds.b 1			; set when Tails carries Sonic in a Sonic and Tails game
 Flying_picking_Sonic_timer	ds.b 1			; until this is 0 Tails can't pick Sonic up
 _unkF740			ds.w 1
@@ -767,7 +773,9 @@ Pal_fade_delay			ds.w 1			; timer for palette fade routines
 Collision_addr			ds.l 1			; points to the primary or secondary collision data as appropriate
 			ds.b $10			; unused
 Boss_flag			ds.b 1			; set if a boss fight is going on
-			ds.b 5				; unused
+			ds.b	2	;unused
+Current_Boss_ID:		ds.b	1	;Current_Boss_ID in Sonic 2
+			ds.b 5-3				; unused
 _unkF7B0			ds.b 4
 
 Primary_collision_addr		ds.l 1

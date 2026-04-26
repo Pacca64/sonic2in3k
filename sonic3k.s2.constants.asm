@@ -21,6 +21,15 @@ Boss_defeated_flag = Boss_flag
 
 Camera_Max_X_pos = Camera_max_X_pos
 Camera_Min_X_pos = Camera_min_X_pos
+Camera_Max_Y_pos = Camera_max_Y_pos
+Camera_Min_Y_pos = Camera_min_Y_pos
+
+Dynamic_Resize_Routine = Dynamic_resize_routine
+
+Tails_Min_X_pos = Camera_min_X_pos_P2
+Tails_Max_X_pos = Camera_max_X_pos_P2
+Tails_Min_Y_pos = Camera_min_Y_pos_P2
+Tails_Max_Y_pos = Camera_max_Y_pos_P2
 
 ;RAM addresses that need to be reestablished from S2
 MTZCylinder_Angle_Sonic = _unkEEF2  ;these *might* be unsafe.
@@ -36,6 +45,9 @@ flip_turned = flip_type
 
 
 ;VRAM CONSTANTS
+
+; Common tiles for all bosses.
+ArtTile_ArtNem_FieryExplosion         = $0580
 
 ;General VRAM for all levels
 ArtTile_ArtKos_LevelArt               = $0000
@@ -324,6 +336,7 @@ ArtTile_ArtNem_Unknown                = $03FA
 
 ; PLCs
 PLCID_Capsule = $81
+PLCID_EhzBoss = $83
 
 ; ---------------------------------------------------------------------------
 ; Art tile stuff
@@ -383,6 +396,7 @@ AniIDSonAni_LieDown			= 33 ; $21
 ;Equivalent Sound Effects
 MusID_StopSFX = cmd_StopSFX
 MusID_Stop = cmd_Stop
+MusID_FadeOut = cmd_FadeOut
 
 SndID_BossHit = sfx_BossHit
 
@@ -390,3 +404,4 @@ SndID_BossHit = sfx_BossHit
 ;These are BAD and should be fixed!
 ;Ideally, the original sound effects should be ported to the sound driver to fix these.
 SndID_Helicopter = sfx_Flying
+MusID_Boss  =   mus_EndBoss
