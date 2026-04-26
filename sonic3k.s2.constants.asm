@@ -31,6 +31,9 @@ Tails_Max_X_pos = Camera_max_X_pos_P2
 Tails_Min_Y_pos = Camera_min_Y_pos_P2
 Tails_Max_Y_pos = Camera_max_Y_pos_P2
 
+Dynamic_Object_RAM = Dynamic_object_RAM
+Dynamic_Object_RAM_End = Dynamic_object_RAM_end
+
 ;RAM addresses that need to be reestablished from S2
 MTZCylinder_Angle_Sonic = _unkEEF2  ;these *might* be unsafe.
 MTZCylinder_Angle_Tails = _unkEEF4  ;perhaps make sure these are initiliazed or something?
@@ -42,12 +45,24 @@ MTZCylinder_Angle_Tails = _unkEEF4  ;perhaps make sure these are initiliazed or 
 obj_control = object_control
 inertia = ground_vel
 flip_turned = flip_type
+anim_frame_duration = anim_frame_timer
+next_anim = prev_anim
+
 
 
 ;VRAM CONSTANTS
 
 ; Common tiles for all bosses.
 ArtTile_ArtNem_FieryExplosion         = $0580
+
+; End of level.
+ArtTile_ArtNem_Signpost               = $0434
+ArtTile_HUD_Bonus_Score               = $0520
+ArtTile_ArtNem_Perfect                = $0540
+ArtTile_ArtNem_ResultsText            = $05B0
+ArtTile_ArtUnc_Signpost               = $05E8
+ArtTile_ArtNem_MiniCharacter          = $05F4
+ArtTile_ArtNem_Capsule                = $0680
 
 ;General VRAM for all levels
 ArtTile_ArtKos_LevelArt               = $0000

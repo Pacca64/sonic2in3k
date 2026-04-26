@@ -24,3 +24,5 @@
 	dbglistobj Obj_Buzzer, Obj4B_MapUnc_2D2EA,   0,   0, make_art_tile(ArtTile_ArtNem_Buzzer,0,0)
 	dbglistobj Obj_Masher, Obj5C_MapUnc_2D442,   0,   0, make_art_tile(ArtTile_ArtNem_Masher,0,0)
 	dbglistobj Obj_Coconuts, Obj9D_Obj98_MapUnc_37D96, $1E,   0, make_art_tile(ArtTile_ArtNem_Coconuts,0,0)
+
+	dbglistobj Obj_S2_AnimalCapsule, Obj3E_MapUnc_3F436, 0,   0, make_art_tile(ArtTile_ArtNem_Capsule,1,0)

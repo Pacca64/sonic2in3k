@@ -61,7 +61,7 @@
 		dc.l Delete_Current_Sprite				; 3B
 		dc.l Delete_Current_Sprite				; 3C
 		dc.l Delete_Current_Sprite				; 3D
-		dc.l Delete_Current_Sprite				; 3E
+		dc.l Obj_S2_AnimalCapsule				; 3E
 		dc.l Delete_Current_Sprite				; 3F
 		dc.l Delete_Current_Sprite				; 40
 		dc.l Obj_Spring							; 41

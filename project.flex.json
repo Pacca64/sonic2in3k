@@ -1,7 +1,7 @@
 {
     "Flex": 2,
     "name": "",
-    "node": "a621c122-2a05-4dc9-8830-a5c1edacaa27",
+    "node": "a5c1edac-aa27-4e77-b6f1-d112b890b797",
     "objects": [
         {
             "name": "Universal",
@@ -934,10 +934,30 @@
                         "label": ""
                     },
                     "uuid": "db678583-168e-4e9b-a718-6527c35e65f5"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Animal Capsule",
+                    "palettes": [],
+                    "art": {
+                        "path": "General\\SpritesS2\\Animal Capsule\\art.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\SpritesS2\\Animal Capsule\\mappings.bin",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "a5c1edac-aa27-4e77-b6f1-d112b890b797"
                 }
             ],
             "isDirectory": true,
-            "expanded": false,
+            "expanded": true,
             "uuid": "31c7e2e0-0d42-4bfb-8840-cf5ef5b84ac3"
         },
         {
