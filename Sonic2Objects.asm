@@ -1134,7 +1134,7 @@ Obj_GetOrientationToPlayer:
 ; ---------------------------------------------------------------------------
 ; LoadSubObject
 ; loads information from a sub-object into this object a0
-; I'm personally not found of this system, but porting it is a lot easier then dismantling it x3
+; I'm personally not fond of this system, but porting it is a lot easier then dismantling it x3
 ; ---------------------------------------------------------------------------
 
 ; ||||||||||||||| S U B R O U T I N E |||||||||||||||||||||||||||||||||||||||
@@ -1666,3 +1666,80 @@ Obj1C_MapUnc_113EE:
 
 Obj1C_MapUnc_11406
 Obj1C_MapUnc_114AE
+
+; ===========================================================================
+; ----------------------------------------------------------------------------
+; Object 49 - Waterfall from EHZ
+; ----------------------------------------------------------------------------
+; Sprite_20B9E:
+Obj_EHZ_Waterfall:
+Obj49:
+	moveq	#0,d0
+	move.b	routine(a0),d0
+	move.w	Obj49_Index(pc,d0.w),d1
+	jmp	Obj49_Index(pc,d1.w)
+; ===========================================================================
+; off_20BAC:
+Obj49_Index:	offsetTable
+		offsetTableEntry.w Obj49_Init	; 0
+		offsetTableEntry.w Obj49_ChkDel	; 2
+; ===========================================================================
+; loc_20BB0: Obj49_Main:
+Obj49_Init:
+	addq.b	#2,routine(a0)
+	move.l	#Obj49_MapUnc_20C50,mappings(a0)
+	move.w	#make_art_tile(ArtTile_ArtNem_Waterfall,1,0),art_tile(a0)
+	;jsrto	(Adjust2PArtPointer).l, JmpTo12_Adjust2PArtPointer
+	move.b	#4,render_flags(a0)		;render in world space
+	move.b	#$20,width_pixels(a0)
+	move.w	x_pos(a0),objoff_30(a0)	;backup spawn x pos (but we never move??? And it's never referenced)
+	move.b	#0*$80,priority(a0)		;high priority
+	move.b	#$80,y_radius(a0)		;tall
+	bset	#4,render_flags(a0)	;render in world space... again?
+; loc_20BEA:
+Obj49_ChkDel:
+	;tst.w	(Two_player_mode).w
+	;bne.s	+
+	;sonic 1 era despawn code, gross
+	;move.w	x_pos(a0),d0
+	;andi.w	#$FF80,d0
+	;sub.w	(Camera_X_pos_coarse).w,d0
+	;cmpi.w	#$280,d0
+	;bhi.w	JmpTo18_DeleteObject
+	jsr	MarkObjGone3	;needed for S3K compat
+;+
+	move.w	x_pos(a0),d1		;get x pos in d1
+	move.w	d1,d2				;save to d2
+	subi.w	#$40,d1				;subtract $40 from x pos
+	addi.w	#$40,d2				;add $40 to other x pos (so left and right edges?)
+	move.b	subtype(a0),d3		;get subtype in d3
+	move.b	#0,mapping_frame(a0)	;clear mapping frame (0 is upper waterfall edge/lip)
+	move.w	(MainCharacter+x_pos).w,d0	;get player x pos in d0
+	cmp.w	d1,d0				;is player x pos equal to left edge x pos?
+	blo.s	loc_20C36			;if less, branch
+	cmp.w	d2,d0				;is player x pos equal to right edge x pos?
+	bhs.s	loc_20C36			;if higher, branch
+	move.b	#1,mapping_frame(a0)	;use frame 1 instead of 0
+	add.b	d3,mapping_frame(a0)	;add subtype as frame offset
+	jmp	(DisplaySprite).l
+; ===========================================================================
+
+;if player 1 is not in bounds, check for player 2 instead.
+loc_20C36:
+	move.w	(Sidekick+x_pos).w,d0	;get player 2 x pos
+
+	;pretty much the same bounds check as before
+	cmp.w	d1,d0
+	blo.s	Obj49_Display
+	cmp.w	d2,d0
+	bhs.s	Obj49_Display
+	move.b	#1,mapping_frame(a0)
+; loc_20C48:
+Obj49_Display:
+	add.b	d3,mapping_frame(a0)
+	jmp	(DisplaySprite).l
+; ===========================================================================
+; -------------------------------------------------------------------------------
+; sprite mappings
+; -------------------------------------------------------------------------------
+Obj49_MapUnc_20C50:	INCLUDE "LevelsS2\EHZ\Misc Object Data\Map - Waterfall.asm"

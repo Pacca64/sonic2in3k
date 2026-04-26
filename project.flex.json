@@ -1,7 +1,7 @@
 {
     "Flex": 2,
     "name": "",
-    "node": "107ba947-572a-4a42-9dd0-72b60da22bb3",
+    "node": "7ba94757-2a5a-421d-9072-b60da22bb36e",
     "objects": [
         {
             "name": "S3K Global",
@@ -523,6 +523,26 @@
         {
             "name": "EHZ",
             "children": [
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Waterfall Overlays",
+                    "palettes": [],
+                    "art": {
+                        "path": "LevelsS2\\EHZ\\Nemesis Art\\Waterfall tiles.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "LevelsS2\\EHZ\\Misc Object Data\\Map - Waterfall.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "7ba94757-2a5a-421d-9072-b60da22bb36e"
+                },
                 {
                     "format": "Sonic 3&K Object.js",
                     "name": "Buzzer S2",

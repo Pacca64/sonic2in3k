@@ -72,7 +72,7 @@
 		dc.l Delete_Current_Sprite				; 46
 		dc.l Delete_Current_Sprite				; 47
 		dc.l Delete_Current_Sprite				; 48
-		dc.l Delete_Current_Sprite				; 49
+		dc.l Obj_EHZ_Waterfall					; 49
 		dc.l Delete_Current_Sprite				; 4A
 		dc.l Obj_Buzzer							; 4B
 		dc.l Delete_Current_Sprite				; 4C
