@@ -417,10 +417,15 @@ Pacca_TemporarySignpost:
     jmp	MarkObjGone3	;potentially despawn, but without drawing a sprite.
 
 +
-    move.b	#1,(Restart_level_flag).w   ;restart level
-    add.b   #1,(Current_act).w  ;go to act 2 (lol)
-    move.b  (Current_act).w,(Apparent_act).w    ;^ for apparent act
-    clr.b   (Last_star_post_hit).w  ;clear checkpoints.
+    ;move.b	#1,(Restart_level_flag).w   ;restart level
+    ;add.b   #1,(Current_act).w  ;go to act 2 (lol)
+    ;move.b  (Current_act).w,(Apparent_act).w    ;^ for apparent act
+    ;clr.b   (Last_star_post_hit).w  ;clear checkpoints.
+	jsr	Obj_EndSignResults
+	cmp.b	#8,routine(a0)	;did we spawn level results object?
+	bne.s	+	;if not, rts
+	jmp	DeleteObject	;delete self once results are spawned.
++
     rts
 
 ; ===========================================================================
