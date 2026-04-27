@@ -489,6 +489,7 @@ Obj4B_Init:
 	jsr		Add_SpriteToCollisionResponseList	;Collision only works if this is called. Thankfully only needs to be called once at init.
 	move.w	#4*$80,priority(a0)
 	move.b	#$10,width_pixels(a0)
+	move.b	#$20,height_pixels(a0)	;a new value! S2 made assumptions here, but S3K does not. If not set, objects visibly pop in/out at upper and lower bounds of screen.
 	move.b	#$10,y_radius(a0)
 	move.b	#$18,x_radius(a0)
 	move.w	#3*$80,priority(a0)
@@ -505,6 +506,7 @@ Obj4B_Init:
 	;jsrto	(Adjust2PArtPointer2).l, JmpTo7_Adjust2PArtPointer2
 	move.w	#4*$80,priority(a1)
 	move.b	#$10,width_pixels(a1)
+	move.b	#$20,height_pixels(a1)	;a new value! S2 made assumptions here, but S3K does not. If not set, objects visibly pop in/out at upper and lower bounds of screen.
 	move.b	status(a0),status(a1)
 	move.b	render_flags(a0),render_flags(a1)
 	move.b	#1,anim(a1)
@@ -636,6 +638,7 @@ Obj4B_ShootProjectile:
 	move.b	#$98,collision_flags(a1)
 	move.b	#shield_reaction_bounce,shield_reaction(a1)	;Made projectiles bounce off shields for consistency.
 	move.b	#$10,width_pixels(a1)
+	move.b	#$20,height_pixels(a1)	;a new value! S2 made assumptions here, but S3K does not. If not set, objects visibly pop in/out at upper and lower bounds of screen.
 	move.b	status(a0),status(a1)
 	move.b	render_flags(a0),render_flags(a1)
 	move.b	#2,anim(a1)
@@ -701,6 +704,7 @@ Obj5C_Init:
 	move.w	#4*$80,priority(a0)
 	move.b	#9,collision_flags(a0)
 	move.b	#$10,width_pixels(a0)
+	move.b	#$20,height_pixels(a0)	;a new value! S2 made assumptions here, but S3K does not. If not set, objects visibly pop in/out at upper and lower bounds of screen.
 	move.w	y_pos(a0),Obj5C_initial_y_pos(a0)	; set initial (and lowest) y position
 
 	move.w	#-$700,y_vel(a0) ; set vertical speed
@@ -1162,6 +1166,7 @@ LoadSubObject_Part3:
 	move.w	d0,priority(a0)	;Load converted priority word.
 
 	move.b	(a1)+,width_pixels(a0)
+	move.b	#$40,height_pixels(a0)	;To play things safe, we used a ridiculously large default value here.
 	move.b	(a1),collision_flags(a0)
 	addq.b	#2,routine(a0)
 	rts
@@ -1647,6 +1652,7 @@ Obj1C_Init_AfterLoadingData:
 	;bsr.w	Adjust2PArtPointer
 	ori.b	#4,render_flags(a0)
 	move.b	(a1)+,width_pixels(a0)
+	move.b	#$40,height_pixels(a0)	;a new value! S2 made assumptions here, but S3K does not. If not set, objects visibly pop in/out at upper and lower bounds of screen.
 	move.b	(a1)+,priority(a0)
 	lea	Obj1C_Radii(pc),a1
 	move.b	(a1,d1.w),d1
@@ -1693,6 +1699,7 @@ Obj49_Init:
 	;jsr	(Adjust2PArtPointer).l
 	move.b	#4,render_flags(a0)		;render in world space
 	move.b	#$20,width_pixels(a0)
+	move.b	#$7F,height_pixels(a0)	;a new value! S2 made assumptions here, but S3K does not. If not set, objects visibly pop in/out at upper and lower bounds of screen.
 	move.w	x_pos(a0),objoff_30(a0)	;backup spawn x pos (but we never move??? And it's never referenced)
 	move.b	#0*$80,priority(a0)		;high priority
 	move.b	#$80,y_radius(a0)		;tall
@@ -1800,6 +1807,7 @@ Obj56_Init:
 	move.w	#$29D0,x_pos(a0)
 	move.w	#$426,y_pos(a0)
 	move.b	#$20,width_pixels(a0)
+	move.b	#$40,height_pixels(a0)	;a new value! S2 made assumptions here, but S3K does not. If not set, objects visibly pop in/out at upper and lower bounds of screen.
 	move.b	#$14,y_radius(a0)
 	move.w	#4*$80,priority(a0)
 	move.b	#$F,collision_flags(a0)
@@ -1818,6 +1826,7 @@ Obj56_Init:
 	move.w	#make_art_tile(ArtTile_ArtNem_Eggpod_1,0,0),art_tile(a1)
 	move.b	#4,render_flags(a1)
 	move.b	#$20,width_pixels(a1)
+	move.b	#$40,height_pixels(a1)	;a new value! S2 made assumptions here, but S3K does not. If not set, objects visibly pop in/out at upper and lower bounds of screen.
 	move.w	#4*$80,priority(a1)
 	move.l	x_pos(a0),x_pos(a1)
 	move.l	y_pos(a0),y_pos(a1)
@@ -1835,6 +1844,7 @@ Obj56_Init:
 	;jsr	(Adjust2PArtPointer2).l
 	move.b	#4,render_flags(a1)
 	move.b	#$30,width_pixels(a1)
+	move.b	#$40,height_pixels(a1)	;a new value! S2 made assumptions here, but S3K does not. If not set, objects visibly pop in/out at upper and lower bounds of screen.
 	move.b	#$10,y_radius(a1)
 	move.w	#3*$80,priority(a1)
 	move.w	#$2AF0,x_pos(a1)
@@ -1855,6 +1865,7 @@ Obj56_Init:
 	;jsr	(Adjust2PArtPointer2).l
 	move.b	#4,render_flags(a1)
 	move.b	#$40,width_pixels(a1)
+	move.b	#$40,height_pixels(a1)	;a new value! S2 made assumptions here, but S3K does not. If not set, objects visibly pop in/out at upper and lower bounds of screen.
 	move.w	#3*$80,priority(a1)
 	move.l	x_pos(a0),x_pos(a1)
 	move.l	y_pos(a0),y_pos(a1)
@@ -1875,6 +1886,7 @@ loc_2F098:
 	;jsr	(Adjust2PArtPointer2).l
 	move.b	#4,render_flags(a1)
 	move.b	#$10,width_pixels(a1)
+	move.b	#$40,height_pixels(a1)	;a new value! S2 made assumptions here, but S3K does not. If not set, objects visibly pop in/out at upper and lower bounds of screen.
 	move.w	#2*$80,priority(a1)
 	move.b	#$10,y_radius(a1)
 	move.b	#$10,x_radius(a1)
@@ -1898,6 +1910,7 @@ loc_2F098:
 	;jsr	(Adjust2PArtPointer2).l
 	move.b	#4,render_flags(a1)
 	move.b	#$10,width_pixels(a1)
+	move.b	#$40,height_pixels(a1)	;a new value! S2 made assumptions here, but S3K does not. If not set, objects visibly pop in/out at upper and lower bounds of screen.
 	move.w	#2*$80,priority(a1)
 	move.b	#$10,y_radius(a1)
 	move.b	#$10,x_radius(a1)
@@ -1921,6 +1934,7 @@ loc_2F098:
 	;jsr	(Adjust2PArtPointer2).l
 	move.b	#4,render_flags(a1)
 	move.b	#$10,width_pixels(a1)
+	move.b	#$40,height_pixels(a1)	;a new value! S2 made assumptions here, but S3K does not. If not set, objects visibly pop in/out at upper and lower bounds of screen.
 	move.w	#3*$80,priority(a1)
 	move.b	#$10,y_radius(a1)
 	move.b	#$10,x_radius(a1)
@@ -1944,6 +1958,7 @@ loc_2F098:
 	;jsr	(Adjust2PArtPointer2).l
 	move.b	#4,render_flags(a1)
 	move.b	#$20,width_pixels(a1)
+	move.b	#$40,height_pixels(a1)	;a new value! S2 made assumptions here, but S3K does not. If not set, objects visibly pop in/out at upper and lower bounds of screen.
 	move.w	#2*$80,priority(a1)
 	move.w	#$2AF0,x_pos(a1)
 	move.l	y_pos(a0),y_pos(a1)
@@ -2093,6 +2108,7 @@ loc_2F3A2:	; Obj56_VehicleMain_SubA_0:
 	;jsr	(Adjust2PArtPointer2).l
 	move.b	#4,render_flags(a1)
 	move.b	#$20,width_pixels(a1)
+	move.b	#$40,height_pixels(a1)	;a new value! S2 made assumptions here, but S3K does not. If not set, objects visibly pop in/out at upper and lower bounds of screen.
 	move.w	#3*$80,priority(a1)
 	move.l	x_pos(a0),x_pos(a1)
 	move.l	y_pos(a0),y_pos(a1)
@@ -2728,6 +2744,7 @@ loc_3F228:
 	move.w	y_pos(a1),objoff_30(a1)
 	move.b	(a2)+,routine(a1)
 	move.b	(a2)+,width_pixels(a1)
+	move.b	#$40,height_pixels(a1)	;a new value! S2 made assumptions here, but S3K does not. If not set, objects visibly pop in/out at upper and lower bounds of screen.
 	move.b	(a2)+,d0	;get S2 format priority in d0
 	lsl.w	#7,d0	;convert to an S3K compatible priority value (multiply by $80)
 	move.w	d0,priority(a1)	;write final priority word to new object.
