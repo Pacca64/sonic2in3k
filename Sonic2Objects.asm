@@ -419,6 +419,7 @@ Pacca_TemporarySignpost:
     jmp	MarkObjGone3	;potentially despawn, but without drawing a sprite.
 
 +
+	move.w	(Camera_Max_X_pos).w,(Camera_Min_X_pos).w	; lock screen, might help with act transition jank.
 	jsr	Obj_EndSignResults
 	cmp.b	#8,routine(a0)	;did we spawn level results object?
 	bne.s	+	;if not, rts
