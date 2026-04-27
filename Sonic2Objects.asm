@@ -1805,7 +1805,7 @@ Obj56_Init:
 	move.w	#make_art_tile(ArtTile_ArtNem_Eggpod_1,1,0),art_tile(a0) ; vehicle with ability to fly, bottom part
 	ori.b	#4,render_flags(a0)
 	move.b	#$81,subtype(a0) 
-	move.w	#$29D0,x_pos(a0)
+	move.w	#$29D0+EHZ2_ActTransition_X_Offset,x_pos(a0)
 	move.w	#$426,y_pos(a0)
 	move.b	#$20,width_pixels(a0)
 	move.b	#$40,height_pixels(a0)	;a new value! S2 made assumptions here, but S3K does not. If not set, objects visibly pop in/out at upper and lower bounds of screen.
@@ -1848,13 +1848,13 @@ Obj56_Init:
 	move.b	#$40,height_pixels(a1)	;a new value! S2 made assumptions here, but S3K does not. If not set, objects visibly pop in/out at upper and lower bounds of screen.
 	move.b	#$10,y_radius(a1)
 	move.w	#3*$80,priority(a1)
-	move.w	#$2AF0,x_pos(a1)
+	move.w	#$2AF0+EHZ2_ActTransition_X_Offset,x_pos(a1)
 	move.l	y_pos(a0),y_pos(a1)
 	move.b	#6,routine(a1)
 +
 	bsr.w	loc_2F098
 	subi_.w	#8,objoff_38(a0)
-	move.w	#$2AF0,x_pos(a0)
+	move.w	#$2AF0+EHZ2_ActTransition_X_Offset,x_pos(a0)
 	move.w	#$2F8,y_pos(a0)
 	jsr	(SingleObjLoad2).l	; propeller normal
 	bne.s	+	; rts
@@ -1891,7 +1891,7 @@ loc_2F098:
 	move.w	#2*$80,priority(a1)
 	move.b	#$10,y_radius(a1)
 	move.b	#$10,x_radius(a1)
-	move.w	#$2AF0,x_pos(a1)
+	move.w	#$2AF0+EHZ2_ActTransition_X_Offset,x_pos(a1)
 	move.l	y_pos(a0),y_pos(a1)
 	addi.w	#$1C,x_pos(a1)
 	addi.w	#$C,y_pos(a1)
@@ -1915,7 +1915,7 @@ loc_2F098:
 	move.w	#2*$80,priority(a1)
 	move.b	#$10,y_radius(a1)
 	move.b	#$10,x_radius(a1)
-	move.w	#$2AF0,x_pos(a1)
+	move.w	#$2AF0+EHZ2_ActTransition_X_Offset,x_pos(a1)
 	move.l	y_pos(a0),y_pos(a1)
 	addi.w	#-$C,x_pos(a1)
 	addi.w	#$C,y_pos(a1)
@@ -1939,7 +1939,7 @@ loc_2F098:
 	move.w	#3*$80,priority(a1)
 	move.b	#$10,y_radius(a1)
 	move.b	#$10,x_radius(a1)
-	move.w	#$2AF0,x_pos(a1)
+	move.w	#$2AF0+EHZ2_ActTransition_X_Offset,x_pos(a1)
 	move.l	y_pos(a0),y_pos(a1)
 	addi.w	#-$2C,x_pos(a1)
 	addi.w	#$C,y_pos(a1)
@@ -1961,7 +1961,7 @@ loc_2F098:
 	move.b	#$20,width_pixels(a1)
 	move.b	#$40,height_pixels(a1)	;a new value! S2 made assumptions here, but S3K does not. If not set, objects visibly pop in/out at upper and lower bounds of screen.
 	move.w	#2*$80,priority(a1)
-	move.w	#$2AF0,x_pos(a1)
+	move.w	#$2AF0+EHZ2_ActTransition_X_Offset,x_pos(a1)
 	move.l	y_pos(a0),y_pos(a1)
 	addi.w	#-$36,x_pos(a1)
 	addi_.w	#8,y_pos(a1)
@@ -1990,7 +1990,7 @@ off_2F270:	offsetTable
 
 loc_2F27C:	; Obj56_VehicleMain_Sub0:
 	move.b	#0,collision_flags(a0)
-	cmpi.w	#$29D0,x_pos(a0)	; reached the point to unite with bottom vehicle?
+	cmpi.w	#$29D0+EHZ2_ActTransition_X_Offset,x_pos(a0)	; reached the point to unite with bottom vehicle?
 	ble.s	loc_2F29A
 	subi_.w	#1,x_pos(a0)
 	addi_.w	#1,y_pos(a0)	; move diagonally down
@@ -1998,7 +1998,7 @@ loc_2F27C:	; Obj56_VehicleMain_Sub0:
 ; ---------------------------------------------------------------------------
 
 loc_2F29A:
-	move.w	#$29D0,x_pos(a0)
+	move.w	#$29D0+EHZ2_ActTransition_X_Offset,x_pos(a0)
 	addq.b	#2,routine_secondary(a0)	; next routine
 	bra.w	JmpTo35_DisplaySprite
 ; ===========================================================================
@@ -2151,7 +2151,7 @@ loc_2F45C:
 	subq.w	#1,y_pos(a0)
 
 loc_2F460:
-	cmpi.w	#$2AB0,(Camera_Max_X_pos).w
+	cmpi.w	#$2AB0+EHZ2_ActTransition_X_Offset,(Camera_Max_X_pos).w
 	bhs.s	loc_2F46E
 	addq.w	#2,(Camera_Max_X_pos).w
 	bra.s	return_2F482
@@ -2172,9 +2172,9 @@ return_2F482:
 
 loc_2F484:	; shared routine, checks positions and sets direction
 	move.w	x_pos(a0),d0
-	cmpi.w	#$28A0,d0	; beyond left boundary?
+	cmpi.w	#$28A0+EHZ2_ActTransition_X_Offset,d0	; beyond left boundary?
 	ble.s	loc_2F494
-	cmpi.w	#$2B08,d0
+	cmpi.w	#$2B08+EHZ2_ActTransition_X_Offset,d0
 	blt.s	return_2F4A4	; beyond right boundary?
 
 loc_2F494:	; beyond boundary
@@ -2307,16 +2307,16 @@ loc_2F5F6:	; Obj56_GroundVehicle:
 	tst.b	routine_secondary(a0)
 	bne.s	loc_2F626
 ; Obj56_GroundVehicle_Sub0:
-	cmpi.w	#$28F0,(Camera_Min_X_pos).w
+	cmpi.w	#$28F0+EHZ2_ActTransition_X_Offset,(Camera_Min_X_pos).w
 	blo.w	JmpTo35_DisplaySprite
-	cmpi.w	#$29D0,x_pos(a0)
+	cmpi.w	#$29D0+EHZ2_ActTransition_X_Offset,x_pos(a0)
 	ble.s	loc_2F618
 	subi_.w	#1,x_pos(a0)
 	bra.w	JmpTo35_DisplaySprite
 ; ---------------------------------------------------------------------------
 
 loc_2F618:
-	move.w	#$29D0,x_pos(a0)
+	move.w	#$29D0+EHZ2_ActTransition_X_Offset,x_pos(a0)
 	addq.b	#2,routine_secondary(a0)
 	bra.w	JmpTo35_DisplaySprite
 ; ---------------------------------------------------------------------------
@@ -2351,43 +2351,43 @@ off_2F672:	offsetTable
 ; ---------------------------------------------------------------------------
 
 loc_2F67C:	; Obj56_Wheel_Sub0:
-	cmpi.w	#$28F0,(Camera_Min_X_pos).w
+	cmpi.w	#$28F0+EHZ2_ActTransition_X_Offset,(Camera_Min_X_pos).w
 	blo.w	JmpTo35_DisplaySprite
 	move.w	#$100,y_vel(a0)
 	cmpi.b	#1,subtype(a0)	; wheel number (0-2)
 	bgt.s	loc_2F6B6	; background wheel
 	beq.s	loc_2F6A6	; second foreground wheel
 ; ---------------------------------------------------------------------------
-	cmpi.w	#$29EC,x_pos(a0)	; first foreground wheel
+	cmpi.w	#$29EC+EHZ2_ActTransition_X_Offset,x_pos(a0)	; first foreground wheel
 	ble.s	loc_2F6C6
 	subi_.w	#1,x_pos(a0)
 	bra.s	loc_2F6E8
 
 loc_2F6A6:	; second foreground wheel
-	cmpi.w	#$29C4,x_pos(a0)
+	cmpi.w	#$29C4+EHZ2_ActTransition_X_Offset,x_pos(a0)
 	ble.s	loc_2F6D2
 	subi_.w	#1,x_pos(a0)
 	bra.s	loc_2F6E8
 
 loc_2F6B6:	; background wheel
-	cmpi.w	#$29A4,x_pos(a0)
+	cmpi.w	#$29A4+EHZ2_ActTransition_X_Offset,x_pos(a0)
 	ble.s	loc_2F6DE
 	subi_.w	#1,x_pos(a0)
 	bra.s	loc_2F6E8
 ; ---------------------------------------------------------------------------
 
 loc_2F6C6:	; first foreground wheel
-	move.w	#$29EC,x_pos(a0)
+	move.w	#$29EC+EHZ2_ActTransition_X_Offset,x_pos(a0)
 	addq.b	#2,routine_secondary(a0)
 	bra.s	loc_2F6E8
 
 loc_2F6D2:	; second foreground wheel
-	move.w	#$29C4,x_pos(a0)
+	move.w	#$29C4+EHZ2_ActTransition_X_Offset,x_pos(a0)
 	addq.b	#2,routine_secondary(a0)
 	bra.s	loc_2F6E8
 
 loc_2F6DE:	; background wheel
-	move.w	#$29A4,x_pos(a0)
+	move.w	#$29A4+EHZ2_ActTransition_X_Offset,x_pos(a0)
 	addq.b	#2,routine_secondary(a0)
 ; ---------------------------------------------------------------------------
 
@@ -2489,16 +2489,16 @@ loc_2F7F4:	; Obj56_Spike:
 	tst.b	routine_secondary(a0)
 	bne.s	loc_2F824
 ; Obj56_Spike_Sub0:
-	cmpi.w	#$28F0,(Camera_Min_X_pos).w
+	cmpi.w	#$28F0+EHZ2_ActTransition_X_Offset,(Camera_Min_X_pos).w
 	blo.w	JmpTo35_DisplaySprite
-	cmpi.w	#$299A,x_pos(a0)
+	cmpi.w	#$299A+EHZ2_ActTransition_X_Offset,x_pos(a0)
 	ble.s	loc_2F816
 	subi_.w	#1,x_pos(a0)
 	bra.w	JmpTo35_DisplaySprite
 ; ---------------------------------------------------------------------------
 
 loc_2F816:
-	move.w	#$299A,x_pos(a0)
+	move.w	#$299A+EHZ2_ActTransition_X_Offset,x_pos(a0)
 	addq.b	#2,routine_secondary(a0)
 	bra.w	JmpTo35_DisplaySprite
 ; ---------------------------------------------------------------------------
