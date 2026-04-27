@@ -407,7 +407,9 @@ RideObject_SetRide_S2Compat_NotInAir:
 Pacca_TemporarySignpost:
 	tst.b	(Apparent_act).w	;are we in act 1?
 	beq.s	+	;if yes, run signpost code
-	jmp	DeleteObject	;if not in Act 1, we are an S2 2 player mode signpost. Those aren't supposed to work!
+	;jmp	DeleteObject	;if not in Act 1, we are an S2 2 player mode signpost. Those aren't supposed to work!
+	move.l	#Pacca_TemporarySignpost_InActive,code(a0)	;deactivate
+	rts
 +
     move.w  (MainCharacter + x_pos).w,d0    ;get player x pos
     move.w  x_pos(a0),d1    ;get our x pos
@@ -420,9 +422,15 @@ Pacca_TemporarySignpost:
 	jsr	Obj_EndSignResults
 	cmp.b	#8,routine(a0)	;did we spawn level results object?
 	bne.s	+	;if not, rts
-	jmp	DeleteObject	;delete self once results are spawned.
+	;jmp	DeleteObject	;delete self once results are spawned.
+	move.l	#Pacca_TemporarySignpost_InActive,code(a0)	;deactivate
+	rts
 +
     rts
+
+;For some reason it respawns after calling deleteobject????
+Pacca_TemporarySignpost_InActive:
+	jmp	MarkObjGone3	
 
 ; ===========================================================================
 ; ----------------------------------------------------------------------------

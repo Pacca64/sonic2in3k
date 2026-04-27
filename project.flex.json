@@ -1,8 +1,33 @@
 {
     "Flex": 2,
     "name": "",
-    "node": "57a2a4cf-f016-413a-bb94-c3d2293e0ff6",
+    "node": "a4cff016-613a-4b94-83d2-293e0ff67d06",
     "objects": [
+        {
+            "format": "Sonic 1.js",
+            "name": "Pal_DEZ2",
+            "palettes": [
+                {
+                    "path": "Levels\\DEZ\\Palettes\\2.bin",
+                    "length": 3
+                }
+            ],
+            "art": {
+                "path": "",
+                "compression": "Uncompressed",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "",
+                "label": ""
+            },
+            "dplcs": {
+                "enabled": false,
+                "path": "",
+                "label": ""
+            },
+            "uuid": "a4cff016-613a-4b94-83d2-293e0ff67d06"
+        },
         {
             "name": "Universal",
             "children": [
