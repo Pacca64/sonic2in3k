@@ -1,7 +1,7 @@
 {
     "Flex": 2,
     "name": "",
-    "node": "b26a2218-db67-4583-968e-4e9ba7186527",
+    "node": "2218db67-8583-468e-8e9b-a7186527c35e",
     "objects": [
         {
             "name": "Universal",
@@ -581,7 +581,32 @@
                         "path": "",
                         "label": ""
                     },
-                    "uuid": "2218db67-8583-468e-8e9b-a7186527c35e"
+                    "uuid": "29a857a2-a4cf-4016-a13a-bb94c3d2293e"
+                },
+                {
+                    "format": "Sonic 1.js",
+                    "name": "Miles Life HUD",
+                    "palettes": [
+                        {
+                            "path": "Levels\\AIZ\\Palettes\\Main.bin",
+                            "length": 3
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\Sprites\\HUD Icon\\Miles Life Icon.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "a857a2a4-cff0-4661-babb-94c3d2293e0f"
                 },
                 {
                     "format": "Sonic 1.js",
@@ -635,7 +660,7 @@
                 }
             ],
             "isDirectory": true,
-            "expanded": false,
+            "expanded": true,
             "uuid": "1731c7e2-e00d-421b-bb08-40cf5ef5b84a"
         },
         {
@@ -884,6 +909,31 @@
                         "label": ""
                     },
                     "uuid": "b26a2218-db67-4583-968e-4e9ba7186527"
+                },
+                {
+                    "format": "Sonic 1.js",
+                    "name": "Miles Life HUD",
+                    "palettes": [
+                        {
+                            "path": "LevelsS2\\EHZ\\Palettes\\Palette.bin",
+                            "length": 3
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\SpritesS2\\HUD Icon\\Miles Life Icon.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "2218db67-8583-468e-8e9b-a7186527c35e"
                 },
                 {
                     "format": "Sonic 3&K Object.js",
