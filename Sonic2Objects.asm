@@ -417,10 +417,6 @@ Pacca_TemporarySignpost:
     jmp	MarkObjGone3	;potentially despawn, but without drawing a sprite.
 
 +
-    ;move.b	#1,(Restart_level_flag).w   ;restart level
-    ;add.b   #1,(Current_act).w  ;go to act 2 (lol)
-    ;move.b  (Current_act).w,(Apparent_act).w    ;^ for apparent act
-    ;clr.b   (Last_star_post_hit).w  ;clear checkpoints.
 	jsr	Obj_EndSignResults
 	cmp.b	#8,routine(a0)	;did we spawn level results object?
 	bne.s	+	;if not, rts
@@ -2909,15 +2905,33 @@ loc_3F406:
 	lea	next_object(a1),a1 ; a1=object
 	dbf	d0,-
 
-	;jsr	(Load_EndOfAct).l	;Not sure what the S3K equivalent of this is. There might not be one!
-	move.b	#1,(Restart_level_flag).w   ;restart level
-    move.w   #angel_island_zone_act_1,(Current_zone_and_act).w  ;go to angel island act 1
-    move.w  (Current_zone_and_act).w,(Apparent_zone_and_act).w ;^ for apparent act
-    clr.b   (Last_star_post_hit).w  ;clear checkpoints.
-
+	jsr	(Load_EndOfAct).l	;Not sure what the S3K equivalent of this is. There might not be one!
 	jmp	(DeleteObject).l
+	
 ; ===========================================================================
 +	rts
+
+;A routine from S2
+;Needs to be recreated to handle S3Ks new systems.
+;Now spawns an object that waits for the players to start their winning poses.
+Load_EndOfAct:
+	jsr	SingleObjLoad
+	bne.s	+
+	move.l	#Obj_S2_WaitToLoadEndOfAct,code(a1)	;load wait to load end of act object.
+	rts
++
+	;if we could not spawn the object...
+	jmp	Obj_EndSignResults_LoadResultsWithoutPosing	;try to force the end of an act anyways. Might not be safe!
+
+
+Obj_S2_WaitToLoadEndOfAct:
+	jsr	Obj_EndSignResults	;attempt to load end of act results
+	cmp.b	#8,routine(a0)	;did we spawn level results object?
+	bne.s	+	;if not, rts
+	jmp	DeleteObject	;delete self once results are spawned.
++
+	rts
+
 ; ===========================================================================
 ; animation script
 ; off_3F428:
