@@ -415,8 +415,11 @@ MusID_FadeOut = cmd_FadeOut
 
 SndID_BossHit = sfx_BossHit
 
+;Sound effects that may or may not match.
+
 ;Placeholder Sound Effects
 ;These are BAD and should be fixed!
 ;Ideally, the original sound effects should be ported to the sound driver to fix these.
 SndID_Helicopter = sfx_Flying
 MusID_Boss  =   mus_EndBoss
+SndID_BossExplosion = sfx_Explode

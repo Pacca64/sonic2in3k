@@ -1,8 +1,28 @@
 {
     "Flex": 2,
     "name": "",
-    "node": "a4cff016-613a-4b94-83d2-293e0ff67d06",
+    "node": "7ae629a3-5d24-4997-8ced-9f8dcac04cd6",
     "objects": [
+        {
+            "format": "Sonic 3&K Object.js",
+            "name": "object",
+            "palettes": [],
+            "art": {
+                "path": "General\\Sprites\\Boss Explosion\\Boss Explosion.bin",
+                "compression": "Nemesis",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "General\\Sprites\\Boss Explosion\\Map - Boss Explosion.asm",
+                "label": ""
+            },
+            "dplcs": {
+                "enabled": false,
+                "path": "",
+                "label": ""
+            },
+            "uuid": "e629a35d-2439-47cc-ad9f-8dcac04cd62b"
+        },
         {
             "format": "Sonic 1.js",
             "name": "Pal_DEZ2",
@@ -1069,6 +1089,31 @@
                         "label": ""
                     },
                     "uuid": "57a2a4cf-f016-413a-bb94-c3d2293e0ff6"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Boss Explosion",
+                    "palettes": [
+                        {
+                            "path": "General\\Sprites\\Sonic\\Palettes\\SonicAndTails.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "General\\SpritesS2\\Explosion\\boss explosion.bin",
+                        "compression": "Nemesis",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "General\\SpritesS2\\Explosion\\Map - Boss Explosion.bin",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "7ae629a3-5d24-4997-8ced-9f8dcac04cd6"
                 }
             ],
             "isDirectory": true,

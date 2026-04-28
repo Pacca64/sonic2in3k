@@ -2687,6 +2687,26 @@ JmpTo35_DisplaySprite
 ;I'm not sure if there is an equivalent! S3K has lots of special cases x3
 ;Should perhaps port this.
 Boss_LoadExplosion:
+	move.b	(Vint_runcount+3).w,d0
+	andi.b	#7,d0
+	bne.s	+	; rts
+	jsr	(SingleObjLoad).l
+	bne.s	+	; rts
+	move.l	#Obj_S2_BossExplosion,code(a1) ; load obj58
+	move.w	x_pos(a0),x_pos(a1)
+	move.w	y_pos(a0),y_pos(a1)
+	jsr	(RandomNumber).l
+	move.w	d0,d1
+	moveq	#0,d1
+	move.b	d0,d1
+	lsr.b	#2,d1
+	subi.w	#$20,d1
+	add.w	d1,x_pos(a1)
+	lsr.w	#8,d0
+	lsr.b	#2,d0
+	subi.w	#$20,d0
+	add.w	d0,y_pos(a1)
++
 	rts
 
 
@@ -2955,3 +2975,57 @@ byte_3F42F:	dc.b   3,  0,  1,  2,  3,$FE,  1
 ; ----------------------------------------------------------------------------
 Obj3E_MapUnc_3F436:	binclude "General\SpritesS2\Animal Capsule\mappings.bin"
 ; ===========================================================================
+
+
+; ===========================================================================
+; ----------------------------------------------------------------------------
+; Object 58 - Boss explosion
+; ----------------------------------------------------------------------------
+; Sprite_2D494:
+Obj_S2_BossExplosion:
+Obj58:
+	moveq	#0,d0
+	move.b	routine(a0),d0
+	move.w	Obj58_Index(pc,d0.w),d1
+	jmp	Obj58_Index(pc,d1.w)
+; ===========================================================================
+; off_2D4A2:
+Obj58_Index:	offsetTable
+		offsetTableEntry.w Obj58_Init	; 0
+		offsetTableEntry.w Obj58_Main	; 2
+; ===========================================================================
+; loc_2D4A6:
+Obj58_Init:
+	addq.b	#2,routine(a0)
+	move.l	#Obj58_MapUnc_2D50A,mappings(a0)
+	move.w	#make_art_tile(ArtTile_ArtNem_FieryExplosion,0,1),art_tile(a0)
+	;jsrto	(Adjust2PArtPointer).l, JmpTo59_Adjust2PArtPointer
+	move.b	#4,render_flags(a0)
+	move.b	#0*$80,priority(a0)
+	move.b	#0,collision_flags(a0)
+	move.b	#$C,width_pixels(a0)
+	move.b	#7,anim_frame_duration(a0)
+	move.b	#0,mapping_frame(a0)
+	move.w	#SndID_BossExplosion,d0
+	jmp	(PlaySound).l
+; ===========================================================================
+	rts
+; ===========================================================================
+; loc_2D4EC:
+Obj58_Main:
+	subq.b	#1,anim_frame_duration(a0)
+	bpl.s	+
+	move.b	#7,anim_frame_duration(a0)
+	addq.b	#1,mapping_frame(a0)
+	cmpi.b	#7,mapping_frame(a0)
+	beq.w	JmpTo50_DeleteObject
++
+	jmp	(DisplaySprite).l
+
+JmpTo50_DeleteObject:
+	jmp	(DeleteObject).l
+; ===========================================================================
+; ----------------------------------------------------------------------------
+; sprite mappings
+; ----------------------------------------------------------------------------
+Obj58_MapUnc_2D50A:	BINCLUDE "General\SpritesS2\Explosion\Map - Boss Explosion.bin"
