@@ -1,3 +1,6 @@
+This is a project intended to port Sonic 2 content (and potentially Sonic 1 content in the future) to the Sonic 3 and Knuckles engine, without damaging any preexisting content.
+
+
 # DISCLAIMER
 
 Any and all content presented in this repository is presented for informational and educational purposes only.
